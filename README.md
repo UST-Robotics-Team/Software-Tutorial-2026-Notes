@@ -36,7 +36,7 @@ If you encounter any problems during installation or usage of the IDE, please ch
 * [Tutorial 3: PWM & Servo Control](tutorial-3-pwm/README.md)
 
 ### Advanced Tutorials
-* [Advanced Tutorial 1: Advanced Embedded Systems](advanced-tutorial-1-Advanced-Embedding-System/readme.md)
+* [Advanced Tutorial 1: Advanced Embedded Systems](/advanced-tutorial-1-Advanced-Embedded-Systems/README.md)
 * [Advanced Tutorial 2: CAN and PID Control](advanced-tutorial-2-can/README.md)
 * [Advanced Tutorial 3: MIT_App_Inventor](advanced-tutorial-3-MIT_App_Inventor/Basic-app-creation.md). 
 
