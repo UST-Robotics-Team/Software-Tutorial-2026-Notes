@@ -6,18 +6,13 @@
 
 ## Software ⇔ Hardware
 
-<img src="./images/0-image-1.png" alt="STM32 Pinout and Layout" width="1050" style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;">
+<img src="./images/0-image-1.png" alt="STM32 Pinout and Layout" width="100%" />
 
-<table width="1050" style="border: none; margin-top: 10px; margin-left: 0;">
-  <tr style="border: none; background: none;">
-    <td width="50%" align="center" style="border: none; padding: 0 10px 0 0;">
-      <strong>LEFT:</strong> .ioc pinout in stm32CubeMX
-    </td>
-    <td width="50%" align="center" style="border: none; padding: 0 10px 0 0;">
-      <strong>RIGHT:</strong> PCB layout (top) & schematic (bottom)
-    </td>
-  </tr>
-</table>
+<p align="center">
+  <em><strong>LEFT:</strong> .ioc file in STM32CubeMX</em>
+  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+  <em><strong>RIGHT:</strong> PCB layout (top) &amp; schematic (bottom)</em>
+</p>
 
 ### Core Concepts
 
