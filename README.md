@@ -1,14 +1,3 @@
-# NOTE
-
-All tutorial notes from 2025 are kept in their relevant folders. Please edit/update them as needed, or create new tutorial content. Draft them in this repo before copying to the "Software-Tutorial-2026-Notes" repo.
-
-
----
-
-README for draft Software-Tutorial-2026-Notes starts below
-
----
-
 # Overview
 
 > funny words on computer make robot go brrrr weeee
