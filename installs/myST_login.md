@@ -19,5 +19,8 @@ This should generate a window and you should click yes to generate code
 
 ![](images/stm32_login_step4.png)
 
->1 way to check is to add code/comments out of USER CODE START-END areas.
+>One way to check is to add code/comments out of USER CODE START-END areas.
+
 If code generation is successful, any code outside the areas should dissapear.
+
+>Hence a reminder for you to write code within the allocated area (i.e. between USER CODE BEGIN and USER CODE END)
