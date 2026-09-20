@@ -1,3 +1,14 @@
+# NOTE
+
+All tutorial notes from 2025 are kept in their relevant folders. Please edit/update them as needed, or create new tutorial content. Draft them in this repo before copying to the "Software-Tutorial-2026-Notes" repo.
+
+
+---
+
+README for draft Software-Tutorial-2026-Notes starts below
+
+---
+
 # Overview
 
 > funny words on computer make robot go brrrr weeee
@@ -8,22 +19,25 @@ Here is a brief overview of our schedule:
 
 ~~speed run 90% COMP 1021, 80% COMP 2011, 20% ELEC 1100, 70% ELEC 3300, 30% COMP 2211, 5% COMP 4421, ...~~
 
-TODO: put a screenshot of schedule here!!
+![alt text](/images/timetable.png)
 
 [Homework arrangement](Homework-Arrangements.md)
 
-### Installation of STM32CubeIDE
+## Where to write code
+We will be using the **STM32CubeIDE for Visual Studio Code Extension Pack** on Visual Studio Code and **STM32CubeMX** to develop STM32 Microcontroller projects for the tutorial.
 
-**Please Finish this before First Tutorial!!!**
+## What to prepare
 
-Installation guides for different operating systems:
-* [Windows](installs/stm32_windows.md)
-* [MacOS](installs/stm32_macos.md)
+### Please Finish this before First Tutorial!!!
 
-If you encounter any problems during installation or usage of the IDE, please check out our FAQ page below:
-* [FAQ](installs/stm32_problems.md)
-* Contact any PIC for help in Discord
+1. **Github Student Developer Pack** ([Registration Guide](installs/Github_Student_developer.md))
+2. Visual Studio Code ([Installation Guide](installs/VSCode.md))
+3. **STM32CubeIDE for Visual Studio Code Extension Pack** ([Installation Guide](installs/STM32_VSCodeExtension.md))
+4. **STM32CubeMX** ([Installation Guide](installs/STM32MX.md))
 
+If you encounter any problems during installation or usage of the IDE, please contact any PIC for help in Discord.
+
+## Tutorial Syllabus
 ### Self Learn Module
 * [Self-learning basic C](tutorial-0-c/self_study/README.md)
 
@@ -36,12 +50,13 @@ If you encounter any problems during installation or usage of the IDE, please ch
 * [Tutorial 3: PWM & Servo Control](tutorial-3-pwm/README.md)
 
 ### Advanced Tutorials
-* [Advanced Tutorial 1: Advanced Embedded Systems](/advanced-tutorial-1-Advanced-Embedded-Systems/README.md)
+Advanced tutorials will be held later in the next phase. There are also advanced notes for your own reading. 
+* [Advanced Tutorial 1: Advanced Embedded Systems](advanced-tutorial-1-Advanced-Embedding-System/readme.md)
 * [Advanced Tutorial 2: CAN and PID Control](advanced-tutorial-2-can/README.md)
-* [Advanced Tutorial 3: MIT_App_Inventor](advanced-tutorial-3-MIT_App_Inventor/Basic-app-creation.md). 
 
-[Lists of Links](SUMMARY.md)
+Feel free to reach out to any team members if you have any questions about anything related to the tutorials or the team in general.
 
-Advanced tutorials will be held later in the next phase. There are also advanced notes for your own reading. Feel free to reach out to any team members if you have any questions about anything related to the tutorials or the team in general.
+
+Subsections of all tutorials can be found here: [Lists of Links](SUMMARY.md)
 
 Please also make sure to join our [Discord](https://discord.gg/ak2nGDgMR) server for more important announcements.
