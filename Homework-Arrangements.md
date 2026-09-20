@@ -14,6 +14,8 @@ For tutorial 0, you can do all your work on your computer and submit it to Googl
 
 We will grade the submitted assignments after the deadline (A mix of auto and manual). There will be some hidden test cases so make sure your code can handle all kinds of valid inputs.
 
+[Homework 0](tutorial-0-c-self_study/homework/README.md)
+
 ## Tutorial 1 and 2
 
 ### Face to Face demo

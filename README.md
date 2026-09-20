@@ -51,8 +51,8 @@ If you encounter any problems during installation or usage of the IDE, please co
 
 ### Advanced Tutorials
 Advanced tutorials will be held later in the next phase. There are also advanced notes for your own reading. 
-* [Advanced Tutorial 1: Advanced Embedded Systems](advanced-tutorial-1-Advanced-Embedding-System/readme.md)
-* [Advanced Tutorial 2: CAN and PID Control](advanced-tutorial-2-can/README.md)
+* [Advanced Tutorial 1: Advanced Embedded Systems](advanced-tutorial-1-Advanced-Embedded-Systems/README.md)
+* [Advanced Tutorial 2: CAN and PID Control](advanced-tutorial-2-CAN/README.md)
 
 Feel free to reach out to any team members if you have any questions about anything related to the tutorials or the team in general.
 
