@@ -99,14 +99,14 @@ int max_connections = 100; // The single definition.
 Then any source file can include `config.h` and use `max_connections` without creating another definition.
 
 ```c
-#include "utility.h" //remember to use double quotes instead
+#include "config.h" //remember to use double quotes instead
 #include <stdio.h>
-
-extern int c; //for variables you need to do this
 
 int main(){
   int a = 2; int b = 3;
-  printf("%d + %d = %d", a, b, f(a,b));
+  for (int i = 0; i < max_connections; i++){
+    printf("%d + %d = %d", a, b, f(a,b));
+  }
 }
 ```
 
