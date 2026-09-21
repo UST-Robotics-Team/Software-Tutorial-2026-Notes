@@ -75,17 +75,38 @@ int main(){
 
 `#include <some_file>` means writing the whole content of the file there, in this case:
 
-The `extern` keyword is needed, otherwise, the program 
+The `extern` keyword is needed when declaring a variable that is defined in another source file. Without it, every `.c` file that includes the header contains its own definition of the variable. Each source file may compile successfully, but the linker will find multiple definitions of the same global variable and report a **Multiple Definition Error** (also called a "duplicate symbol").
+
+For example, this header is incorrect:
 
 ```c
-#include "utility.h" //remember to use double quotes instead
-#include <stdio.h>
+// config.h
+int max_connections = 100; // This allocates storage for the variable.
+```
 
-extern int c; //for variables you need to do this
+If both `network.c` and `ui.c` include this header, the preprocessor copies the definition into both files. They compile into `network.o` and `ui.o`, but the linker cannot combine them because both object files define `max_connections`.
+
+Instead, define the variable in exactly one `.c` file and declare it with `extern` in the header:
+
+```c
+// config.h
+extern int max_connections; // Declaration; does not allocate storage.
+
+// config.c
+int max_connections = 100; // The single definition.
+```
+
+Then any source file can include `config.h` and use `max_connections` without creating another definition.
+
+```c
+#include "config.h" //remember to use double quotes instead
+#include <stdio.h>
 
 int main(){
   int a = 2; int b = 3;
-  printf("%d + %d = %d", a, b, f(a,b));
+  for (int i = 0; i < max_connections; i++){
+    printf("%d + %d = %d", a, b, f(a,b));
+  }
 }
 ```
 

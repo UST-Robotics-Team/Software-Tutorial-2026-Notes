@@ -1,9 +1,9 @@
 [Back to Tutorial 0 Main Page](../tutorial-0-self-learn-basic-c/README.md) 
 
 
-# Tutorial 0: Basic C (Online Tutorial)
+# Tutorial 0: Basic C (Online Module)
 
-### Tutorial 0 (Online Tutorial) Target
+### Tutorial 0 (Online Module) Target
 
 * Understand more concepts on C Programming and be able to implement more complicated logics
 * Learn more about conventions and best practices in programming
@@ -17,6 +17,8 @@ Materials to Introduce in this Online Tutorial:
 * [10) Functions](10-functions.md) 
 * [11) Structs and Enums](11-struct.md)
 * [12) Multi File Programming](12-multi-file-programming.md)
+
+Below is a playlist that goes through the content from 09) to 12): [Youtube Playlist](https://www.youtube.com/playlist?list=PLb4lIKqQqWhs)
 
 The following part is very optional:
 
