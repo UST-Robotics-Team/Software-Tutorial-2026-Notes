@@ -46,9 +46,9 @@ skeleton/
 ├── run_tests.sh                 # test runner - macOS / Linux (I only tested on Linus as I do not have a Mac device .-.)
 │
 ├── Task-1/
-│   ├── Task1.c                  # <- the stub you edit
-│   ├── Task1.h                  # given structs and function signatures (do not change)
-│   ├── main.c                   # given menu / I/O driver (do not change)
+│   ├── Task1.c                  # <- Task 1A and 1B
+│   ├── Task1.h                  # <- Task 1A(ii)
+│   ├── main.c                   
 │   └── testcases/
 │       ├── testcase1/
 │       │   ├── input.txt        # the scripted stdin
@@ -56,7 +56,7 @@ skeleton/
 │       └── testcaseB1/          # one folder per test ('B' = Part B)
 │
 ├── Task-2/
-│   ├── Task2.c                  # <- the stub you edit
+│   ├── Task2.c                  # <- Task 2A and 2B
 │   ├── Task2.h
 │   ├── main.c
 │   └── testcases/
@@ -65,7 +65,7 @@ skeleton/
 │           └── output.txt
 │
 └── Task-3/
-    ├── Task3.c                  # <- the stub you edit
+    ├── Task3.c                  # <- Task 3A and 3B
     ├── Task3.h
     ├── main.c
     ├── given.c                  # given helper functions (do not modify)
