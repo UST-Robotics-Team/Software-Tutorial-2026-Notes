@@ -44,9 +44,8 @@ Advanced tutorials will be held later in the next phase. There are also advanced
 * Advanced Tutorial 1: Advanced Embedded Systems
 * Advanced Tutorial 2: CAN and PID Control
 
+---
+
 Feel free to reach out to any team members if you have any questions about anything related to the tutorials or the team in general.
-
-
-Subsections of all tutorials can be found here: [Lists of Links](SUMMARY.md)
 
 Please also make sure to join our [Discord](https://discord.gg/ak2nGDgMR) server for more important announcements.
