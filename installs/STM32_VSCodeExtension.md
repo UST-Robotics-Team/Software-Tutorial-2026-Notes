@@ -19,13 +19,14 @@ The extension pack allows users to do all of the above on Visual Studio Code
 ## Installation steps
 1. Go to the Extension Tab (icon with 4 squares on the left) on Visual Studio Code and search for `STM32CubeIDE`. Select the first one and press the install button.
 ![extension bar](images/stm32_vs_1.png)
-2. Download the project file provided by us: `TODO: Put zip link here` 
+2. Download the project file provided by us: `Will be uploaded soon` 
 3. Extract the zip file to a local folder in your computer (Note: Do not unzip the folder in your oneDrive folder as it disrupts the path names)
 
 ## Setting Up the Project
 4. Open the project folder in Visual Studio Code
-5. Select `Release` for configure preset
-6. Click on butterfly STM32 logo, the extension should detect the CMake file in the project folder
+5. Select `Release` for configure preset (if it does not appear, type `> select configure preset` in the search bar)
+6. Click on butterfly STM32 logo, the extension should detect the CMake file in the project folder, and know that you have opened an STM32 project, like the following: 
+![alt text](images/stm32_vs_2.png)
 
 ## Flashing Code (Test during the first tutorial)
 7. Connect the STM32 Board to your computer
