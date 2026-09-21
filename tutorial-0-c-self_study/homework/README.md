@@ -3,6 +3,10 @@
 > Author: Ryan (<rcwku@connect.ust.hk>)  
 > Feel free to email/discord dm me for any clarifications on the homework.
 
+## Skeleton
+
+You can download the skeleton [here](./skeleton.zip)
+
 ## Homework Format
 
 There will be **3** main homework tasks, each focusing on a different topic.  
@@ -17,6 +21,8 @@ All tasks will be split into part A and part B: (so there's a 1A, 1B, 2A, 2B, 3A
 For all 3 tasks, you will be given a bare-bones skeleton file (and some library/helper functions) to assist you in making the program.
 
 ### Homework Collection
+
+---
 
 We will be collecting the homework through Google classroom (rip GitHub Classroom 2016-2026)
 
