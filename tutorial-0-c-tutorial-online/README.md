@@ -44,8 +44,7 @@ Here are some exercises that used to be a classwork in our previous tutorials.
 * [Classwork 4: Greyscale Image -- Struct](classwork/classwork-4-greyscale-image.md)
 * [Classwork 5: Mean Median Min Max -- Separate Compilation](classwork/classwork-5-mean-median-min-max/README.md)
 
-## Homeworks
+## Homework
 
-Please submit these homeworks before 4 Oct 2025 23:59:59 HKT
-Details about the homework can be found [here](tutorial-0-c-self_study/homework/README.md)
-
+Please submit the homework before 4 Oct 2025 23:59:59 HKT  
+Details about the homework can be found [here](../tutorial-0-c-self_study/homework/README.md)

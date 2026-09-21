@@ -47,8 +47,7 @@ To further support your self-learning process, we provided some self-tests at th
 
 > Note: If your code runs indefinitely and does not stop, you can stop it by typing Ctrl + C
 
-## Homeworks
+## Homework
 
-Please submit these homeworks before 4 Oct 2026 23:59:59 HKT, for more details, please go [here](./homework/README.md).
-
->TODO: fix link
+Please submit the homework before 4 Oct 2026 23:59:59 HKT  
+Details about the homework can be found [here](./homework/README.md)
