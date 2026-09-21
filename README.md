@@ -28,10 +28,10 @@ If you encounter any problems during installation or usage of the IDE, please co
 
 ## Tutorial Syllabus
 ### Self Learn Module
-* [Self-learning basic C](tutorial-0-c/self_study/README.md)
+* [Self-learning basic C](tutorial-0-c-self_study/README.md)
 
 ### Online Zoom Tutorials
-* [Tutorial 0: Advanced C](tutorial-0-c/online-tutorial/README.md)
+* [Tutorial 0: Advanced C](tutorial-0-c-online-tutorial/README.md)
 
 ### Embedded Systems
 * [Tutorial 1: Basic IO (GPIO and TFT)](tutorial-1-basic-io/README.md)
