@@ -39,7 +39,7 @@ Complete the function above in `Task2.c`.
 The following requirements must be fulfilled:
 
 - The password must be at least **8** characters long, and no longer than **24** characters. (aka the password must be 8-24 characters long, inclusive)
-- The password *must only include** the following:
+- The password **must only include** the following:
   - Capital Latin letters (A-Z)
   - Small Latin letters (a-z)
   - Digits (0-9)
