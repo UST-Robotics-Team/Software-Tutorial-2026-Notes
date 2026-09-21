@@ -30,6 +30,8 @@ The extension pack allows users to do all of the above on Visual Studio Code
 
 ## Flashing Code (Test during the first tutorial)
 7. Connect the STM32 Board to your computer
+
+- Refer to [flash Code Guide](flashcode.md) on how to connect the ST Link to the STM32 Board
 8. Go to the Run and Debug Tab (icon with a play button and a bug) 
 9. Select the following option (STM32Cube: STM32 Launch STLink GDB Server)
 ![alt text](images/stm32_vs_3.png)
