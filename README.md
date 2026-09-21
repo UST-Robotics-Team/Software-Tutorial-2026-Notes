@@ -35,13 +35,14 @@ If you encounter any problems during installation or usage of the IDE, please co
 
 ### Embedded Systems
 * [Tutorial 1: Basic IO (GPIO and TFT)](tutorial-1-basic-io/README.md)
-* [Tutorial 2: UART](tutorial-2-uart/README.md)
-* [Tutorial 3: PWM & Servo Control](tutorial-3-pwm/README.md)
+* [Tutorial 2: UART](tutorial-2-uart-bluetooth/README.md)
+* [Tutorial 3: PWM & Servo Control](tutorial-3-advanced-io/README.md)
 
 ### Advanced Tutorials
 Advanced tutorials will be held later in the next phase. There are also advanced notes for your own reading. 
-* [Advanced Tutorial 1: Advanced Embedded Systems](advanced-tutorial-1-Advanced-Embedded-Systems/README.md)
-* [Advanced Tutorial 2: CAN and PID Control](advanced-tutorial-2-CAN/README.md)
+
+* Advanced Tutorial 1: Advanced Embedded Systems
+* Advanced Tutorial 2: CAN and PID Control
 
 Feel free to reach out to any team members if you have any questions about anything related to the tutorials or the team in general.
 
