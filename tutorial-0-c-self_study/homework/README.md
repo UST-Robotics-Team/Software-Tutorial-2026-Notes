@@ -134,9 +134,9 @@ If there are any bugs with the tester please inform me at once :P
 
 ## Grading
 
->It is completely fine to not be able to complete this homework, as it is only here to help  
+>It is completely fine to not be able to complete this homework, as it is only here to help you get used to coding in C  
 
-There will be 3 main portions of the grading:
+There will be 2 (or 3) main portions of the grading:
 
 - Functionality: 95%
   - Public test cases: 24%
