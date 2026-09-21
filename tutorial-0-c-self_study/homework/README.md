@@ -16,6 +16,17 @@ All tasks will be split into part A and part B: (so there's a 1A, 1B, 2A, 2B, 3A
 
 For all 3 tasks, you will be given a bare-bones skeleton file (and some library/helper functions) to assist you in making the program.
 
+### Homework Collection
+
+We will be collecting the homework through Google classroom (rip GitHub Classroom 2016-2026)
+
+[Link to classroom](https://classroom.google.com/c/ODczMjI5NDI5ODY4?cjc=wtzrvtih) or through class code: wtzrvtih
+
+Please read the instructions for the assignment carefully.
+
+>Upload a .zip file containing the files Task1.h, Task1.c, Task2.c and Task3.c.  
+>Please name your .zip file `<itsc>_cprogramming.zip` so we can identify you.
+
 ## Ground Rules
 
 - You may **NOT** use any C library functions that were not mentioned in the tutorial unless you were specifically instructed to do so. (no `malloc` etc)

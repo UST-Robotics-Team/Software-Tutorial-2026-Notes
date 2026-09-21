@@ -49,7 +49,6 @@ To further support your self-learning process, we provided some self-tests at th
 
 ## Homeworks
 
-Please submit these homeworks before 4 Oct 2026 23:59:59 HKT
-[here](https://github.com/UST-Robotics-Team/Software-Tutorial-2025-Notes/blob/main/tutorial-0-c-self_study/homework/README.md)
+Please submit these homeworks before 4 Oct 2026 23:59:59 HKT, for more details, please go [here](./homework/README.md).
 
 >TODO: fix link
