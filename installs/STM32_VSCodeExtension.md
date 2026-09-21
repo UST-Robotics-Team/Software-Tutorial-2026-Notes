@@ -19,7 +19,7 @@ The extension pack allows users to do all of the above on Visual Studio Code
 ## Installation steps
 1. Go to the Extension Tab (icon with 4 squares on the left) on Visual Studio Code and search for `STM32CubeIDE`. Select the first one and press the install button.
 ![extension bar](images/stm32_vs_1.png)
-2. Download the project file provided by us: [Skeleton Zip](2026-sw-tutorial.zip) 
+2. Download the project file provided by us to test your installation: [Tester](2026-sw-tutorial.zip) 
 3. Extract the zip file to a local folder in your computer (Note: Do not unzip the folder in your oneDrive folder as it disrupts the path names)
 
 ## Setting Up the Project
@@ -31,8 +31,10 @@ The extension pack allows users to do all of the above on Visual Studio Code
 ## Flashing Code (Test during the first tutorial)
 7. Connect the STM32 Board to your computer
 8. Go to the Run and Debug Tab (icon with a play button and a bug) 
-
-
+9. Select the following option (STM32Cube: STM32 Launch STLink GDB Server)
+![alt text](images/stm32_vs_3.png)
+10. A small bar hovering on top should appear (yellow outline), click on the play button (red outline) to 
+![alt text](images/stm32_vs_4.png)
 
 
 
