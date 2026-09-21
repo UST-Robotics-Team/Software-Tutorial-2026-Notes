@@ -10,7 +10,7 @@ Here is a brief overview of our schedule:
 
 ![alt text](/images/timetable.png)
 
-[Homework arrangement](Homework-Arrangements.md)
+Check here for [Homework arrangement](Homework-Arrangements.md) for the tutorial.
 
 ## Where to write code
 We will be using the **STM32CubeIDE for Visual Studio Code Extension Pack** on Visual Studio Code and **STM32CubeMX** to develop STM32 Microcontroller projects for the tutorial.
