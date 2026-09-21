@@ -1,8 +1,3 @@
-
-> **TODO**: UPDATE the senior availability link in this file, and fix the VIDEO LINK
-
----
-
 # Homework Demo Arrangements
 
 ## Tutorial 0

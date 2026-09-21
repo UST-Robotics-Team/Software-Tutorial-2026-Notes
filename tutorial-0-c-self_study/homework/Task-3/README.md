@@ -17,7 +17,7 @@ This task will focus on testing your skills on:
 
 This task will be focusing on using structs and adding functions to an already existing "codebase". ~~and also for fun :\)~~
 
-## Brief summary of how Scrabble works (in case you do not know what Scrabble is (._.) )  
+## Brief summary of how Scrabble works (in case you do not know what Scrabble is (._.) )
 
 Scrabble is a well-known word board game, where 2 players take turns spelling out interconnecting English words on a 15x15 grid. And for this task, we will try to recreate this game in the terminal. (With some slight modifications.)
 
@@ -135,7 +135,7 @@ All of these are already implemented for you in `given.c` and declared in `Task3
 | `int tiles_left(Bag* bag)` | Returns the number of tiles still in `bag`. |
 | `int value(char letter)` | Returns the Scrabble point value of a letter. `*` (wildcard) = 0, and invalid letters = -1. |
 | `int rack_count(Player* player)` | Returns how many tiles are currently on the player's rack (0-7). |
-| `int is_board_empty(Board* board)` | Returns 1 if the board is empty, otherwise 0. |
+| `int is_board_empty(Board* board)` | Returns 1 if the board has no tiles on it (every square empty), otherwise 0. |
 | `int is_valid(const char* word)` | Returns 1 if `word` is a valid word, else 0. |
 
 ### Given, but not as useful
@@ -167,7 +167,13 @@ The only functions you will have to implement are listed below.
 
 ### Part A
 
-#### i) `void sort_rack(Player* player)`
+#### i) Rack Sorting
+
+A common strategy competitive Scrabble players apply when playing the game, is arranging their rack tiles in alphabetical order, and then memorising different combinations of words based on that said alphabetically arranged string.
+
+```C
+void sort_rack(Player* player)
+```
 
 Sort the player's rack in alphabetical order. This function should modify the player's rack in place. The wildcard * should come after Z in the rack.  
 
@@ -193,9 +199,15 @@ E.g. "`3 1 4 5 2`"
   - Compare `2` and `1`, `1`<`2`, we stop.
 - The array ends as "`1 2 3 4 5`", the array is sorted.
 
->tbh you can use any sorting algorithm you like but insertion is the easiest imo. (Or use bubble sort mentioned in one of the classworks)
+>tbh you can use any sorting algorithm you like but insertion is the easiest imo.
 
-#### ii) `int exchange_tiles(Game* game, Player* player, const char* tiles)`
+#### ii) Exchanging
+
+Exchanging is a core gameplay mechanic, and is commonly utilised when your rack tiles are so bad that you cannot form any words that score a meaningful amount of points.
+
+```C
+int exchange_tiles(Game* game, Player* player, const char* tiles)
+```
 
 Implement the logic to exchange tiles in the player's rack.
 It should first remove the tiles from the player's rack, then draw tiles to fill up the player's rack, then put the removed tiles into the bag. **The order is important**.
@@ -204,9 +216,15 @@ It should first remove the tiles from the player's rack, then draw tiles to fill
 [//]: # "add a small private helper rack_has that checks whether a letter is on the rack and call it from"
 [//]: # "both exchange_tiles and play_valid_word so the two share the same membership check"
 
-#### iii) `int word_score(Game* game, const char* word, int row, int col, char direction)`
+#### iii) Score
 
-Assume the word is already valid and playable, and just calculate its score.
+Scoring, is ofc the most important part of the game (you need the higher score to win). You will also be implementing that.
+
+```C
+int word_score(Game* game, const char* word, int row, int col, char direction)
+```
+
+Assume the word is already valid and playable, and calculate its score.
 
 - `direction` is `'H'` (horizontal) or `'V'` (vertical); `(row, col)` is the starting square.
 - **Newly placed** tiles use their square's modifier (Remember, `START` is counted as a `DOUBLE WORD`.)
@@ -214,7 +232,15 @@ Assume the word is already valid and playable, and just calculate its score.
 - Add 50 (the bingo bonus) if the play uses all 7 rack tiles.
 - Return the final score.
 
-#### iv) `int play_valid_word(Game* game, Player* player, const char* word, int row, int col, char direction)`
+#### iv) Validation
+
+Of course, your play will have to be valid, otherwise, you'll just be cheating.
+
+> Fun Fact: You can intentionally play a invalid word (called a phony), however, if the opponent challenges the word the turn after you played a phony, the word (and its score) will be removed, and your turn will be skipped. And if a challenge is unsuccessfuly (aka challenging a valid word), then depending on the rules, your opponent gets +5 points or your turn will be skipped.
+
+```C
+int play_valid_word(Game* game, Player* player, const char* word, int row, int col, char direction)
+```
 
 Validate and, if legal, play the word. Return **1** on success, **0** if it cannot be played.  
 A play is valid when:
@@ -229,35 +255,110 @@ If valid:
 
 - Place the letters on the board (a wildcard is shown as the **lowercase** letter it represents).
 - Remove the used tiles from the player's rack.
-- Calculate the score of the play using `word_score(...)`, and add it to the player's score.
+- Add `word_score(...)` to the player's score.
 - Return **1**.
-
-#### Outputs (Part A)
-
-Please refer to the testcases :P
 
 ### Part B (Bonus)
 
-#### i) `void anagram_finder(Player* player)`
+#### i) Anagrams
+
+Words that use the same letters, but in a different order, are called anagrams. And finding anagrams from your rack tiles is one of the core skills needed to be good at the game (obviously).  
+So, we'll implement a tool to display all the possible words you can form with the tiles on your rack, and list them all out, to help the player.
+
+```C
+void anagram_finder(Player* player)
+```
 
 Find and print every valid word that can be made using only the tiles on the rack (a wildcard can be any letter).
 
 - Print them in order of **length (descending)**, then **alphabetically**.
 - Wildcards are shown as the **lowercase** letter they represent.
 
-E.g. If rack is `AB`, it should print out `AB BA`.
+E.g. If rack is `AB`, it'll show `AB BA`
 
-#### ii) `char* highest_score(Game* game, Player* player)`
+```console
+Current rack: AB
+> ANAG
+Words from rack: AB BA
+```
+
+```console
+Current rack: J*
+> ANAG
+Words from rack: Ja Jo
+```
+
+Assume for cases with wildcard, words that have multiple possible wildcard spaces, will have the wildcard at the first possible wildcard position, and if a word can be represented with or without the wildcard, prioritise the wildcard-less version.
+E.g. Rack: `AB*`, there are 2 possible ways to represent **ABA**, being `aBA` and `ABa`. We will only print out the first version (`aBA`) and not print (`ABa`). And `AB` will be printed instead of `aB` or `Ab`.
+
+#### ii) Highest Scoring Play
+
+You know, the whole objective of the game is getting a high score, so a (naive) strategy to win the game is to always play the highest scoring available move.
+
+```C
+char* highest_score(Game* game, Player* player)
+```
 
 Find the highest-scoring legal next move for the player.
 
-- Return the move as a string in the form `<WORD> <CELL> <DIR> (SCORE)`, e.g. `BE M2 V (8)`.
+- Return the move as a string in the form `<WORD> <CELL> <DIR> (SCORE)`, e.g. `AA H8 H (4)`.
 - If no move exists, return `"PASS"`.
 
-#### Outputs (Part B)
+You may assume that the test cases will have only 1 definitive highest scoring move.
 
-Please refer to the testcases :P
+## Compiling and Testing
 
-## Compiling & Testing
+### Compilation
 
------------WIP------------
+Windows:
+
+```Powershell
+gcc -Wuninitialized -std=c99 main.c Task3.c given.c lib/dict.c -o Task3
+# Then to run the program
+./Task3
+
+# Or you can do both at once
+gcc -Wuninitialized -std=c99 main.c Task3.c given.c lib/dict.c -o Task3; ./Task3
+```
+
+Linux/Mac:
+
+```sh
+gcc -Wuninitialized -std=c99 main.c Task3.c given.c lib/dict.c -o Task3
+# Then to run the program
+./Task3
+
+# Or you can do both at once
+gcc -Wuninitialized -std=c99 main.c Task3.c given.c lib/dict.c -o Task3 && ./Task3
+```
+
+After compiling and running the program, you can play with the interactive menu and test out your program.
+
+### Testing
+
+From the repository root, run the root test runner. It compiles `main.c`,
+`Task3.c`, `given.c`, and `lib/dict.c`, then runs the test cases in
+`Task-3/testcases/`.
+
+```text
+powershell -ExecutionPolicy Bypass -File .\run_tests.ps1 -Task 3 # Windows
+bash ./run_tests.sh 3                                           # macOS / Linux
+```
+
+The runner can also be invoked with a path to the root script from inside the
+`Task-3` folder: `..\run_tests.ps1 -Task 3` or `../run_tests.sh 3`.
+
+Add -b to grade the bonus test cases, add -n to remove the output dump.
+
+### Game setup options
+
+When the game starts it asks how the game should be set up:
+
+| Option | What it does |
+|--------|--------------|
+| `1` | Play with a random seed. |
+| `2` | Play with a seed you type in. |
+| `3` | Import a prepared board state from a file. |
+| `4` | Play with a set draw order. |
+
+Due to C's `rand()` being device and compiler dependent, for all Task 3 test cases, we will only use option 3 and 4 (since they are deterministic) to grade your programs.
