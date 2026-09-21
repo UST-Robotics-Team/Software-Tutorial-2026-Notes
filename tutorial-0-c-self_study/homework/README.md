@@ -5,7 +5,7 @@
 
 ## Skeleton
 
-You can download the skeleton [here](./skeleton.zip)
+You can download the skeleton [here](./skeleton.zip).
 
 ## Homework Format
 
@@ -26,7 +26,7 @@ For all 3 tasks, you will be given a bare-bones skeleton file (and some library/
 
 We will be collecting the homework through Google classroom (rip GitHub Classroom 2016-2026)
 
-[Link to classroom](https://classroom.google.com/c/ODczMjI5NDI5ODY4?cjc=wtzrvtih) or through class code: wtzrvtih
+[Link to classroom](https://classroom.google.com/c/ODczMjI5NDI5ODY4?cjc=wtzrvtih) or through class code: `wtzrvtih`.
 
 Please read the instructions for the assignment carefully.
 
