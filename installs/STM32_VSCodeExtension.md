@@ -19,7 +19,7 @@ The extension pack allows users to do all of the above on Visual Studio Code
 ## Installation steps
 1. Go to the Extension Tab (icon with 4 squares on the left) on Visual Studio Code and search for `STM32CubeIDE`. Select the first one and press the install button.
 ![extension bar](images/stm32_vs_1.png)
-2. Download the project file provided by us: `Will be uploaded soon` 
+2. Download the project file provided by us: [Skeleton Zip](2026-sw-tutorial.zip) 
 3. Extract the zip file to a local folder in your computer (Note: Do not unzip the folder in your oneDrive folder as it disrupts the path names)
 
 ## Setting Up the Project
