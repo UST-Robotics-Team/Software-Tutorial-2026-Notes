@@ -17,7 +17,7 @@ This task is mainly focused on going through ways arrays can be used practically
 
 ## Given Structures
 
-Both structs below are provided in `Task1.h` and are used throughout the task. They are given as-is, do not change their fields.
+Both structs below are provided in `Task1.h` and are used throughout the task. They are given as is, do not change their fields.
 
 ### Matrix
 
@@ -50,7 +50,13 @@ All the functions you must write are in `Task1.c`. Implement them in that file.
 
 ### Part A
 
-#### i) `void rolling_average(double* data, int n, int window)`
+---
+
+#### i) Rolling Average
+
+```C
+void rolling_average(double* data, int n, int window)
+```
 
 We will start with a warmup.
 
@@ -80,7 +86,13 @@ The provided format strings are the in the format required to create the output,
 - `n >= 1` and `window >= 1`.
 - All readings are valid doubles.
 
-#### ii) `void kalman_init(Kalman* k, double estimate, double error_cov)` and `double kalman_step(Kalman* k, double measurement, double process_noise, double measurement_noise)`
+#### ii)  1D Kalman Filter
+
+**Implement the header and function** `kalman_init` and complete
+
+```C
+double kalman_step(Kalman* k, double measurement, double process_noise, double measurement_noise)
+```
 
 The rolling average smooths a signal, but it treats every reading equally. The **Kalman filter** is smarter: it keeps track of both a current *estimate* of the true value and how *confident* we are in that estimate. When a new, noisy measurement arrives, the filter blends the measurement with its current estimate, weighting each side by how trustworthy it thinks it is.
 
@@ -89,7 +101,14 @@ The struct `Kalman` holds the two pieces of state:
 - `estimate` — our current best guess of the true value ($\hat{x}$).
 - `error_cov` — our current uncertainty, the error covariance ($P$). Bigger = less confident.
 
-**`kalman_init`** should simply store the starting estimate and error covariance into the struct pointed to by `k`.
+**`kalman_init`** should simply store the starting estimate and error covariance into the struct pointed to by `k`. (You will have to write the function header in Task1.h as well!)  
+
+This is how the function is called in main.c, to initialise the struct K with the estimate value and error_cov value.
+
+```C
+Kalman k;
+kalman_init(&k, est, cov);
+```
 
 **`kalman_step`** should perform **one full filter iteration** (predict + update) using the measurement `measurement`, and return the new estimate. The 1D equations are:
 
@@ -133,7 +152,11 @@ Step 5: measurement 2.50 -> estimate 1.51
 
 - `process_noise` and `measurement_noise` are always positive (`> 0`), so division by zero will not happen.
 
-#### iii) `int convolve(Matrix* input, Matrix* kernel, Matrix* output)`
+#### iii) Convolution
+
+```C
+int convolve(Matrix* input, Matrix* kernel, Matrix* output)
+```
 
 **Convolution** is the workhorse of image processing. A small grid of weights called a **kernel** is slid over a larger grid (an image / matrix), and at each position the overlapping values are multiplied together and summed. The result is a new matrix.
 
@@ -172,9 +195,16 @@ Matrix (1 x 1):
 
 ### Part B (Bonus)
 
-#### i) `int gaussian_filter(Matrix* input, Matrix* output, int window, double sigma)`
+---
 
->You may use the function `exp()` given to you in math.h.
+#### i) Gaussian Blur
+
+```C
+int gaussian_filter(Matrix* input, Matrix* output, int window, double sigma)
+```
+
+> The applied kernel is called a Gaussian filter, and the effect it has on an image is called a Gaussian blur :)
+> You may use the function `exp()` given to you in math.h.
 
 The rolling average smooths a signal, but it weights every reading equally. The **Gaussian filter** is the classic *weighted* smoother: instead of a flat average over the neighbourhood, it weights each neighbour by how near it is to the centre, following a bell curve. The centre value matters most, and a neighbour's influence falls off smoothly with distance. This is the standard blur used before edge detection or downscaling.
 
@@ -231,7 +261,13 @@ Matrix (3 x 3):
 - `window` is at most `MAX_DIM`, and is always odd.
 - `input` and `output` are of the same dimensions.
 
-#### ii) `int median_filter(Matrix* input, Matrix* output, int window)`
+#### ii) Median Blur
+
+```C
+int median_filter(Matrix* input, Matrix* output, int window)
+```
+
+> Same as the Gaussian filter/blur, the operation is called a median filter, and the effect it has on an image is called a median blur :)
 
 The rolling average is a *linear* smoother. It works great on random noise, but a single wild outlier (e.g. a dead pixel) drags the average around. The **median filter** fixes that: instead of averaging a neighbourhood, it takes the **middle value** after sorting the neighbourhood. Outliers get thrown away entirely.
 
@@ -259,6 +295,47 @@ Matrix (3 x 3):
 - `window` is at most `MAX_DIM`, and is always odd.
 - `input` and `output` are of the same dimensions.
 
-## Compiling & Testing
+## Compiling and Testing
 
------------------ WIP -------------------------
+### Compilation
+
+Windows:
+
+```Powershell
+gcc -Wuninitialized -std=c99 main.c Task1.c -o Task1
+# Then to run the program
+./Task1
+
+# Or you can do both at once
+gcc -Wuninitialized -std=c99 main.c Task1.c -o Task1; ./Task1
+```
+
+Linux/Mac:
+
+```sh
+gcc -Wuninitialized -std=c99 main.c Task1.c -o Task1 -lm
+# Then to run the program
+./Task1
+
+# Or you can do both at once
+gcc -Wuninitialized -std=c99 main.c Task1.c -o Task1 -lm && ./Task1
+```
+
+After compiling and running the program, you can play with the interactive menu and test out your program.
+
+### Testing
+
+From the repository root, run the root test runner. It compiles `main.c` with
+`Task1.c`, then runs the test cases in `Task-1/testcases/`:
+
+```text
+powershell -ExecutionPolicy Bypass -File .\run_tests.ps1 -Task 1 # Windows
+bash ./run_tests.sh 1                                           # macOS / Linux
+```
+
+The runner can also be invoked with a path to the root script from inside the
+`Task-1` folder: `..\run_tests.ps1 -Task 1` or `../run_tests.sh 1`.
+
+Add -b to grade the bonus test cases, add -n to remove the output dump.
+
+Each test folder in `testcases/` ships with the exact scripted input (`input.txt`) **and** the exact expected output (`output.txt`), so you can compare your program's output against it.

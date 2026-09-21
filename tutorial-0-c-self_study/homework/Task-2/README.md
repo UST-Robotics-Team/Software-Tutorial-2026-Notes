@@ -14,13 +14,24 @@ This task will focus on testing your skills on:
 
 This task is mainly focused ~~(loosely based)~~ on data validation (Similar concepts will be very useful when you deal with sensors later on).
 
-## Part A: Parametrised validation
+## Tasks
 
-## i) Password checker
+All the functions you must write are in `Task2.c`. Implement them in that file.
+
+### Part A: Parametrised Validation
+
+---
+
+#### i) Password checker
+
+---
 
 We will start with some sort of warmup.
 
-```int password_check(char* password)```  
+```C
+int password_check(char* password)
+```  
+
 Complete the function above in `Task2.c`.
 
 >The function will process the C string `password` and return 0 or 1 based on whether the password is valid or not.
@@ -37,7 +48,7 @@ The following requirements must be fulfilled:
   - If you didn't notice, they are all valid ASCII characters.
 - Return `1` if all conditions are met, otherwise `0`.
 
-### Examples
+##### Examples
 
 >Invalid passwords (return 0)
 
@@ -55,27 +66,32 @@ The following requirements must be fulfilled:
 - S0ftwareTutorial*
 - H3!!0world
 
-### Assumptions (2A(i))
+##### Assumptions (2A(i))
 
 - All test cases will only use valid ASCII characters.
 - The test cases will be at most 512 characters long, and will not be empty.
 
-## ii) Email checker
+#### ii) Email checker
+
+---
 
 This one will have slightly more complicated rules, but does the same thing basically.
 
->```void email_check(char* email)```  
+```C
+void email_check(char* email)
+```  
+
 >Complete the function above in `Task2.c`.
 
 The function will process a C string `email` and based on whether the email address is valid or not, it outputs the validity and the parsed values of the mailbox and domain.
 
 Disclaimer: some of the parts of the rules is kinda obsolete in the official modern standards, but it'll be fun to test your skills :\) (The rules are loosely based on the actual RFC 5322 standards.)
 
-### Validation
+##### Validation
 
 The email address must follow the format of `<local-part>@<domain>`, where the `<>` can be replaced by a string of characters.
 
-#### \<local-part\>
+###### \<local-part\>
 
 >The `local-part` of an email address basically indicates who the email will be sent to (basically the receiver of the email).  
 >The email sent to the email address will be sent to the mailbox with the name indicated in `local-part`, after removing quotes, tags, and comments (those will be mentioned later).
@@ -119,7 +135,7 @@ Tags:
 - The contents of the tag must also follow the restrictions of the unquoted part. (e.g  `username+ta;g@abc.com` is invalid because `;` cannot exist in unquoted local-parts.)
 - Tags are not a part of the mailbox, and will be removed during the output phase.
 
-#### \<domain\>
+###### \<domain\>
 
 >The `domain` of an email address is basically the address of the receiver.
 
@@ -134,7 +150,7 @@ The `domain` must follow the rules below:
   - Subdomains must be at most 63 characters. (<=63)
   - The last subdomain (the most right most one, also known as the top-level domain) must be at least 2 characters long, and can only include letters.
 
-### Outputs (2A(ii))
+##### Outputs (2A(ii))
 
 >The output of the function should clearly output the mailbox and domain of the email address.
 
@@ -174,7 +190,7 @@ If the input is `hello@world.123` (invalid due to the top-level domain rule)
 The email hello@world.123 is invalid.
 ```
 
-#### Comments
+###### Comments
 
 Comments can be included in the email address, in both the local-part and the domain part.
 
@@ -204,26 +220,31 @@ Mailbox: foo+bar(n)
 Domain: abc.co.uk
 ```
 
-### Assumptions (2A(ii))
+##### Assumptions (2A(ii))
 
 - All test cases will be at most 500 characters long.
 - The test cases will only use valid ASCII characters.
 
-## Part B: Modified Regex (Custom Regex on Letters)
+### Part B: Modified Regex (Custom Regex on Letters)
+
+---
 
 Regex, also known as regular expressions, is a string of characters that indicates a pattern in a string/input. It is regularly used in data validation that includes strings.  
 >For this bonus task, you are required to parse a regex, and print out strings that follows the patterns.
 
-`void regex(char** list, char* regex)`  
+```C
+void regex(char** list, char* regex)
+```  
+
 Complete the function provided in Task2.h
 
 List will contain an array of C strings (single word, null terminated, no whitespaces), each of varying length. The function will print out all the strings in the list that satisfies the regex (in the same order of the list).  
 
-### Regex metacharacters
+#### Regex metacharacters
 
 >The test cases will only include the metacharacters listed.
 
-#### Conditions
+##### Conditions
 
 | Expression | Name | What it does | Example Match |
 | :--- | :--- | :--- | :--- |
@@ -232,7 +253,7 @@ List will contain an array of C strings (single word, null terminated, no whites
 | `[^abc]` | Negated Set | Matches exactly **one** character **not** in the list. | `[^aeiou]ello` matches `"h"` in `"hello"`. |
 | `[a-z]` | Range | Matches one character within the alphabetical/numerical range. | `[a-z]ello` matches `"h"` in `"hello"`. |
 
-#### Quantifiers
+##### Quantifiers
 
 | Expression | Name | What it does | Example Match |
 | :--- | :--- | :--- | :--- |
@@ -243,7 +264,7 @@ List will contain an array of C strings (single word, null terminated, no whites
 | `{n,}` | At least n | Matches **n or more** times. | `a{2,}` matches `"aa"` and `"aaaaa"`. |
 | `{n,m}` | Between | Matches between **n** and **m** times. | `a{2,4}` matches `"aa"`, `"aaa"`, and `"aaaa"`. |
 
-#### Special
+##### Special
 
 | Expression | Name | What it does | Example Match |
 | :--- | :--- | :--- | :--- |
@@ -253,14 +274,14 @@ List will contain an array of C strings (single word, null terminated, no whites
 
 **NOTE**: In this task, the entire string must match the regex. So, `e.t` would match `eat` but not `beat` or `underneath`.
 
-### How Regex works
+#### How Regex works
 
 The metacharacter work like building blocks, and they will correspond to characters in a string. You can also mix and match the operators to create different filters/matches.  
 
 Something like `c.t` would match to any string that has `c` as its first character, and `t` as its third character. Since `.` is the wildcard operator, it can match to any character. So, examples that match to `c.t` is `cat`, `cot`, `cut`, and even `cvt` (it doesn't have to be a valid word).  
 You can also mix and match operators, like `([^aeiou][aeiou])+[^aeiou]?` looks for all strings with starts with a consonant, and halternates vowels and consonants. (e.g `no`, `cane`, `bat`, `babababababababababa`)
 
-### Output (2B)
+#### Output (2B)
 
 Here are a few examples.  
 
@@ -306,12 +327,53 @@ bat
 bath
 ```
 
-### Assumptions (2B)
+#### Assumptions (2B)
 
 - All strings within list only contain small Latin letters (aka lowercase letters, a-z).
 - You may assume that the list and regex will not be empty, and the regex is always valid (no incorrect syntax).
 - The regex format strictly follows `<condition>``<quantifier>` pairs, with groups counting as conditions.
 
-## Compiling & Testing
+## Compiling and Testing
 
------------------ WIP -------------------------
+### Compilation
+
+Windows:
+
+```Powershell
+gcc -Wuninitialized -std=c99 main.c Task2.c -o Task2
+# Then to run the program
+./Task2
+
+# Or you can do both at once
+gcc -Wuninitialized -std=c99 main.c Task2.c -o Task2; ./Task2
+```
+
+Linux/Mac:  
+
+```sh
+gcc -Wuninitialized -std=c99 main.c Task2.c -o Task2
+# Then to run the program
+./Task2
+
+# Or you can do both at once
+gcc -Wuninitialized -std=c99 main.c Task2.c -o Task2 && ./Task2
+```
+
+After compiling and running the program, you can play with the interactive menu and test out your program.
+
+### Testing
+
+From the repository root, run the root test runner. It compiles `main.c` with
+`Task2.c`, then runs the test cases in `Task-2/testcases/`:
+
+```text
+powershell -ExecutionPolicy Bypass -File .\run_tests.ps1 -Task 2 # Windows
+bash ./run_tests.sh 2                                           # macOS / Linux
+```
+
+The runner can also be invoked with a path to the root script from inside the
+`Task-2` folder: `..\run_tests.ps1 -Task 2` or `../run_tests.sh 2`.
+
+Add -b to grade the bonus test cases, add -n to remove the output dump.
+
+Each test folder in `testcases/` ships with the exact scripted input (`input.txt`) **and** the exact expected output (`output.txt`), so you can compare your program's output against it.

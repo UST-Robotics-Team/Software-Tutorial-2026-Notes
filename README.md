@@ -8,7 +8,7 @@ Here is a brief overview of our schedule:
 
 ~~speed run 90% COMP 1021, 80% COMP 2011, 20% ELEC 1100, 70% ELEC 3300, 30% COMP 2211, 5% COMP 4421, ...~~
 
-![alt text](/images/timetable.png)
+![alt text](/images/Timetable.png)
 
 [Homework arrangement](Homework-Arrangements.md)
 
