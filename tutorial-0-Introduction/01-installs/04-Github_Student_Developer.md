@@ -17,8 +17,8 @@ If you do not have Git installed, you can download it here: [Git Website](https:
 If you do not have a Github Account, you can register for an account here: [Github Website](https://github.com/)
 
 For further readings on how Git and Github works, you may visit the following pages:
-* [Git Basics](/advanced-notes/git-basics.md)
-* [More Git](/advanced-notes/git-gud.md)
+* [Git Basics](Git-and-GitHub/git-basics.md)
+* [More Git](Git-and-GitHub/git-gud.md)
 
 
 ## What is the Github Student Developer Pack?
