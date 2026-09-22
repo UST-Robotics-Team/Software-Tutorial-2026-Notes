@@ -1,6 +1,3 @@
-[Back to Tutorial 0 Main Page](../tutorial-0-self-learn-basic-c/README.md) 
-
-
 # Tutorial 0: Basic C (Online Module)
 
 ### Tutorial 0 (Online Module) Target
