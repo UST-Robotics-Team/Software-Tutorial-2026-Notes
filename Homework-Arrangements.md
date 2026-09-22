@@ -2,7 +2,7 @@
 
 ## Tutorial 0
 
-### Online code submition
+### Online code submission
 
 For tutorial 0, you can do all your work on your computer and submit it to Google Classroom.
 

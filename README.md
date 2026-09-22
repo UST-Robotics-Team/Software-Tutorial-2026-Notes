@@ -10,8 +10,6 @@ Here is a brief overview of our schedule:
 
 ![alt text](/images/timetable.png)
 
-Check here for [Homework arrangement](Homework-Arrangements.md) for the tutorial.
-
 ## Where to write code
 We will be using the **STM32CubeIDE for Visual Studio Code Extension Pack** on Visual Studio Code and **STM32CubeMX** to develop STM32 Microcontroller projects for the tutorial.
 
@@ -25,6 +23,8 @@ We will be using the **STM32CubeIDE for Visual Studio Code Extension Pack** on V
 4. **STM32CubeMX** ([Installation Guide](installs/STM32MX.md))
 
 If you encounter any problems during installation or usage of the IDE, please contact any PIC for help in Discord.
+
+**NOTE:** Don't forget to check the [homework arrangement](Homework-Arrangements.md) for the tutorials.
 
 ## Tutorial Syllabus
 ### Self Learn Module

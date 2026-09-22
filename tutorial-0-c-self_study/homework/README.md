@@ -35,7 +35,7 @@ Please read the instructions for the assignment carefully.
 
 ## Ground Rules
 
-- You may **NOT** use any C library functions that were not mentioned in the tutorial unless you were specifically instructed to do so. (no `malloc` etc)
+- You may **NOT** use any C library functions that were not taught in the self-learning modules unless you were specifically instructed to do so. (no `malloc` etc)
 - You cannot add any other external libraries. However, you may include your own helper functions within the files provided for you to edit.
 - There will be some provided helper functions (in `given.c`) for Task 3 to assist you. You can use those functions as you please, but you cannot modify them.
   - The above rules are mainly here for fairness purposes, so that you won't have any external advantage over other trainees :D
@@ -134,7 +134,7 @@ If there are any bugs with the tester please inform me at once :P
 
 ## Grading
 
->It is completely fine to not be able to complete this homework, as it is only here to help you get used to coding in C  
+>It is completely fine to not be able to complete this homework, as it is only here to help you get used to coding in C.  
 
 There will be 2 (or 3) main portions of the grading:
 

@@ -33,10 +33,10 @@ Basic Concepts of Programming
 
 * [05) Operators](05-operators.md)
 
-* [06) More about Variables](06-rules-and-extra-features.md) 
+* [06) More about Variables](06-variables-more.md) 
 
 * [07) Control Flow](07-control-flow.md)
-* [08) Optional Control Flow](08-control-flow.md)
+* [08) Optional Control Flow](08-optional-control-flow.md)
 
 
 To further support your self-learning process, we provided some self-tests at the end of each materials to check your understanding.

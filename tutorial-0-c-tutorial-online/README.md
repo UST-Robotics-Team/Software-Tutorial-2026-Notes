@@ -20,7 +20,7 @@ Below is a playlist that goes through the content from 09) to 12): [Youtube Play
 The following part is very optional:
 
 * [13) Recursion*](13-recursion.md)
-  * [Self-Tests](13-recursion.md#self-test) 
+  * [Self-Tests](13-recursion.md#self-test)  
 
 # Advanced C
 
@@ -33,7 +33,7 @@ Other than those, there are a few more features that we wish you can explore by 
 
 ## Optional Exercises
 
-Here are some exercises that used to be a classwork in our previous tutorials.
+Here are some exercises that used to be a classwork in our past (previous years) tutorials.
 
 * [Classwork 1: Matrix Addition -- Arrays](classwork/classwork-1-matrix-addition.md)
 * [Classwork 2: First Word -- String](classwork/classwork-2-first-word.md)
