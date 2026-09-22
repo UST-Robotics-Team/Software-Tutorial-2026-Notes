@@ -1,1 +1,1 @@
-# Tutorial 1 -- GPIO, TFTs, and the HAL Library
+# Tutorial 1 – GPIO, TFTs, and the HAL Library
