@@ -30,8 +30,8 @@ If you encounter any problems during installation or usage of the IDE, please co
 ### Self Learn Module
 * [Self-learning basic C](tutorial-0-c-self_study/README.md)
 
-### Online Tutorials
-* [Tutorial 0: Advanced C](tutorial-0-c-online-tutorial/README.md)
+### Online Tutorials (Self Study)
+* [Tutorial 0: Advanced C](tutorial-0-c-tutorial-online/README.md)
 
 ### Embedded Systems
 * [Tutorial 1: Basic IO (GPIO and TFT)](tutorial-1-basic-io/README.md)
