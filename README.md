@@ -25,10 +25,10 @@ We will be using the **STM32CubeIDE for Visual Studio Code Extension Pack** on V
 
 ### Please Finish this before First Tutorial!!!
 
-1. **Github Student Developer Pack** ([Registration Guide](/tutorial-0-Introduction/01-installs/Github_Student_Developer.md))
-2. Visual Studio Code ([Installation Guide](/tutorial-0-Introduction/01-installs/VSCode.md))
-3. **STM32CubeIDE for Visual Studio Code Extension Pack** ([Installation Guide](/tutorial-0-Introduction/01-installs/STM32_VSCodeExtension.md))
-4. **STM32CubeMX** ([Installation Guide](/tutorial-0-Introduction/01-installs/STM32MX.md))
+1. **Github Student Developer Pack** ([Registration Guide](/tutorial-0-Introduction/01-installs/04-Github_Student_Developer.md))
+2. Visual Studio Code ([Installation Guide](/tutorial-0-Introduction/01-installs/01-VSCode.md))
+3. **STM32CubeIDE for Visual Studio Code Extension Pack** ([Installation Guide](/tutorial-0-Introduction/01-installs/02-STM32_VSCodeExtension.md))
+4. **STM32CubeMX** ([Installation Guide](/tutorial-0-Introduction/01-installs/03-STM32MX.md))
 
 or see here
 
