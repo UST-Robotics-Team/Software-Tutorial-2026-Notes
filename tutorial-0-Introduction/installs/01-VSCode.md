@@ -24,4 +24,7 @@ After configurations, you should be on the Welcoming page of VS Code, as the fol
 
 ![alt text](images/vscode_step1.png)
 
-You may proceed to setting up the STM32 Extension required for the upcoming tutorial.
+## Installing GCC 
+To successfully compile and run your Homework 0 on VSCode, please follow the instructions provided in ()
+
+You may proceed to setting up the [STM32 Extension](02-STM32_VSCodeExtension.md) required for the upcoming tutorial.
