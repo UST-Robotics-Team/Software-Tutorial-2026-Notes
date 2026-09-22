@@ -32,7 +32,7 @@ Other than those, there are a few more features that we wish you can explore by 
 
 ## Optional Exercises
 
-Here are some exercises that used to be a classwork in our past (previous years) tutorials.
+Here are some additional exercises that used to be a classwork in our past (previous years) tutorials.
 
 * [Classwork 1: Matrix Addition -- Arrays](classwork/classwork-1-matrix-addition.md)
 * [Classwork 2: First Word -- String](classwork/classwork-2-first-word.md)
