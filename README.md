@@ -2,7 +2,15 @@
 
 > funny words on computer make robot go brrrr weeee
 
-Welcome to the HKUST Robotics Team Software Tutorial!
+Welcome to the HKUST Robotics Team Software Tutorial~
+
+### [→→ Discord Server ←←](https://discord.gg/ak2nGDgMR)
+
+Remember to join our Discord Server for announcements and tutorial updates!
+
+---
+
+## Schedule
 
 Here is a brief overview of our schedule:
 
