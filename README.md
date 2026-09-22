@@ -30,6 +30,10 @@ We will be using the **STM32CubeIDE for Visual Studio Code Extension Pack** on V
 3. **STM32CubeIDE for Visual Studio Code Extension Pack** ([Installation Guide](installs/STM32_VSCodeExtension.md))
 4. **STM32CubeMX** ([Installation Guide](installs/STM32MX.md))
 
+or see here
+
+[ >>> Installations <<<](installs/README.md)
+
 If you encounter any problems during installation or usage of the IDE, please contact any PIC for help in Discord.
 
 **NOTE:** Don't forget to check the [homework arrangement](Homework-Arrangements.md) for the tutorials.
