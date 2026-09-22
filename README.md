@@ -2,7 +2,15 @@
 
 > funny words on computer make robot go brrrr weeee
 
-Welcome to the HKUST Robotics Team Software Tutorial!
+Welcome to the HKUST Robotics Team Software Tutorial~
+
+### [→→ Discord Server ←←](https://discord.gg/ak2nGDgMR)
+
+Remember to join our Discord Server for announcements and tutorial updates!
+
+---
+
+## Schedule
 
 Here is a brief overview of our schedule:
 
@@ -30,8 +38,8 @@ If you encounter any problems during installation or usage of the IDE, please co
 ### Self Learn Module
 * [Self-learning basic C](tutorial-0-c-self_study/README.md)
 
-### Online Tutorials
-* [Tutorial 0: Advanced C](tutorial-0-c-online-tutorial/README.md)
+### Online Tutorials (Self Study)
+* [Tutorial 0: Advanced C](tutorial-0-c-tutorial-online/README.md)
 
 ### Embedded Systems
 * [Tutorial 1: Basic IO (GPIO and TFT)](tutorial-1-basic-io/README.md)
