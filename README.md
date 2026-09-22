@@ -59,5 +59,3 @@ Advanced tutorials will be held later in the next phase. There are also advanced
 ---
 
 Feel free to reach out to any team members if you have any questions about anything related to the tutorials or the team in general.
-
-Please also make sure to join our [Discord](https://discord.gg/ak2nGDgMR) server for more important announcements.
