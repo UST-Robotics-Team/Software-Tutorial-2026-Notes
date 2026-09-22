@@ -35,6 +35,9 @@ Attached below is a Google Sheets link where you can see the availability of tea
 | --- | :---: | :---: |
 | Venue | DTOL | HALL IX Lab |
 
-#### [Video on Discord on how to go to the Hall 9 lab (close to the sea, 15 minutes walk from Atrium)](./images/Video_from_UGHall_II_to_Hall9_Lab.mov)
+### [Video on Discord on how to go to the Hall 9 lab (close to the sea, 15 minutes walk from Atrium)](https://raw.githubusercontent.com/UST-Robotics-Team/Software-Tutorial-2026-Notes/refs/heads/main/images/Video_from_UGHall_II_to_Hall9_Lab.mov)
+
+[![](https://github.com/user-attachments/assets/365400d4-36b9-420c-97ea-16c326f7ef28)](https://raw.githubusercontent.com/UST-Robotics-Team/Software-Tutorial-2026-Notes/refs/heads/main/images/Video_from_UGHall_II_to_Hall9_Lab.mov)
+
 
 [Hall 9 Software Senior Availability Link](https://docs.google.com/spreadsheets/d/1spk8WfSoBpvyBX8ir_v95EESjNqJzT8xTNeNVa9u6nA/edit?usp=sharing)
