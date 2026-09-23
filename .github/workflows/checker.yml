@@ -1,0 +1,15 @@
+on:
+  workflow_dispatch:  
+  push:
+    branches: [main]
+    paths:
+      - '**.md'
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check Markdown Links
+        uses: harryvasanth/markdown-link-checker@v1
