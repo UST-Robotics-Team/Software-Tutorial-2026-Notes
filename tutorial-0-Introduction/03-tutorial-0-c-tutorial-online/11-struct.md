@@ -329,7 +329,7 @@ The stack object looks like the following:
 
 ## Optional Exercise
 
-> We covered the materials needed for your **Optional Exercise 4**! You can access it [here](classwork/classwork-4-greyscale-image.md) (Used to be a classwork). Feel free to give it a try to check your understanding.
+> We covered the materials needed for your **Optional Exercise 4**! You can access it [here](Additional-Exercise/classwork-4-greyscale-image.md) (Used to be a classwork). Feel free to give it a try to check your understanding.
 
 
 

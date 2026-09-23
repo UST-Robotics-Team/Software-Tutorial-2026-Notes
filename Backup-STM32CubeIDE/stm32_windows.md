@@ -26,7 +26,7 @@ After you have installed the IDE, please follow the steps below to properly setu
 
 ### Import the project files
 
-Download the [2026-sw-tutorial-v2.zip](../tutorial-0-Introduction\01-installs\2026-sw-tutorial.zip) we prepared for you below.
+Download the [2026-sw-tutorial-v2.zip](../tutorial-0-Introduction/01-installs/2026-sw-tutorial.zip) we prepared for you below.
 
 _Note that we may have some library changes from time to time. So always follow what the tutorial notes say._
 
@@ -66,11 +66,11 @@ _Note that we may have some library changes from time to time. So always follow 
 > Choose STM32 Application the left and select _Debugger_ Tab.
 >
 >
-> ![](../images/STLink%20GDB%20Server.png)
+> ![](<../images/STLink GDB Server.png>)
 > 
 > Change Debug probe to `ST-LINK (GDB Server)`. Also double check that the OpenOCD command is the same as the one in the image above.
 >
-> ![](../images/STLink%20Software%20System%20Reset.png)
+> ![](<../images/STLink Software System Reset.png>)
 > 
 > In `Mode Setup`, select `Software system reset` in `Reset Mode`.
 >

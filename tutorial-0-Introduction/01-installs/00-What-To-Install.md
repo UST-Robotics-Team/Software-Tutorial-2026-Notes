@@ -8,4 +8,4 @@ You will have to install and setup the following items to prepare for your upcoi
 4. [Github Student Copilot Setup](04-Github_Student_Developer.md)
 
 During your tutorial 1, you will flash code to an STM32 Board
-5. [Flashing Code](05-flashcode.md)
+5. [Flashing Code](./05-Flashing_Code.md)
