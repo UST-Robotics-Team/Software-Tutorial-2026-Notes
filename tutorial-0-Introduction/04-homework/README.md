@@ -142,7 +142,7 @@ There will be 2 (or 3) main portions of the grading:
   - Public test cases: 24%
     - These are provided along with the skeleton code. You can download these from the official GitHub repo.
     - They are mainly examples already provided in the README.md file, and will test the base-line functionality of the code.
-  - Hidden test cases: 65%
+  - Hidden test cases: 70%
     - These test cases will first be hidden from you.
     - They will only be released publicly after your homework has been graded.
     - The test cases will test the more complex functionality and edge cases of the code. (And prevents you from hard coding the entire program.)
