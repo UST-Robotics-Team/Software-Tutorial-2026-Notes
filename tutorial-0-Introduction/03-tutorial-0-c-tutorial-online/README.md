@@ -43,4 +43,4 @@ Here are some additional exercises that used to be a classwork in our past (prev
 ## Homework
 
 Please submit the homework before 4 Oct 2025 23:59:59 HKT  
-Details about the homework can be found [here](../homework/README.md)
+Details about the homework can be found [here](../04-homework/README.md)
