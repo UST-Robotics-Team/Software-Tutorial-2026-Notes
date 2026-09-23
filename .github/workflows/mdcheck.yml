@@ -11,5 +11,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Check Markdown Links
-        uses: harryvasanth/markdown-link-checker@v1
+      - uses: tcort/github-action-markdown-link-check@v1
+        with:
+          use-verbose-mode: 'yes'
