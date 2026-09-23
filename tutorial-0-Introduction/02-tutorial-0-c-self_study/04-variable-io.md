@@ -108,8 +108,6 @@ int x = 7;
 
 To see what is inside a variable, you can print it as follow (we will explain in detail how this line works later):
 
-> We covered the materials needed for your **Homework 1**! You can access it [here](homeworks/hw01-swap-variable.md). Give it a try, good luck!
-
 ## Input-Output: `printf` and `scanf`
 
 > Boxes in the program is quite useless if you cannot see what is inside
@@ -171,7 +169,7 @@ There are actually more placeholders and not only `%d`, please refer to the foll
 |   `%f`   | Writes a floating point number |
 |   `%.3f` | Writes a floating point number up to 3 decimal points|
 
-For more details: [https://en.cppreference.com/w/c/io/fprintf](https://en.cppreference.com/w/c/io/fprintf)
+For more details: [printf functions](https://en.cppreference.com/c/io/fprintf)
 
 Note that it is `<argument-list>`. You may put more than one datatypes to be printed at once.
 
@@ -205,9 +203,6 @@ Hello
 Hi
 ```
 
-> We covered the materials needed for your **Homework 2**! You can access it [here](homeworks/hw02-introduce-yourself.md). Give it a try, good luck! 
-
-
 ### `scanf`
 Similarly, there is also a function to receive inputs from users. You will need to use format string again here.
 
@@ -236,7 +231,7 @@ printf("%d, %d, %c", x, y, z);
 ```
 (Note that `%c` will not ignore the space given by the user before the character `A` in `7 4.2 A`)
 
-> The `&` actually means *the address of*. Unlike printing, to store the value of the input, the program needs to know where is address of the 'box'. We will cover more about `&` in the advanced section of the notes. It will not be tested in our homeworks. 
+> The `&` actually means *the address of*. Unlike printing, to store the value of the input, the program needs to know where is address of the 'box'. We will cover more about `&` in the advanced section of the notes.
 
 ## Self Test (For Concept Check)
 

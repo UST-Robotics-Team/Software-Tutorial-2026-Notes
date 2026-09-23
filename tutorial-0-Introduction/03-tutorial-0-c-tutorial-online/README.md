@@ -34,11 +34,11 @@ Other than those, there are a few more features that we wish you can explore by 
 
 Here are some additional exercises that used to be a classwork in our past (previous years) tutorials.
 
-* [Classwork 1: Matrix Addition -- Arrays](classwork/classwork-1-matrix-addition.md)
-* [Classwork 2: First Word -- String](classwork/classwork-2-first-word.md)
-* [Classwork 3: Area of a Circle -- Functions](classwork/classwork-3-area-of-circle.md)
-* [Classwork 4: Greyscale Image -- Struct](classwork/classwork-4-greyscale-image.md)
-* [Classwork 5: Mean Median Min Max -- Separate Compilation](classwork/classwork-5-mean-median-min-max/README.md)
+* [Classwork 1: Matrix Addition -- Arrays](Additional-Exercise/classwork-1-matrix-addition.md)
+* [Classwork 2: First Word -- String](Additional-Exercise/classwork-2-first-word.md)
+* [Classwork 3: Area of a Circle -- Functions](Additional-Exercise/classwork-3-area-of-circle.md)
+* [Classwork 4: Greyscale Image -- Struct](Additional-Exercise/classwork-4-greyscale-image.md)
+* [Classwork 5: Mean Median Min Max -- Separate Compilation](Additional-Exercise/classwork-5-mean-median-min-max/README.md)
 
 ## Homework
 

@@ -48,4 +48,4 @@ To further support your self-learning process, we provided some self-tests at th
 ## Homework
 
 Please submit the homework before 4 Oct 2026 23:59:59 HKT  
-Details about the homework can be found [here](../homework/README.md)
+Details about the homework can be found [here](../04-homework/README.md)

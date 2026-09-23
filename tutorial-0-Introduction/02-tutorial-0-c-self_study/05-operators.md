@@ -70,7 +70,7 @@ int b = 2;
 a += b; // equivalent to a = a + b, a = 1 + 2 = 3
 ```
 
-There are more assignment operators (e.g. `-=`, `/=`, `%=`). Read [this](https://www.tutorialspoint.com/cprogramming/c\_assignment\_operators.htm) for more details.
+There are more assignment operators (e.g. `-=`, `/=`, `%=`). Read [this](https://www.tutorialspoint.com/cprogramming/c_assignment_operators.htm) for more details.
 
 ## Relational Operators
 
@@ -107,7 +107,7 @@ The precedence of logical operators are after relational operators.
 | `true` | `false` | `true` | `false` | `false` |
 | `true` | `true` | `true` | `true` | `false` |
 
-Read [Operators in C and C++ on Wikipedia](https://en.wikipedia.org/wiki/Operators\_in\_C\_and\_C%2B%2B) for more information, including **Bitwise operators**, **compound assignment operators**, **member and pointer operators**, etc.
+Read [Operators in C and C++ on Wikipedia](https://en.wikipedia.org/wiki/Operators_in_C_and_C%2B%2B) for more information, including **Bitwise operators**, **compound assignment operators**, **member and pointer operators**, etc.
 
 > **TIPS**: Conditions can be chained by logical operators. For example:
 >
@@ -174,7 +174,7 @@ If you have more time, you can try out different things and find their reasons:
 - What will be the output of `int a = 3; printf("%d", a+=4);`? 
 - etc.
 
-You may consult this [full list for precedence](https://en.cppreference.com/w/c/language/operator_precedence).
+You may consult this [full list for precedence](https://en.cppreference.com/c/language/operator_precedence).
 
 However, these cases are quite rare, those explained in the self-test should be sufficient.
 

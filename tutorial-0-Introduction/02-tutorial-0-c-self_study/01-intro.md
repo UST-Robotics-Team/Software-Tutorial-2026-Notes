@@ -24,11 +24,7 @@ Li Chi Kin, Andy (ckliam@connect.ust.hk)
 
 ## Suggested Learning Materials
 
-[Helpful playlist](https://youtube.com/playlist?list=PL98qAXLA6aftD9ZlnjpLhdQAOFI8xIB6e\&feature=shared) (For tutorial 0, watch #1 \~ #8)
-
 [Legacy tutorial videos](https://www.youtube.com/playlist?list=PLSeKkpqgEm4-tTUrEm-hYbDg-iegYMoUj)
-
-
 
 ## What is This C Language ?
 
@@ -43,7 +39,7 @@ If you have never programmed before, don't give up! We are here to guide you thr
 In general:
 
 * Do a quick google search: [https://www.google.com/](https://www.google.com/)
-* Ask stack overflow: [https://stackoverflow.com/](https://stackoverflow.com/)
+* Ask stack overflow: [https://stackoverflow.com/](https://stackoverflow.com/questions)
 * Ask people or our seniors in the tutorial discord server
 
 Recommendations for debugging:

@@ -254,7 +254,7 @@ If you would like to use `struct`s as the parameter, it is completely fine to do
 
 ## Optional Exercise
 
-> We covered the materials needed for your **Optional Exercise 3**! You can access it [here](classwork/classwork-3-area-of-circle.md) (used to be a classwork).Feel free to give it a try to check your understanding.
+> We covered the materials needed for your **Optional Exercise 3**! You can access it [here](Additional-Exercise/classwork-3-area-of-circle.md) (used to be a classwork).Feel free to give it a try to check your understanding.
 
 ## Pass an Array to a Function
 If you would like to pass an array to a function, you can write it as the following:

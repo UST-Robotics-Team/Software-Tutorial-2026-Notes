@@ -97,7 +97,7 @@ HEAD is a pointer, and it points — directly or indirectly — to a particular 
 
 **Attached HEAD** means that it is attached to some branch (i.e. it points to a branch). **Detached HEAD** means that it is not attached to any branch, i.e. it points directly to some commit.
 
-![](https://i.stack.imgur.com/6mrfN.jpg)
+![](https://i.sstatic.net/6mrfN.jpg)
 
 #### Why I have to care about this?
 

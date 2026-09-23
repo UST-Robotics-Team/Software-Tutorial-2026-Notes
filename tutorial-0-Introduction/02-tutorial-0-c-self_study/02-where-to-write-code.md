@@ -8,20 +8,20 @@
 
 ### VSCode
 
-[**VSCode**](../installs/VSCode.md) is the main IDE we'll use throughout the tutorials. It is a text editor (similar to NotePad), but it comes with a lot of different functions and extensions to allow you to edit, debug, compile, and run your code. You can install it [here](../installs/VSCode.md).  
+[**VSCode**](../01-installs/VSCode.md) is the main IDE we'll use throughout the tutorials. It is a text editor (similar to NotePad), but it comes with a lot of different functions and extensions to allow you to edit, debug, compile, and run your code. You can install it [here](../01-installs/VSCode.md).  
 
 As we will start to learn how to work with multiple `.c` files in Tutorial 1 and your homework. That means you'll have to start compiling C code.  
 
 You can either install the GCC compiler:  
 
-* [**Windows**](../installs/gcc_windows.md)
-* Or refer to [homework arrangements](../Homework-Arrangements.md###Onlinecodesubmission) for more guides.
+* [**Windows**](../01-installs/gcc_windows.md)
+* Or refer to [homework arrangements](../../Homework-Arrangements.md###Onlinecodesubmission) for more guides.
 
 Or create a workspace on [**Github Codespace**](https://github.com/features/codespaces) if you find install the C compiler troublesome (unless you already have it installed). The environment is similar to VSCode.  
 
 ### STM32 VSCode Extension
 
-For robotics programming, we will teach you to install [**VSCode's STM32 extension**](../installs/STM32_VSCodeExtension.md).  
+For robotics programming, we will teach you to install [**VSCode's STM32 extension**](../01-installs/STM32_VSCodeExtension.md).  
 
 You are recommended to set it up **now**, but we will make sure your installation works in the first tutorial.
 

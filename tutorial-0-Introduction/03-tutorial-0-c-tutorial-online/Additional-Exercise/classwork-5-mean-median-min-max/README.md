@@ -71,7 +71,7 @@ Max=9.000000
 
 ***First, remember to switch to C instead of C++***
 
-![](../../../tutorial-0-self-learn-basic-c/images/online_cpp.png)
+![](../../../02-tutorial-0-c-self_study/images/online_cpp.png)
 
 Second, you can create new `.c` `.h` files by clicking the `+` button and rename the new files
 
@@ -85,7 +85,7 @@ Finally, press `Run` to run your code
 
 To compile your program that has multiple `.c` files, you need to type `gcc` command.
 
-You can revise `gcc` command from our notes [11-multi-file-programming Separate Compilation](../../11-multi-file-programming.md#separate-compilation)
+You can revise `gcc` command from our notes [12-multi-file-programming Separate Compilation](../../12-multi-file-programming.md#separate-compilation)
 
 or you can copy the `gcc` commands below and run it directly
 

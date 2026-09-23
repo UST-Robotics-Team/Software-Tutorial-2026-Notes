@@ -10,7 +10,7 @@ Ng Hau Yi Chloe (hycng@connect.ust.hk)
 
 ## System Overview
 Below shows the whole system:
-![alt text](images/flashcode2.jpeg)
+![alt text](./images/flashcode2.jpeg)
 
 **Note:** Bring a USB to Type C adpater if needed
 
@@ -24,9 +24,9 @@ Here is the specific wiring between the STM32 Board the ST Link:
 | SWCLK  | 2                 | d               |
 | SWDIO  | 3                 | c               |
 
-![alt text](images/flashcode1.png)
+![alt text](./images/flashcode1.png)
 
-![alt text](images/flashcode3.jpeg)
+![alt text](./images/flashcode3.jpeg)
 **Note:** The rainbow wires are connected to the bottom row of the ST Link (bottom relative to the side of the logo and text)
 ## Flashing Code into the board
 1. Connect the ST-Link to your computer's USB Port
