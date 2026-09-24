@@ -229,7 +229,6 @@ Assume the word is already valid and playable, and calculate its score.
 - `direction` is `'H'` (horizontal) or `'V'` (vertical); `(row, col)` is the starting square.
 - **Newly placed** tiles use their square's modifier (Remember, `START` is counted as a `DOUBLE WORD`.)
 - Tiles **already on the board** get no modifier (they were scored when they were played).
-- Add 50 (the bingo bonus) if the play uses all 7 rack tiles.
 - Return the final score.
 
 #### iv) Validation
@@ -255,7 +254,7 @@ If valid:
 
 - Place the letters on the board (a wildcard is shown as the **lowercase** letter it represents).
 - Remove the used tiles from the player's rack.
-- Add `word_score(...)` to the player's score.
+- Add `word_score(...)` to the player's score. (Remember to add the +50 score for bingoes!)
 - Return **1**.
 
 ### Part B (Bonus)
