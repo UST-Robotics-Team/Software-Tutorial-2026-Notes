@@ -235,7 +235,8 @@ Assume the word is already valid and playable, and calculate its score.
 
 Of course, your play will have to be valid, otherwise, you'll just be cheating.
 
-> Fun Fact: You can intentionally play a invalid word (called a phony), however, if the opponent challenges the word the turn after you played a phony, the word (and its score) will be removed, and your turn will be skipped. And if a challenge is unsuccessfuly (aka challenging a valid word), then depending on the rules, your opponent gets +5 points or your turn will be skipped.
+> Fun Fact: You can intentionally play a invalid word (called a phony), however, if the opponent challenges the word the turn after you played a phony, the word (and its score) will be removed, and your turn will be skipped. And if a challenge is unsuccessfully (aka challenging a valid word), then depending on the rules, your opponent gets +5 points or your turn will be skipped.  
+> You will not have to implement this in this task :)
 
 ```C
 int play_valid_word(Game* game, Player* player, const char* word, int row, int col, char direction)
