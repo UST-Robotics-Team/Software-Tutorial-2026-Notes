@@ -22,10 +22,11 @@ This task will be focusing on using structs and adding functions to an already e
 Scrabble is a well-known word board game, where 2 players take turns spelling out interconnecting English words on a 15x15 grid. And for this task, we will try to recreate this game in the terminal. (With some slight modifications.)
 
 Initial game state: A blank board (15x15 grid), a bag with 100 tiles, 2 empty racks, 2 players (P1 and P2)  
-At the start, the 2 players each draw 7 tiles from the bag. And they take turns putting down a valid word (a word in a specific dictionary) on the board.  
-The first move of the game (or in special cases, when there are no tiles on the board), the player's word must cover H8 (the middle of the 15x15 grid).  
-After the first move (aka there are tiles on the game board), every new word must connect to a letter already on the board. You can add letters to an existing word or build a new word that intersects with one on the board.  
-All the tiles you place on a single turn must be in one continuous line (either across or down), and when you play tiles next to existing ones, every new word that is formed must be a valid word.
+
+- At the start, the 2 players each draw 7 tiles from the bag. And they take turns putting down a valid word (a word in a specific dictionary) on the board.  
+- The first move of the game (or in special cases, when there are no tiles on the board), the player's word must cover H8 (the middle of the 15x15 grid).  
+- After the first move (aka there are tiles on the game board), every new word must connect to a letter already on the board. You can add letters to an existing word or build a new word that intersects with one on the board.  
+- All the tiles you place on a single turn must be in one continuous line (either across or down), and when you play tiles next to existing ones, every new word that is formed must be a valid word.
 
 Refer to [Scrabble.md](Scrabble.md) for more details on the rules and examples on how moves work and etc etc.
 
@@ -201,6 +202,13 @@ E.g. "`3 1 4 5 2`"
 
 >tbh you can use any sorting algorithm you like but insertion is the easiest imo.
 
+Examples:
+
+```console
+FECBDAG -> ABCDEFG
+P**MDKE -> DEKMP**
+```
+
 #### ii) Exchanging
 
 Exchanging is a core gameplay mechanic, and is commonly utilised when your rack tiles are so bad that you cannot form any words that score a meaningful amount of points.
@@ -216,6 +224,13 @@ It should first remove the tiles from the player's rack, then draw tiles to fill
 [//]: # "add a small private helper rack_has that checks whether a letter is on the rack and call it from"
 [//]: # "both exchange_tiles and play_valid_word so the two share the same membership check"
 
+```console
+An example might be:
+Rack of "ABC"
+EXCH Z -> fail, Z does not exist in the rack
+EXCH A -> successful exchange, remove A from the rack and draw 1 tile, then put A into the bag.
+```
+
 #### iii) Score
 
 Scoring, is ofc the most important part of the game (you need the higher score to win). You will also be implementing that.
@@ -230,6 +245,48 @@ Assume the word is already valid and playable, and calculate its score.
 - **Newly placed** tiles use their square's modifier (Remember, `START` is counted as a `DOUBLE WORD`.)
 - Tiles **already on the board** get no modifier (they were scored when they were played).
 - Return the final score.
+
+Example:
+
+```console
+Imagine ACE placed as a starting move with A on H8.
+------------------------ Game Board -------------------------
+     A   B   C   D   E   F   G   H   I   J   K   L   M   N   O  
+   +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+ 1 | % |   |   | + |   |   |   | % |   |   |   | + |   |   | % |
+   +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+ 2 |   | $ |   |   |   | # |   |   |   | # |   |   |   | $ |   |
+   +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+ 3 |   |   | $ |   |   |   | + |   | + |   |   |   | $ |   |   |
+   +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+ 4 | + |   |   | $ |   |   |   | + |   |   |   | $ |   |   | + |
+   +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+ 5 |   |   |   |   | $ |   |   |   |   |   | $ |   |   |   |   |
+   +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+ 6 |   | # |   |   |   | # |   |   |   | # |   |   |   | # |   |
+   +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+ 7 |   |   | + |   |   |   | + |   | + |   |   |   | + |   |   |
+   +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+ 8 | % |   |   | + |   |   |   | A | C | E |   | + |   |   | % |
+   +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+ 9 |   |   | + |   |   |   | + |   | + |   |   |   | + |   |   |
+   +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+10 |   | # |   |   |   | # |   |   |   | # |   |   |   | # |   |
+   +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+11 |   |   |   |   | $ |   |   |   |   |   | $ |   |   |   |   |
+   +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+12 | + |   |   | $ |   |   |   | + |   |   |   | $ |   |   | + |
+   +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+13 |   |   | $ |   |   |   | + |   | + |   |   |   | $ |   |   |
+   +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+14 |   | $ |   |   |   | # |   |   |   | # |   |   |   | $ |   |
+   +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+15 | % |   |   | + |   |   |   | % |   |   |   | + |   |   | % |
+   +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+The word score would be:
+(1 + 3 + 1) * 2 = 10
+So, the function would return 10.
+```
 
 #### iv) Validation
 
@@ -257,6 +314,20 @@ If valid:
 - Remove the used tiles from the player's rack.
 - Add `word_score(...)` to the player's score. (Remember to add the +50 score for bingoes!)
 - Return **1**.
+
+>Remember to check if the starting play is on the starting square!
+
+Some examples:
+
+```console
+# Assume starting play
+Rack: "ABCD" -> Plays "HAD" -> invalid because "H" is not in their rack
+Rack: "ABCD" -> Plays "BCD" -> invalid because "BCD" is not a valid word
+
+Rack: "ABCD" -> Plays "BEAD" -> play is valid (as long as it overlaps the starting square)
+```
+
+You can refer to the testcases zipped with the skeleton for some extra examples.
 
 ### Part B (Bonus)
 

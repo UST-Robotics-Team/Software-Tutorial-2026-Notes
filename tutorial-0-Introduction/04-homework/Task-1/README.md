@@ -62,21 +62,36 @@ We will start with a warmup.
 
 The rolling average (also called a moving average) is a classic (and very simple) way to smooth out a noisy stream of measurements. Instead of using every single reading on its own, we average each reading together with the few readings that came just before it.
 
+<img src="../images/Moving_average_sine_and_polynom_with_a_larger_interval.gif" alt="Gif from wikipedia: by user Bert Niehaus" width="600">
+
 `data` is an array of `n` sensor readings, and `window` is how many readings go into each average. The **rolling average at index `i`** is the average of the last `window` readings **ending at `i`**, i.e. `data[i-window+1 .. i]`.
 
 - If there are fewer than `window` readings available (i.e. `i < window-1`), just average the readings that *are* available, i.e. `data[0 .. i]`.
 - The function should print a header line, followed by one line per reading: the index, the reading, and its rolling average, all to 2 decimal places.
 
-Output example (for `data = {1, 2, 3, 4, 5}`, `n = 5`, `window = 3`):
+Output example for `data = {1, 2, 3, 4, 5}`, `n = 5`, `window = 3` (the comments should not appear in the actual implementation, they are only for your reference):
 
 ```console
 Rolling average (window 3):
 Index  Reading   Average
-0      1.00      1.00
-1      2.00      1.50
-2      3.00      2.00
-3      4.00      3.00
-4      5.00      4.00
+0      1.00      1.00       # index 0
+1      2.00      1.50       # index 0, 1
+2      3.00      2.00       # index 0, 1, 2 
+3      4.00      3.00       # index 1, 2, 3 (notice: window = 3, so we remove the oldest data (index 0) when introducing the newest data (index 3))
+4      5.00      4.00       # index 2, 3, 4
+```
+
+Another example, for `data = {10,00, 12.50, 14.00, 16.50, 20.50}`, `n = 6`, `window = 1`:
+
+```console
+Rolling average (window 1):
+Index Reading   Average
+0     10.00     10.00       # notice how when window = 1, it is just repeating the index reading.
+1     12.50     12.50
+2     14.00     14.00
+3     16.50     16.50
+4     18.00     18.00
+5     20.50     20.50
 ```
 
 The provided format strings are the in the format required to create the output, so you only have to insert the variables into the format string and uncomment the printf()s.
@@ -91,15 +106,15 @@ The provided format strings are the in the format required to create the output,
 **Implement the header and function** `kalman_init` and complete
 
 ```C
-double kalman_step(Kalman* k, double measurement, double process_noise, double measurement_noise)
+double kalman_step(Kalman* k, double y, double Q, double R)
 ```
 
 The rolling average smooths a signal, but it treats every reading equally. The **Kalman filter** is smarter: it keeps track of both a current *estimate* of the true value and how *confident* we are in that estimate. When a new, noisy measurement arrives, the filter blends the measurement with its current estimate, weighting each side by how trustworthy it thinks it is.
 
 The struct `Kalman` holds the two pieces of state:
 
-- `estimate` — our current best guess of the true value ($\hat{x}$).
-- `error_cov` — our current uncertainty, the error covariance ($P$). Bigger = less confident.
+- estimate `x` — our current best guess of the true value ($\hat{x}$).
+- error covariance `P` — our current uncertainty. Bigger = less confident.
 
 **`kalman_init`** should simply store the starting estimate and error covariance into the struct pointed to by `k`. (You will have to write the function header in Task1.h as well!)  
 
@@ -110,30 +125,53 @@ Kalman k;
 kalman_init(&k, est, cov);
 ```
 
-**`kalman_step`** should perform **one full filter iteration** (predict + update) using the measurement `measurement`, and return the new estimate. The 1D equations are:
+**`kalman_step`** should perform **one full filter iteration** (predict + update) using the measurement `measurement`, and return the new estimate.  
 
-**Prediction** (the state itself is static, only the uncertainty grows by the process noise $Q$):
+The 1D equations are below:
+
+> In a 2D or 3D environment, the scalars are turned into matrices, and the equations will be much more complicated
+
+**Prediction Step**:
 
 $$
 \begin{aligned}
-\hat{x}_{pred} &= \hat{x} \\
-P_{pred} &= P + Q
+\hat{x}_{k|k-1} &= \hat{x}_{k-1|k-1} \\
+P_{k|k-1} &= P_{k-1|k-1} + Q \\
 \end{aligned}
 $$
 
-**Update** (fuse the measurement $z$ in, weighted by the Kalman gain $K$):
+**Estimation Step**:
 
 $$
 \begin{aligned}
-K &= \frac{P_{pred}}{P_{pred} + R} \\
-\hat{x} &= \hat{x}_{pred} + K\,(z - \hat{x}_{pred}) \\
-P &= (1 - K)\,P_{pred}
+K_k &= \frac{P_{k|k-1}}{P_{k|k-1}+R} \\
+\hat{x}_{k|k} &= \hat{x}_{k|k-1} + K_k \left( y_k - \hat{x}_{k|k-1} \right) \\
+P_{k|k} &= (1-K_k)P_{k|k-1}
 \end{aligned}
 $$
 
 where `process_noise` is $Q$ and `measurement_noise` is $R$.
 
-Output example (for `initial estimate = 0`, `error_cov = 1`, measurements `0.5 1.2 1.0 2.0 2.5`, `Q = 0.1`, `R = 1`):
+<img src="../images/Basic_concept_of_Kalman_filtering.jpg" alt="Made by Petteri Aimonen" width="600">
+
+Manual example:
+
+Let's say the initial state is `0`, $Q$ = `0.1`, and $R$ = `1` ( $Q$ and $R$ are constants), and we receive a new measure ment of `0.5`.
+
+1. We first obtain the prediction $x_{1|0} = 0$ and $P_{1|0} = 1 + 0.1 = 1.1$
+2. Then, we obtain the Kalman gain of $k = 1$, $K_{1} = \frac{1.1}{1.1+1} = 0.5238...$
+3. After getting the Kalman gain, we now can obtain the the new predicted value and new error covariance.
+
+$$
+\begin{aligned}
+\hat{x}_{1|1} &= \hat{x}_{1|0} + K_1 \left( z_1 - \hat{x}_{1|0} \right) = 0 + 0.5238\left(0.5 - 0\right) = 0.2619... \text{ (0.26, rounded to 2 d.p.)}\\
+P_{1|1} &= (1-K_k)P_{k|k-1} = (1-0.5238)(1) = 0.4762...\\
+\end{aligned}
+$$
+
+4. Return $x=0.2619...$ (Our implementation requires you to update the $x$ and $P$ within the struct passed by pointer, so the data is saved between function calls)
+
+Output example (for `initial estimate x = 0`, `error_cov P = 1`, measurements `0.5 1.2 1.0 2.0 2.5`, `Q = 0.1`, `R = 1`):
 
 ```console
 Kalman filter output:
@@ -144,7 +182,7 @@ Step 4: measurement 2.00 -> estimate 1.12
 Step 5: measurement 2.50 -> estimate 1.51
 ```
 
-(The numbers above are rounded to 2 decimal places.)
+(The outputs above are rounded to 2 decimal places.)
 
 > Notice how the first few estimates move quickly toward the measurements, then start trusting the measurements less and less as the filter gains confidence.
 

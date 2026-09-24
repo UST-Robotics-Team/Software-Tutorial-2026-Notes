@@ -61,7 +61,7 @@ Here are the following tasks and their respective topics:
 ```text
 skeleton/
 ├── run_tests.ps1                # test runner - Windows
-├── run_tests.sh                 # test runner - macOS / Linux (I only tested on Linus as I do not have a Mac device .-.)
+├── run_tests.sh                 # test runner - macOS / Linux (I only tested on Linux as I do not have a Mac device .-.)
 │
 ├── Task-1/
 │   ├── Task1.c                  # <- Task 1A and 1B
