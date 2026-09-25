@@ -4,6 +4,8 @@ Quick overview of stuff to install. The * items are the things to install before
 
 We will be using development kits from STM32.
 
+**NOTE**: If you **use windows** and installed your version of VS Code from **the COMP 2011 zip file**, it is not compatible with the extension required for the tutorial. Please install VSCode from the offical website (can be accessed from the link below)
+
 | Item | Category | Use |
 | ---- | -------- | --- |
 | 1. [**STM32 MX**](03-STM32MX.md)* | STM32 | Configuring Board and Pins |
