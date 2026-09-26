@@ -33,7 +33,8 @@ Just connect the words together, i.e. `GND <=> GND, SWD <=> SWDIO, CLK <=> SWCLK
 - Do not use the USB port (The PCB also warns you not to use it)
 
 ### The ST Link's side:
-![alt text](./images/flashcode_stlink.jpeg)
+<img src="./images/flashcode_stlink.jpeg" width="200">
+
 **Note:**
 -  Remember to connect to 3.3V, **DO NOT connect to 5.0V**
 - The rainbow wires are connected to the bottom row of the ST Link (bottom relative to the side of the logo and text)
