@@ -20,10 +20,10 @@ Here is the specific wiring between the STM32 Board the ST Link:
 
 | Name   | Number on ST Link | Letter on Board |
 |--------|-------------------|-----------------|
-| 3V3    | 1                 | a               |
-| GND    | 4                 | b               |
-| SWCLK  | 3                 | d               |
-| SWDIO  | 2                 | c               |
+| 3V3    | 1                 | d               |
+| SWDIO  | 2                 | b               |
+| SWCLK  | 3                 | a               |
+| GND    | 4                 | c               |
 
 Just connect the words together, i.e. `GND <=> GND, SWD <=> SWDIO, CLK <=> SWCLK, 3V3 <=> 3V3`
 
