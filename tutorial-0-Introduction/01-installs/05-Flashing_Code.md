@@ -18,12 +18,12 @@ Below shows the whole system:
 ## Connection with ST-Link
 Here is the specific wiring between the STM32 Board the ST Link:
 
-| Name   | Number on ST Link | Letter on Board |
-|--------|-------------------|-----------------|
-| 3V3    | 1                 | d               |
-| SWDIO  | 2                 | b               |
-| SWCLK  | 3                 | a               |
-| GND    | 4                 | c               |
+| Name   | Number on Controller | Letter on ST Link |
+|--------|----------------------|-------------------|
+| 3V3    | 1                    | d                 |
+| SWDIO  | 2                    | b                 |
+| SWCLK  | 3                    | a                 |
+| GND    | 4                    | c                 |
 
 Just connect the words together, i.e. `GND <=> GND, SWD <=> SWDIO, CLK <=> SWCLK, 3V3 <=> 3V3`
 
@@ -33,7 +33,7 @@ Just connect the words together, i.e. `GND <=> GND, SWD <=> SWDIO, CLK <=> SWCLK
 - Do not use the USB port (The PCB also warns you not to use it)
 
 ### The ST Link's side:
-<img src="./images/flashcode_stlink.jpeg" width="200">
+<img src="./images/flashcode_stlink.jpeg" width="350">
 
 **Note:**
 -  Remember to connect to 3.3V, **DO NOT connect to 5.0V**
