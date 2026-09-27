@@ -473,7 +473,7 @@ You can check that $\left(\frac{7(8)}{2}\right)^2 = 784$. Try it with other numb
 
 Part (b) Write a code to simulate the sum of the alternating reciprocal of odd numbers. That is:
 
-$$\sum_{i=0}^n \frac{(-1)^{i-1}}{2i+1} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \frac{1}{9} - ... + \frac{1}{2n+1} \approx \frac{\pi}{4} \approx 0.7853$$
+$$\sum_{i=0}^n \frac{(-1)^{i}}{2i+1} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \frac{1}{9} - ... + \frac{1}{2n+1} \approx \frac{\pi}{4} \approx 0.7853$$
 
 Note that $i$ is in the range $[0, n]$
 
