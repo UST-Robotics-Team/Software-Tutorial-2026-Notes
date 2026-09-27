@@ -409,6 +409,9 @@ for(int i=0; i<2; i++){
 
 <details>
 <pre>
+    0: 0
+    0: 1
+    0: 2
     1: 0
     1: 1
     1: 2
@@ -439,7 +442,7 @@ Q2.
 
 Part (a) write a code to simulate that the sum of cubes:
 
-$$\sum_{i=1}^n n^3 = 1^3 + 2^3 + 3^3 +... + n^3 = \left(\frac{n(n+1)}{2}\right)^2$$
+$$\sum_{i=1}^n i^3 = 1^3 + 2^3 + 3^3 +... + n^3 = \left(\frac{n(n+1)}{2}\right)^2$$
 
 First, write a program to list out all the numbers in the interval $[1, n]$ cubed. Then store the sum in a variable, and print it out in the format given below.
 
@@ -470,7 +473,7 @@ You can check that $\left(\frac{7(8)}{2}\right)^2 = 784$. Try it with other numb
 
 Part (b) Write a code to simulate the sum of the alternating reciprocal of odd numbers. That is:
 
-$$\sum_{i=0}^n \frac{(-1)^{n-1}}{2n+1} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \frac{1}{9} - ... + \frac{1}{2n+1} \approx \frac{\pi}{4} \approx 0.7853$$
+$$\sum_{i=0}^n \frac{(-1)^{i-1}}{2i+1} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \frac{1}{9} - ... + \frac{1}{2n+1} \approx \frac{\pi}{4} \approx 0.7853$$
 
 Note that $i$ is in the range $[0, n]$
 
