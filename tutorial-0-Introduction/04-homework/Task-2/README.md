@@ -329,6 +329,9 @@ bath
 
 #### Assumptions (2B)
 
+- There will be at most 128 elements in the list.
+- Each element in the list will be at most 128 characters long.
+- The regex itself will not be longer than 64 characters.
 - All strings within list only contain small Latin letters (aka lowercase letters, a-z).
 - You may assume that the list and regex will not be empty, and the regex is always valid (no incorrect syntax).
 - The regex format strictly follows `<condition>``<quantifier>` pairs, with groups counting as conditions.

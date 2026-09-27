@@ -377,6 +377,34 @@ Find the highest-scoring legal next move for the player.
 
 You may assume that the test cases will have only 1 definitive highest scoring move.
 
+## Assumptions
+
+- Uppercase means actual letter tile, lowercase means wildcard.
+- Racks can have 0-7 tiles, and is always null-terminated.
+- Words are always played, and only valid when played either left to right (horizontal) or top to bottom (vertical).
+- There will only be 2 wildcards in a game at all times.
+
+### Part A
+
+#### 3A(iii)
+
+- Assume the word starts at the cell indicated by the input parameters.
+- The function should only return the score of **THE WORD THAT WAS INPUTTED**.
+  - (Hint: You can change the board state.)
+
+#### 3A(iv)
+
+- A play is **INVALID** is the cell **IS NOT THE STARTING TILE OF AN EXTENSION PLAY**.
+  - For "TART" to "TARTS", the play's inputted cell would be where the starting "T" is instead of the "S".
+  - For the above example, if the play is inputed as "ARTS", the play is **INVALID** because the main word "ARTS" has a tile "T" in front of the word, making it an invalid play.
+- (Hint: You can call word_score() multiple times in this function.)
+
+### Part B
+
+#### 3B(ii)
+
+- There will only be test cases with wildcards on a board with less than 14 other tiles present.
+
 ## Compiling and Testing
 
 ### Compilation
