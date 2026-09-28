@@ -110,11 +110,11 @@ Putting what we have learned so far together, you can easily create a blinker pr
     /* Infinite loop */
     /* USER CODE BEGIN WHILE */
     while (1) {
-        HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_SET);
-        HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_SET);
+        HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
+        HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_PIN_SET);
 	    HAL_Delay(1000);
-	    HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_RESET);
-	    HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_RESET);
+	    HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
+	    HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_PIN_RESET);
 	    HAL_Delay(1000);
         /* USER CODE END WHILE */
         /* USER CODE BEGIN 3 */
