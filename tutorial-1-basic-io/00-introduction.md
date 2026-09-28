@@ -33,7 +33,7 @@ Once you've unzipped the file, open the `.ioc` in CubeMX. If you're on mac, you 
 
 > [!warning]
 > 
-> When prompted about STM32Cube firmware version (see the image below), selection "Continue"
+> When prompted about STM32Cube firmware version (see the image below), select "Continue"
 
 
 ![](./images/slide_cubemx_open.png)
