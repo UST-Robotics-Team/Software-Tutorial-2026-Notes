@@ -150,7 +150,7 @@ To exit, click on the red square. The next time you wish to flash code, repeat t
 
 ![](./images/slide_other_macros.png)
 
-Here are a few macros to make things easier, we have already provided these in your `main.h`:
+Here are a few macros to make things easier, we have already provided these in your `Core/Inc/main.h` file:
 
 ```c
 #define gpio_set(gpio) HAL_GPIO_WritePin(gpio##_GPIO_Port, gpio##_Pin, GPIO_PIN_SET)
@@ -195,8 +195,9 @@ You may notice that we need `GPIO_PIN_SET` to turn the led off, and `GPIO_PIN_RE
 
 To make this more intuitive and maintainable, you should define your own `led_on`, `led_off`, and `led_toggle` macros.
 
-Add this to `main.h`:
+**Add this to `Core/Inc/main.h`:**
 
+Look for the "TODO:" comment at the BOTTOM of `Core/Inc/main.h`, and add the following three macro definitions:
 ```c
 // notice that reset the pin turns the led on
 #define led_on(led) gpio_reset(led)
@@ -229,7 +230,7 @@ Just now, the function we use is `HAL_GPIO_WritePin`, for GPIO input, we use `HA
 
 ![](./images/slide_input-macro.png)
 
-For reading input, we have similarly provided shortcut macros to make your life easier in `main.h`:
+For reading input, we have similarly provided shortcut macros to make your life easier in `Core/Inc/main.h`:
 
 ```c
 #define gpio_read(gpio) HAL_GPIO_ReadPin(gpio##_GPIO_Port, gpio##_Pin)
@@ -275,7 +276,7 @@ while(1){
 
 Similar to the `led_on`/`led_off` macro, you may notice that when the button is PRESSED, the output of `gpio_read` is actually `GPIO_PIN_RESET`, and when button is not pressed, it's `GPIO_PIN_SET`.
 
-Add the following macro to your `main.h`, so you can directly use `btn_read` in your code:
+**Add the following macro to your `Core/Inc/main.h`**, so you can directly use `btn_read` in your code:
 
 ```c
 #define btn_read(btn) !gpio_read(btn)
