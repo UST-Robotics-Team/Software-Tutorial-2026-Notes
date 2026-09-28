@@ -16,4 +16,4 @@ Here is the starting code for your Homework 1:
 
 https://github.com/UST-Robotics-Team/Software-Tutorial-2026-Homework1-skeleton
 
-The task description is in the README:
+The task description is in the README.
