@@ -62,10 +62,12 @@ void HAL_Delay(uint32_t Delay);
   while (1) {
       static uint32_t last_ticks = 0;
       static uint8_t btn_pressed = 0;
+      
       if (!btn_pressed && btn_read(BTN1)){ //Only when never pressed
           btn_pressed = 1;
           last_ticks = HAL_GetTick();
       }
+      
       if (btn_pressed){
         if ((HAL_GetTick() - last_ticks) <= 100){
             led_on(LED1);
@@ -81,7 +83,7 @@ void HAL_Delay(uint32_t Delay);
 
 For your second graded classwork, your task is to create a program that will flash LEDs based on button presses.
 
-- While `Button5` is held, `LED1` should blink every **100ms**, and `LED2` should be off **@1**
+- While `Button5` is held, `LED1` should blink every **100ms**, and `LED2` should be off **@2**
 - While `Button1` is held, `LED1` and `LED2` should blink **alternately** every **500ms**. **@2**
 
 Ask for a senior to mark your work when you're done.

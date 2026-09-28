@@ -222,7 +222,19 @@ Pick a button to configure, in this picture we pick `PB5`, which happens to be B
 3. Press "**GENERATE CODE**" for CubeMX to update your project based on these settings.
 
 > [!Note]
-> Again, make sure any of your existing code is between the "BEGIN" and "END" comments, otherwise, it will be overwritten.
+> Any changes you make in CubeMX will NOT be taken into effect until you press the "GENERATE CODE" button.
+
+### Why do we set it to PULL-UP?
+
+The buttons on the RDC Controller board, as with many boards you will encounter later in robotics, are made in a way where the button switch is connect to GROUND (GND) on the hardware level, electrically and permanently. The other side of the switch is your MCU pin (e.g. `Button5`).
+
+This means if the switch is connected (aka the button is pressed), **then the `Button5` is directly connected to GROUND. Which gives a `0` signal**.
+
+But what if the button is not pressed? The button is in "**floating state**" -- we don't really know its value, and its voltage level may as well be random or subject to noise or the environment. If a button press is represented by `0`, **then we want a button release to be a `1`**.
+
+This is why we need the MCU to "pull" the pin up, so that it is effectively connected to HIGH (3V3), when the button is not pressed. This is the meaning of a "pull-up" configuration in the GPIO configuration in CubeMX.
+
+You need to configure this for all the buttons you wish to use on the controller board.
 
 ### Read input with `HAL_GPIO_ReadPin`
 
@@ -245,6 +257,8 @@ uint8_t btn_state = gpio_read(Button5);
 
 uint8_t btn_state = HAL_GPIO_ReadPin(Button5_GPIO_Port, Button5_Pin);
 ```
+
+You can directly use `btn_state` in an if-statement, or compare it with `GPIO_PIN_RESET`/`GPIO_PIN_SET` to determine whether the GPIO is in a HIGH state or LOW state.
 
 ### Demo: Button indicator
 
@@ -287,7 +301,7 @@ Similar to the `led_on`/`led_off` macro, you may notice that when the button is 
 
 So that you can directly check `btn_read(Button5)` for example, and a truthy value means the button is pressed.
 
-### Further Reading: Pneumatic Valve Application
+### Further Application: Pneumatic Valves
 
 Another application you might use in the Robot Design Contest and your future journey in robotics for GPIO is pneumatic valves.
 
@@ -299,7 +313,7 @@ Usually, we will connect the output of the valve to an air cylinder, which will 
 
 ![](./images/air_cylinder_demo.gif)
 
-So with this this valve and air cylinder, you are able to make different mechanisms that only require simple movement. Take this robot gripper for example:
+So with this this valve and air cylinder, you are able to make different mechanisms that only require simple movement. Take this **robot gripper** for example:
 
 ![](./images/gripper1.GIF)
 
