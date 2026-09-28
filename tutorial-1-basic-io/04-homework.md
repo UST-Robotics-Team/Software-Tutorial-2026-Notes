@@ -7,5 +7,5 @@ Welcome to your Tutorial 1 Homework. In this assignment, you will be programming
 a tetris game on the controller. Don't worry, we've written most of the
 heavy-lifting code for you already.
 
-This page will be updated later when the link to the homework details is
-released!
+Here is the starting code for your Homework 1. The task description is in the README:
+https://github.com/UST-Robotics-Team/Software-Tutorial-2026-Homework1-skeleton
