@@ -34,7 +34,7 @@ Ryan Ku, Ivan Lok, Dicaprio Cheung, Joseph Lam, Binay Gurung, Anshuman Medhi
 
 There are **three** classworks throughout the tutorial. Show your working mainboard to our seniors during the tutorial to get your score recorded.
 
-If you were not able to finish classwork tasks in class, you may also complete them after class and ask seniors to mark them during homework checking sessions.
+If you were not able to finish classwork tasks in class, you may also complete them after class and ask seniors to mark them during homework checking sessions, however, you won't be able to get a bonus mark for finishing the classwork during class.
 
 ## Homework (graded)
 
