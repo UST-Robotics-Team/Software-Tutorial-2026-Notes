@@ -279,7 +279,7 @@ List will contain an array of C strings (single word, null terminated, no whites
 The metacharacter work like building blocks, and they will correspond to characters in a string. You can also mix and match the operators to create different filters/matches.  
 
 Something like `c.t` would match to any string that has `c` as its first character, and `t` as its third character. Since `.` is the wildcard operator, it can match to any character. So, examples that match to `c.t` is `cat`, `cot`, `cut`, and even `cvt` (it doesn't have to be a valid word).  
-You can also mix and match operators, like `([^aeiou][aeiou])+[^aeiou]?` looks for all strings with starts with a consonant, and halternates vowels and consonants. (e.g `no`, `cane`, `bat`, `babababababababababa`)
+You can also mix and match operators, like `([^aeiou][aeiou])+[^aeiou]?` looks for all strings with starts with a consonant, and alternates vowels and consonants. (e.g `no`, `cane`, `bat`, `babababababababababa`)
 
 #### Output (2B)
 
@@ -334,7 +334,7 @@ bath
 - The regex itself will not be longer than 64 characters.
 - All strings within list only contain small Latin letters (aka lowercase letters, a-z).
 - You may assume that the list and regex will not be empty, and the regex is always valid (no incorrect syntax).
-- The regex format strictly follows `<condition>``<quantifier>` pairs, with groups counting as conditions.
+- The regex format strictly follows `<condition>` `<quantifier>` pairs, with groups counting as conditions.
 
 ## Compiling and Testing
 
