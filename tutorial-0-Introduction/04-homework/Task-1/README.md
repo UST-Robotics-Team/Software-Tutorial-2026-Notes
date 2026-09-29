@@ -156,9 +156,9 @@ where `process_noise` is $Q$ and `measurement_noise` is $R$.
 
 Manual example:
 
-Let's say the initial state is `0`, $Q$ = `0.1`, and $R$ = `1` ( $Q$ and $R$ are constants), and we receive a new measure ment of `0.5`.
+Let's say the initial state is `0`, $Q$ = `0.1`, and $R$ = `1` ( $Q$ and $R$ are constants), and we receive a new measurement of `0.5`.
 
-1. We first obtain the prediction $x_{1|0} = 0$ and $P_{1|0} = 1 + 0.1 = 1.1$
+1. We first obtain the prediction $\hat{x}_{1|0} = 0$ and $P _{1|0} = 1 + 0.1 = 1.1$
 2. Then, we obtain the Kalman gain of $k = 1$, $K_{1} = \frac{1.1}{1.1+1} = 0.5238...$
 3. After getting the Kalman gain, we now can obtain the the new predicted value and new error covariance.
 
