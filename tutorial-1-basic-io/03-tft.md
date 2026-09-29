@@ -217,7 +217,7 @@ Here are your tasks:
 
 - Print the time elapsed with the format of `mm:ss:sssZ` where `sssZ` means millisecond. e.g. `00:23:109` **(@2)**
 
-- Toggle the highlight of the text you print every seconds, which means: **(@3)**
+- Toggle the highlight of the text you print every second, which means: **(@3)**
   - **1st second**: print normal text
   - **2nd second**: print highlighted text
     - Recall 1:  How to print highlighted text:
