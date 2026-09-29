@@ -209,7 +209,7 @@ In other words, we place the top-left corner of the kernel on `input[r][c]` and 
 Because the kernel must fit fully inside the input, the output is smaller than the input:
 
 $$
-output\_rows = input\_rows - k + 1 \qquad output\_cols = input\_cols - k + 1
+\text{output rows} = \text{input rows} - k + 1 \qquad \text{output cols} = \text{input cols} - k + 1
 $$
 
 The function should:
