@@ -191,7 +191,7 @@ Or alternatively, simply use toggle:
 
 ### `led_on` macros
 
-You may notice that we need `GPIO_PIN_SET` to turn the led off, and `GPIO_PIN_RESET` to turn the LED off. This is because in the hardware schematic, the positive side of the LED is connect to a constant 3V3, and the negative side is connected to the MCU pin.
+You may notice that we need `GPIO_PIN_SET` to turn the led off, and `GPIO_PIN_RESET` to turn the LED on. This is because in the hardware schematic, the positive side of the LED is connect to a constant 3V3, and the negative side is connected to the MCU pin.
 
 To make this more intuitive and maintainable, you should define your own `led_on`, `led_off`, and `led_toggle` macros.
 
