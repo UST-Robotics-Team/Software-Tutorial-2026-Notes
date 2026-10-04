@@ -165,7 +165,7 @@ Let's say the initial state is `0`, $Q$ = `0.1`, and $R$ = `1` ( $Q$ and $R$ are
 $$
 \begin{aligned}
 \hat{x}_{1|1} &= \hat{x}_{1|0} + K_1 \left( z_1 - \hat{x}_{1|0} \right) = 0 + 0.5238\left(0.5 - 0\right) = 0.2619... \text{ (0.26, rounded to 2 d.p.)}\\
-P_{1|1} &= (1-K_k)P_{k|k-1} = (1-0.5238)(1) = 0.4762...\\
+P_{1|1} &= (1-K_k)P_{k|k-1} = (1-0.5238)(1.1) = 0.5238...\\
 \end{aligned}
 $$
 
