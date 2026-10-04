@@ -321,10 +321,10 @@ Some examples:
 
 ```console
 # Assume starting play
-Rack: "ABCD" -> Plays "HAD" -> invalid because "H" is not in their rack
-Rack: "ABCD" -> Plays "BCD" -> invalid because "BCD" is not a valid word
+Rack: "ABCDE" -> Plays "HAD" -> invalid because "H" is not in their rack
+Rack: "ABCDE" -> Plays "BCD" -> invalid because "BCD" is not a valid word
 
-Rack: "ABCD" -> Plays "BEAD" -> play is valid (as long as it overlaps the starting square)
+Rack: "ABCDE" -> Plays "BEAD" -> play is valid (as long as it overlaps the starting square)
 ```
 
 You can refer to the testcases zipped with the skeleton for some extra examples.
