@@ -40,10 +40,10 @@ If you were not able to finish classwork tasks in class, you may also complete t
 
 Show your working mainboard to our seniors in either DTOL or Hall 9 Lab after the tutorial for [homework checking](../Homework-Arrangements.md).
 
-The deadline for your homework is your next tutorial session.
-- S01: Due on **5 Oct 6pm**
-- S02: Due on **7 Oct 6pm**
-- S03: Due on **9 Oct 6pm** 
+The deadline for your homework is usually before your next tutorial session, however for S01 and S02, **an extension of two days** is given due to the 1st Oct national holiday.
+- S01: Due on **7 Oct 6pm** (Wednesday)
+- S02: Due on **9 Oct 6pm** (Friday)
+- S03: Due on **9 Oct 6pm** (Friday, same as usual)
 
 ---
 
