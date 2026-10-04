@@ -403,7 +403,7 @@ You may assume that the test cases will have only 1 definitive highest scoring m
 
 #### 3B(ii)
 
-- There will only be test cases with wildcards on a board with less than 14 other tiles present.
+- For a testcase with wildcards, you may assume the test cases are performed on a board with less than 14 other tiles present.
 
 ## Compiling and Testing
 
