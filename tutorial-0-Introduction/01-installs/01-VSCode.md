@@ -18,6 +18,8 @@ Download and launch the program from the link below:
 
 [Visual Studio Code Website](https://code.visualstudio.com/)
 
+*Refer to [here](linux.md) if you're using linux.*
+
 Proceed with the default installation configurations and login with your Github credentials. If you do not have a Github account yet, you may follow the steps in xx to register for an account.
 
 After configurations, you should be on the Welcoming page of VS Code, as the following:

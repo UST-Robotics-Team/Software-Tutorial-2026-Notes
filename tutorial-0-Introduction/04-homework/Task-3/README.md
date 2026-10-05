@@ -321,10 +321,10 @@ Some examples:
 
 ```console
 # Assume starting play
-Rack: "ABCD" -> Plays "HAD" -> invalid because "H" is not in their rack
-Rack: "ABCD" -> Plays "BCD" -> invalid because "BCD" is not a valid word
+Rack: "ABCDE" -> Plays "HAD" -> invalid because "H" is not in their rack
+Rack: "ABCDE" -> Plays "BCD" -> invalid because "BCD" is not a valid word
 
-Rack: "ABCD" -> Plays "BEAD" -> play is valid (as long as it overlaps the starting square)
+Rack: "ABCDE" -> Plays "BEAD" -> play is valid (as long as it overlaps the starting square)
 ```
 
 You can refer to the testcases zipped with the skeleton for some extra examples.
@@ -403,7 +403,7 @@ You may assume that the test cases will have only 1 definitive highest scoring m
 
 #### 3B(ii)
 
-- There will only be test cases with wildcards on a board with less than 14 other tiles present.
+- For a testcase with wildcards, you may assume the test cases are performed on a board with less than 14 other tiles present.
 
 ## Compiling and Testing
 

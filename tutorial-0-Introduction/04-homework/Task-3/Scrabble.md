@@ -123,7 +123,7 @@ They can choose to exchange all of the tiles (all 7, `EXCH AAAEEIQ`), or only a 
 
 #### What if there's not enough tiles?
 
-The player can only exchange as many tiles as there are tiles in the bag (max(7,`remaining tiles in bag)).  
+The player can only exchange as many tiles as there are tiles in the bag (min(`tiles on rack`,`remaining tiles in bag`)).  
 So, if there are only 3 tiles in the bag, you can only exchange up to 3 tiles.
 
 ### PASS
