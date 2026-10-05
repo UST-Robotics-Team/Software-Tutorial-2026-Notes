@@ -22,7 +22,6 @@ This quickly becomes impractical as data width increases. For example, sending 3
 UART (Universal Asynchronous Receiver-Transmitter) is a simple and popular serial communication protocol. It allows microcontrollers like the STM32 to send and receive data using just three wires: TX (transmit), RX (receive), and GND (ground). Unlike parallel communication, UART sends data as a **Stream of Bits**, reducing hardware complexity at the cost of transmission speed. UART is widely used for debugging, data logging, and connecting wireless modules such as Bluetooth.
 
 > How is data represented as bit stream: [ASCII](https://en.wikipedia.org/wiki/ASCII) \
-> It maybe helpful for homework task 3 :p
 
 ## UART Connections
 
