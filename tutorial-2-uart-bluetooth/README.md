@@ -23,6 +23,5 @@ This tutorial covers UART communication and Bluetooth integration with the STM32
 
 - [UART](./01-uart.md)
 - [Bluetooth](./02-bluetooth.md)
-  - [Bluetooth Troubleshooting (Win11)](./02a-bluetooth-troubleshooting-win11.md)
 - [Classwork](./03-classwork.md)
 - [Homework](./04-homework.md)
