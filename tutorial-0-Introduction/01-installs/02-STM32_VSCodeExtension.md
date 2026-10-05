@@ -24,7 +24,7 @@ The extension pack allows users to do all of the above on Visual Studio Code
 
 ## Setting Up the Project
 4. Open the project folder in Visual Studio Code
-5. Select `Release` for configure preset (if it does not appear, type `> select configure preset` in the search bar)
+5. Select `Debug` for configure preset (if it does not appear, type `> select configure preset` in the search bar)
 6. Click on butterfly STM32 logo, the extension should detect the CMake file in the project folder, and know that you have opened an STM32 project, like the following: 
 ![alt text](images/stm32_vs_2.png)
 
