@@ -24,7 +24,7 @@ The extension pack allows users to do all of the above on Visual Studio Code
 
 ## Setting Up the Project
 4. Open the project folder in Visual Studio Code
-5. Select `Release` for configure preset (if it does not appear, type `> select configure preset` in the search bar)
+5. Select `Debug` for configure preset (if it does not appear, type `> select configure preset` in the search bar)
 6. Click on butterfly STM32 logo, the extension should detect the CMake file in the project folder, and know that you have opened an STM32 project, like the following: 
 ![alt text](images/stm32_vs_2.png)
 
@@ -32,10 +32,11 @@ The extension pack allows users to do all of the above on Visual Studio Code
 7. Connect the STM32 Board to your computer
 
 - Refer to [flash Code Guide](05-Flashing_Code.md) on how to connect the ST Link to the STM32 Board
-8. Go to the Run and Debug Tab (icon with a play button and a bug) 
-9. Select the following option (STM32Cube: STM32 Launch STLink GDB Server)
+8. type `> CMake: Build` in the search bar to build the project
+9.Go to the Run and Debug Tab (icon with a play button and a bug) 
+10. Select the following option (STM32Cube: STM32 Launch STLink GDB Server)
 ![alt text](images/stm32_vs_3.png)
-10. A small bar hovering on top should appear (yellow outline), click on the play button (red outline) to 
+11. A small bar hovering on top should appear (yellow outline), click on the play button (red outline) to 
 ![alt text](images/stm32_vs_4.png)
 
 
