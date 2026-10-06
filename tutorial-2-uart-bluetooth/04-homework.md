@@ -29,6 +29,14 @@ Example sequence of behaviour:
   9. user: sends `button 1 count`
   10. controller: responds `button 1 count: 3`
 
+
+### Useful functions
+
+- snprintf() — Format values into a string, with a buffer-size limit. Useful for creating "button 3 count: 5".
+- sscanf() — Read values from a string. Useful for extracting 3 from "button 3 count".
+- strcmp() — Compare two strings. Returns 0 when they are exactly the same.
+
+
 # Part B: Bluetooth Controller Panel (7 marks)
 
 In the Robot Design Contest, you will use all of the buttons and functions on the controller. Sometimes, as software members we need to build a good user interface for other teammates to work with. It's helpful to have a Panel UI to monitor the status of buttons and verify all the hardware components on the controller are working, before making it work for your robot.
@@ -49,12 +57,6 @@ Tasks (total: 7 marks):
 > [!tip]
 >
 > You will need to work on two STM32 projects (opened in SEPARATE VS Code windows) for this task, and you will also need to flash the code to each PCB (Controller, Mainboard) separately.
-
-## Useful functions
-
-- snprintf() — Format values into a string, with a buffer-size limit. Useful for creating "button 3 count: 5".
-- sscanf() — Read values from a string. Useful for extracting 3 from "button 3 count".
-- strcmp() — Compare two strings. Returns 0 when they are exactly the same.
 
 
 ## Additional exercise project: Bluetooth Blackjack
