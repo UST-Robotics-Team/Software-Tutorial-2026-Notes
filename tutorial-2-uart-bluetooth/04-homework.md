@@ -33,9 +33,7 @@ Example sequence of behaviour:
 
 In the Robot Design Contest, you will use all of the buttons and functions on the controller. Sometimes, as software members we need to build a good user interface for other teammates to work with. It's helpful to have a Panel UI to monitor the status of buttons and verify all the hardware components on the controller are working, before making it work for your robot.
 
-In this homework, you will build a monitoring panel that allows you to receive controller data via **Bluetooth** from the controller to the **mainboard**'s TFT screen.
-
----
+In Part B of your homework, you will build a monitoring panel that allows you to receive controller data via **Bluetooth** from the controller to the **mainboard**'s TFT screen.
 
 Tasks (total: 7 marks):
 
