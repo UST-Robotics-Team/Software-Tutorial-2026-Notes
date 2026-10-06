@@ -1,13 +1,13 @@
-The homework for Tutorial 2 (called "Homework 2") is split into two independent parts, part A (3 marks) and part B (7 marks), for a total of 10 marks. Both are graded!
+The homework for Tutorial 2 (called "Homework 2") is split into two independent parts, part A and part B, for a total of 10 marks. Both are graded!
 
 [Back to Main](./README.md) | [Previous Page](./03-classwork.md)
 
-# Part A: Button query (3 marks)
+# Part A: Button query
 
 In your classwork, you have made a simple monitoring program that sends UART data to your laptop's serial monitor to detect button presses. In Part A of your homework, you will write a program that allows you to query the number of presses of a specific button using your serial monitor.
 
-Requirements (total: 3 marks)
-- The user sends a command FROM the serial monitor TO the controller in the following format:
+Requirements (total: 4 marks)
+- The user sends a command FROM the serial monitor TO the controller **(with USB-to-TTL)** in the following format:
   ```
   button x count
   ```
@@ -15,7 +15,8 @@ Requirements (total: 3 marks)
   ```
   button x count: y
   ```
-  (**@3**)
+  (**@2**)
+- Achieve the same behaviour as above, but communicate with the controller using bluetooth. The HC-05 needs to be plugged into the controller, and the other HC-05 should be connected to USB-to-TLL to your computer. (**@2**)
 
 Example sequence of behaviour:
   1. user: presses no buttons and sends via serial monitor `button 1 count`
@@ -37,13 +38,13 @@ Example sequence of behaviour:
 - strcmp() — Compare two strings. Returns 0 when they are exactly the same.
 
 
-# Part B: Bluetooth Controller Panel (7 marks)
+# Part B: Bluetooth Controller Panel
 
 In the Robot Design Contest, you will use all of the buttons and functions on the controller. Sometimes, as software members we need to build a good user interface for other teammates to work with. It's helpful to have a Panel UI to monitor the status of buttons and verify all the hardware components on the controller are working, before making it work for your robot.
 
 In Part B of your homework, you will build a monitoring panel that allows you to receive controller data via **Bluetooth** from the controller to the **mainboard**'s TFT screen.
 
-Tasks (total: 7 marks):
+Tasks (total: 8 marks):
 
 - Configure a pair of HC-05 modules (Master and slave) according to the Bluetooth lecture materials.
 - Plug in the Master HC-05 to controller and the slave HC-05 to mainboard, and make sure the two HC-05's can connect. (**@1**)
@@ -51,7 +52,7 @@ Tasks (total: 7 marks):
 - The panel UI should include:
   - 8 buttons (**@2**)
   - 2 limit switches (**@1**)
-  - connection status of bluetooth (e.g., a message indicating whether bluetooth is connected between mainboard and controller) (**@1**)
+  - connection status of bluetooth (e.g., a message indicating whether bluetooth is connected between mainboard and controller) (**@2**)
   - the indications on the panel should work as expected when multiple buttons are pressed simultaneously (**@2**)
 
 > [!tip]
