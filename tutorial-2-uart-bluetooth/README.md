@@ -4,12 +4,16 @@
 
 This tutorial covers UART communication and Bluetooth integration with the STM32 mainboard.
 
-- **Classwork:** Demonstrate your working mainboard / Controller / serial monitor output to seniors during the tutorial.
+- **Classwork:** Demonstrate your working Controller + serial monitor output to seniors during homework checking
 - **Homework:** Demonstrate your working mainboard and Controller to seniors before the deadline.
 
-## Deadline
-- Your homework is due at 6:00 p.m. on the day of your next class.
-- If you were not able to finish classwork tasks in class, you may also complete them after class and ask seniors to mark them during homework checking sessions, however, you won't be able to get a bonus mark for finishing the classwork during class.
+## Deadlines
+
+Deadlines for classwork and homework:
+
+- S01: **next Wednesday 6pm** (14 Oct, changed from Monday to Wednesday due to certain complications for the S01 session)
+- S02: **next Wednesday 6pm** (14 Oct)
+- S03: **next Friday 6pm** (16 Oct)
 
 
 ## Objectives
