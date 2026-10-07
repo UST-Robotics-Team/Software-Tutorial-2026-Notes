@@ -63,6 +63,8 @@ Configure each HC-05 module separately. For each module, follow these steps:
 
 ### AT Command Configuration Steps
 
+> **Reminder:** End every AT command with **CRLF (`\r\n`)**. Set the serial monitor line ending to **CR+LF**, then press **Enter/Return** after typing each command.
+
 Configure the **Slave first**, because you need its Bluetooth address when configuring the Master.
 
 #### Slave Module

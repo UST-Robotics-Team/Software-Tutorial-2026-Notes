@@ -15,7 +15,7 @@ int main(void)
     while (1)
     {
         // Code will stop at here waiting for at most 100ms
-        HAL_UART_Receive(&huart1, rx_buff, sizeof(rx_buff), 100);
+        HAL_UART_Receive(&huart1, (uint8_t *)msg, sizeof(msg), 100);
 
         // Main logic that needs to be run once per ms
         main_logic();
@@ -25,8 +25,6 @@ int main(void)
 ```
 
 Therefore, instead of blocking function, we mainly use **Non-blocking Transmit/Receive Function**. Instead of let the MCU keep asking whether we have completed sending/receiving data, the non-blocking function will send a interupt signal to MCU if the UART hardware have completed sending/receiving a **Fixed Length** data.
-
-> For receiving Variable Length message, plz check `HAL_UARTEx_ReceiveToIdle_IT()`, leave as self study material :p
 
 ### Enabling UART Interrupts
 
@@ -64,7 +62,7 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
     if (huart == &huart1) // Better check the UART handler as different UART handlers share the same callback function
     {
         transmit_completed = 1;
-        LED_ON();
+        led_on(LED1);
     }
 }
 /* USER CODE END PFP */
@@ -105,7 +103,7 @@ When it finish receving the **Fixed Length** of data, the UART receive interrupt
 ```c
 /* USER CODE BEGIN PV */
 char rx_buf[2];
-/* USER CODE BEGIN PV */
+/* USER CODE END PV */
 
 /* USER CODE BEGIN PFP */
 // You need to write this function yourself, it won't be auto generated
@@ -119,7 +117,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
         HAL_UART_Receive_IT(&huart1, (uint8_t *)rx_buf, 2);
     }
 }
-/* USER CODE BEGIN PFP */
+/* USER CODE END PFP */
 
 int main(void)
 {
@@ -133,7 +131,7 @@ int main(void)
     {
         // Comment the original receive function
         // Code will stop at here waiting for at most 100ms
-        // HAL_UART_Receive(&huart1, rx_buff, sizeof(rx_buff), 100);
+        // HAL_UART_Receive(&huart1, (uint8_t *)rx_buf, sizeof(rx_buf), 100);
 
         // Main logic that needs to be run once per ms
         main_logic();
@@ -151,7 +149,7 @@ Also, in pratice, we seldom put heavy work inside the `HAL_UART_RxCpltCallback()
 char rx_buf[1];
 int flag1 = 0;
 int flag2 = 0;
-/* USER CODE BEGIN PV */
+/* USER CODE END PV */
 
 /* USER CODE BEGIN PFP */
 // You need to write this function yourself, it won't be auto generated
@@ -168,7 +166,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
         HAL_UART_Receive_IT(&huart1, (uint8_t *)rx_buf, 1);
     }
 }
-/* USER CODE BEGIN PFP */
+/* USER CODE END PFP */
 
 int main(void)
 {
@@ -198,6 +196,8 @@ int main(void)
 ```
 
 ### Receiving a complete string
+
+> For receiving Variable Length message, plz check `HAL_UARTEx_ReceiveToIdle_IT()`, leave as self study material :p
 
 A command such as `HELLO` contains several characters. UART hardware transfers the bits, but our code receives **one byte (one character) at a time**. We collect the characters in an array until we receive `\n`.
 
@@ -319,29 +319,5 @@ if (message_ready == 1)
 ```
 
 `strcmp()` returns `0` when the two strings match. The TFT will show `HELLO` when that command is received. The `Tutorial2_skeleton` already includes the TFT headers, `tft_init()` and `tft_update()`; keep those lines. You can replace the `HELLO` check with your own command handling for the classwork.
-
-### Place to put your own functions and variables
-
-If you look close enough, you may saw that I have put all the `HAL_UART_TxCpltCallback()/HAL_UART_RxCpltCallback()` in something like
-
-```c
-/* USER CODE BEGIN XX */
-
-/* USER CODE END XX */
-```
-
-This is because when you generating the code in the CudeMX, it will automatically delete all the stuff outside these BEGIN/END pair, even inside the `main()`.
-
-```c
-/* USER CODE BEGIN PV */
-int test1; // Will stay
-/* USER CODE END PV */
-int test2; // Will be deleted
-
-/* USER CODE BEGIN PFP */
-int func1(){} // Will stay
-/* USER CODE END PV */
-int func2(){}; // Will be deleted
-```
 
 [Previous](./03-classwork.md) | [Next Page](./05-bluetooth.md)

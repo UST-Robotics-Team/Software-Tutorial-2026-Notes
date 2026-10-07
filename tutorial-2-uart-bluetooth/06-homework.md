@@ -1,4 +1,4 @@
-The homework for Tutorial 2 (called "Homework 2") is split into two independent parts, part A and part B, for a total of 10 marks. Both are graded!
+The homework for Tutorial 2 (called "Homework 2") is split into two independent parts, part A and part B, for a total of 12 marks. Both are graded!
 
 [Back to Main](./README.md) | [Previous Page](./05-bluetooth.md)
 
