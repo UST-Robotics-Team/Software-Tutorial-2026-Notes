@@ -4,7 +4,7 @@
 >
 > In this tutorial, you will need to flash code to **two separate hardware boards**. The skeleton provided includes TWO STM32 projects. One for the controller board, and one for the mainboard (the square board with a lot of white headers).
 
-You can download the skeleton using the [Tutorial 2 Release here](https://github.com/UST-Robotics-Team/Software-Tutorial-2026-Notes/releases/tag/26.10.05).
+You can download the skeleton using the [Tutorial 2 Release here](https://github.com/UST-Robotics-Team/Software-Tutorial-2026-Notes/releases/tag/26.10.7).
 
 ## Overview
 
