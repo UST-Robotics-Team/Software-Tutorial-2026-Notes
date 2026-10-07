@@ -1,6 +1,6 @@
 # Classwork
 
-[Back to Main](./README.md) | [Previous Page](./02-bluetooth.md)
+[Back to Main](./README.md) | [Previous Page](./02-serial-monitor.md)
 
 ## Classwork #1: Monitor the controller data using UART-to-TTL
 
@@ -18,4 +18,4 @@ In addition to the `HAL` library functions for working with UART, you may find t
 - `snprintf()` — Format values into a string, with a buffer-size limit. Useful for creating "button 3 count: 5".
 
 
-[Previous](./02-bluetooth.md) | [Next Page](./04-homework.md)
+[Previous](./02-serial-monitor.md) | [Next Page](./04-non-blocking-uart.md)

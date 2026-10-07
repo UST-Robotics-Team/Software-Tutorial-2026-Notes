@@ -32,6 +32,8 @@ Deadlines for classwork and homework:
 ## Links
 
 - [UART](./01-uart.md)
-- [Bluetooth](./02-bluetooth.md)
+- [Serial Monitor](./02-serial-monitor.md)
 - [Classwork](./03-classwork.md)
-- [Homework](./04-homework.md)
+- [Blocking vs. Non-Blocking Communication](./04-non-blocking-uart.md)
+- [Bluetooth](./05-bluetooth.md)
+- [Homework](./06-homework.md)

@@ -42,6 +42,12 @@ Options -> Terminal
 
 Press **Connect** and run your board. Messages should appear in the terminal.
 
+![CoolTerm option](./image/coolterm_option.png)
+
+![CoolTerm setting](./image/coolterm_setting.png)
+
+![CoolTerm terminal](./image/coolterm_terminal.png)
+
 ### Sending string under raw mode
 
 Go to top nevigation bar, the click `Connection -> send string`.
@@ -54,4 +60,4 @@ Basically needs to set nothing :p
 
 > If nothing shows up on the `Port` tab, you may need to install a USB to TTL Ch34x driver ([Windows](https://www.wch-ic.com/downloads/CH341SER_ZIP.html) / [Mac](https://www.wch-ic.com/downloads/CH34XSER_MAC_ZIP.html) / [Linus](https://www.wch-ic.com/downloads/CH341SER_LINUX_ZIP.html))
 
-[Back to Main](./README.md) | [Previous Page](./01-uart.md)
+[Back to Main](./README.md) | [Previous Page](./01-uart.md) | [Next Page](./03-classwork.md)

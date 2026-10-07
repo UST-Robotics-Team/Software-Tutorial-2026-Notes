@@ -1,6 +1,6 @@
 # Bluetooth
 
-[Back to Main](./README.md) | [Previous Page](./01-uart.md)
+[Back to Main](./README.md) | [Previous Page](./04-non-blocking-uart.md)
 
 > Author: Ken Law (cclawad@connect.ust.hk) \
 > Modified by Ken Yu (ksyuad@connect.ust.hk)
@@ -115,3 +115,5 @@ Replace `1234,56,ABCDEF` with the actual address of your Slave module.
 After configuration, exit AT mode and connect each HC-05 to the UART port of its STM32 board or device. Remember to cross the UART wires: HC-05 `TXD` connects to STM32 `RX`, and HC-05 `RXD` connects to STM32 `TX`. Both modules must share `GND` with their connected boards.
 
 Power both modules. The Master will search for and connect to the bound Slave. When the LED flashing pattern changes, the Bluetooth link is established. Data sent to the UART of either module will then appear at the UART of the other module.
+
+[Previous](./04-non-blocking-uart.md) | [Next Page](./06-homework.md)

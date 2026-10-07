@@ -1,6 +1,6 @@
 The homework for Tutorial 2 (called "Homework 2") is split into two independent parts, part A and part B, for a total of 10 marks. Both are graded!
 
-[Back to Main](./README.md) | [Previous Page](./03-classwork.md)
+[Back to Main](./README.md) | [Previous Page](./05-bluetooth.md)
 
 # Part A: Button query
 
@@ -70,4 +70,4 @@ You can choose to attempt this project after you have completed the homework.
 
 **NOTE: the blackjack project is optional and will not be counted towards your tutorial score**.
 
-[Back to Main](./README.md) | [Previous Page](./03-classwork.md)
+[Back to Main](./README.md) | [Previous Page](./05-bluetooth.md)
