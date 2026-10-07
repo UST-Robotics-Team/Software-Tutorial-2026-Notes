@@ -66,30 +66,6 @@ The baud rate defines how many bits are sent per second. Common values include:
 
 > **Always** set the same baud rate on both sides of the connection.
 
-## Place to put your own functions and variables
-
-If you look close enough, you may saw that I have put all the `HAL_UART_TxCpltCallback()/HAL_UART_RxCpltCallback()` in something like
-
-```c
-/* USER CODE BEGIN XX */
-
-/* USER CODE END XX */
-```
-
-This is because when you generating the code in the CudeMX, it will automatically delete all the stuff outside these BEGIN/END pair, even inside the `main()`.
-
-```c
-/* USER CODE BEGIN PV */
-int test1; // Will stay
-/* USER CODE END PV */
-int test2; // Will be deleted
-
-/* USER CODE BEGIN PFP */
-int func1(){} // Will stay
-/* USER CODE END PFP */
-int func2(){}; // Will be deleted
-```
-
 ## Initializing UART Pins
 
 Before using UART, you must initialize the relevant pins. This is usually handled in `main.c`:
@@ -186,6 +162,30 @@ int main(void)
         }
     }
 }
+```
+
+## Place to put your own functions and variables
+
+If you look close enough, you may saw that I have put all the `HAL_UART_TxCpltCallback()/HAL_UART_RxCpltCallback()` in something like
+
+```c
+/* USER CODE BEGIN XX */
+
+/* USER CODE END XX */
+```
+
+This is because when you generating the code in the CudeMX, it will automatically delete all the stuff outside these BEGIN/END pair, even inside the `main()`.
+
+```c
+/* USER CODE BEGIN PV */
+int test1; // Will stay
+/* USER CODE END PV */
+int test2; // Will be deleted
+
+/* USER CODE BEGIN PFP */
+int func1(){} // Will stay
+/* USER CODE END PFP */
+int func2(){}; // Will be deleted
 ```
 
 ## Data transfer between MCU and computer
