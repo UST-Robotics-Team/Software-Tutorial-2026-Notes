@@ -63,7 +63,7 @@ Configure each HC-05 module separately. For each module, follow these steps:
 
 ### AT Command Configuration Steps
 
-> **Reminder:** End every AT command with **CRLF (`\r\n`)**. So, you may need to press a enter to add new line manally before sending out the command if you are using raw mode.
+> **Reminder:** End every AT command with **CRLF (`\r\n`)**. Set **Enter Key Emulation** to **CR+LF**. When using **Connection → Send String**, press **Enter/Return** after the command to add the line ending, then click **Send**.
 
 Configure the **Slave first**, because you need its Bluetooth address when configuring the Master.
 

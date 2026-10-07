@@ -15,7 +15,7 @@ Task (total: 2 marks):
 
 In addition to the `HAL` library functions for working with UART, you may find these function(s) useful:
 
-- `snprintf()` — Format values into a string, with a buffer-size limit. Useful for creating "button 3 count: 5".
+- `snprintf()` — Format values into a string, with a buffer-size limit. Useful for creating "button 3 pressed".
 
 
 [Previous](./02-serial-monitor.md) | [Next Page](./04-non-blocking-uart.md)

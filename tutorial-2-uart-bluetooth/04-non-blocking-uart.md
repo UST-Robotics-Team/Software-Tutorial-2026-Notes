@@ -309,6 +309,8 @@ if (message_ready == 1)
     if (strcmp(received_message, "HELLO") == 0)
     {
         tft_prints(0, 0, "HELLO");
+        tft_update(0);       // Display immediately
+        HAL_Delay(1000);     // Keep visible for 1 second
     }
 
     /* Prepare to receive another command. */
@@ -318,6 +320,6 @@ if (message_ready == 1)
 }
 ```
 
-`strcmp()` returns `0` when the two strings match. The TFT will show `HELLO` when that command is received. The `Tutorial2_skeleton` already includes the TFT headers, `tft_init()` and `tft_update()`; keep those lines. You can replace the `HELLO` check with your own command handling for the classwork.
+`strcmp()` returns `0` when the two strings match. The TFT will show `HELLO` for one second when that command is received. The `Tutorial2_skeleton` already includes the TFT headers, `tft_init()` and `tft_update()`; keep those lines. You can replace the `HELLO` check with your own command handling for the classwork.
 
 [Previous](./03-classwork.md) | [Next Page](./05-bluetooth.md)
