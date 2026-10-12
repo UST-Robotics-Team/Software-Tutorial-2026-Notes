@@ -163,10 +163,6 @@ uint8_t btn_read_rising_edge(uint8_t current, uint8_t *prev, uint32_t *last_time
   /* USER CODE BEGIN 2 */
   /* 1. Initialize the TFT screen */
   tft_init(PIN_ON_TOP, BLACK, WHITE, CYAN, DARK_GREY);
-  tft_prints(1, 1, "SERVO BUTTON DEMO");
-  tft_prints(1, 3, "BTN1: CW (+100us)");
-  tft_prints(1, 4, "BTN2: CCW (-100us)");
-  tft_prints(1, 6, "Pulse:");
 
   /* 2. Set servo to neutral (1500 us) */
   servo_set_pulse(SERVO_PULSE_MID);
@@ -185,6 +181,11 @@ uint8_t btn_read_rising_edge(uint8_t current, uint8_t *prev, uint32_t *last_time
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+     tft_prints(1, 1, "SERVO BUTTON DEMO");
+     tft_prints(1, 3, "BTN1: CW (+100us)");
+     tft_prints(1, 4, "BTN2: CCW (-100us)");
+     tft_prints(1, 6, "Pulse:");
+
     /* 1. Read rising edges of BTN1 (PB1) and BTN2 (PA4) */
     uint8_t btn1_click = btn_read_rising_edge(btn_read(BTN1), &btn1_prev, &btn1_time);
     uint8_t btn2_click = btn_read_rising_edge(btn_read(BTN2), &btn2_prev, &btn2_time);
