@@ -33,10 +33,12 @@ Example sequence of behaviour:
 
 ### Useful functions
 
+Some of the following functions may be useful in this homework. They are from the `string.h` library -- to use them, you need to `#include <string.h>` in your `main.c`.
+
 - snprintf() — Format values into a string, with a buffer-size limit. Useful for creating "button 3 count: 5".
 - sscanf() — Read values from a string. Useful for extracting 3 from "button 3 count".
 - strcmp() — Compare two strings. Returns 0 when they are exactly the same.
-
+- strlen() — Find the length of a string in character -- useful if you have a buffer of e.g. size `50`, but is only using `10` characters of it. **Note that this function does not include the `\0` in its length**, you need to `+1` when using the HAL UART transmit function.
 
 # Part B: Bluetooth Controller Panel
 
