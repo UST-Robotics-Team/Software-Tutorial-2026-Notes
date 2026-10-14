@@ -50,7 +50,7 @@ Tasks (total: 8 marks):
 
 - Configure a pair of HC-05 modules (Master and slave) according to the Bluetooth lecture materials.
 - Plug in the Master HC-05 to controller and the slave HC-05 to mainboard, and make sure the two HC-05's can connect. (**@1**)
-- Create a controller panel on the mainboard's TFT. The TFT should show the button pressing status of all 8 buttons and 2 limit switches (you may use `0`/`1` or colored squares), so when you press the button on the controller, the corresponding button on the mainboard's tft will indicate the button being pressed.
+- Create a controller panel on the mainboard's TFT. The TFT should show the button pressing status of all 8 buttons and 2 limit switches (you may use `0`/`1` or colored squares, colored text, or anything you find intuitive for your panel UI), so when you press the button on the controller, the corresponding button on the mainboard's tft will indicate the button being pressed.
 - The panel UI should include:
   - 8 buttons (**@2**)
   - 2 limit switches (**@1**)
