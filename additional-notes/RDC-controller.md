@@ -5,21 +5,25 @@
 ![](/images/controller.jpeg)
 
 In tutorials, you have worked with almost all the features of the controllers
-that may be helpful for RDC. This document provides additional information on
-working with it during RDC, using the controller in your final RDC D-Day. The
-hardware schematics, further resources, and design principles is published in
-a separate [project
-repository
+that may be helpful for RDC. This document should provide you some additional
+information and tips for working with it during RDC, and using the controller in
+your final RDC D-Day.
+
+Aka, how not to destroy your controller and have to spend credits in getting
+another one...
+
+The hardware schematic, some further resources, and the design principles are
+published in a separate [project repository
 here](https://github.com/HKUST-Intelligent-Racing/2026-RDC-Controller).
 
 > [!Note]
 >
-> Although the usage of the PCB should be intuitive (hopefully!), it is still
+> Although the usage should be pretty intuitive (hopefully...), it is still
 > **highly recommended** that you carefully read through this document to know
-> about some of the debugging features and usage not mentioned in SW Tutorials
-> that will be helpful for your RDC!
+> about some of the features and tips not mentioned in SW Tutorials as it will
+> be helpful for your RDC!
 
-## (!) Basic reminders
+## (!!!) Basic reminders
 
 - Keep your batteries charged!
 - Turn off the switch when not in use
@@ -28,7 +32,7 @@ be shorted, and if you're unlucky, something disastrous may happen...
 - Do NOT try to charge the battery using the USB-C port on the STM Bluepill (at
 the back side). Use the custom USB-C port at the bottom left instead
 
-## Power
+## Powering, and managing the battery
 
 The controller can be powered in two ways:
 - With a single rechargeable battery (18650), or
@@ -43,9 +47,10 @@ The controller comes with two battery slots -- intended for backup storage,
 weight distribution, and also ergonomics benefits. Please read the silkscreen
 labels and ensure you plug in the battery you want to use at the correct slot.
 
-## Flashing
+## Flashing code
 
-Connect ST-Link wires to the four pins on the bluepill at the back.
+Connect ST-Link wires to the four pins on the bluepill at the back. **Don't try
+to use the USB-to-TTL module to flash code!!**
 
 > [!Note]
 >
@@ -59,7 +64,7 @@ when pressed, and a GPIO HIGH when released.
 The 8 D-Pad buttons are labelled at the center of the D-Pads, where the number
 indicates the label of the GPIO Input pins in the IOC configuration.
 
-## Bluetooth
+## Bluetooth / HC-05
 
 The HC-05 bluetooth module is powered by **5V**, however, ST-Link only provides
 **3V3**. To enable the HC-05 module, you must either power the controller with
@@ -71,7 +76,7 @@ STM32 configuration -- both are **USART1**. Connecting the HC-05 using rainbow
 wires to the UART port is the same as simply plugging in the HC-05 into its
 slot.
 
-## Hardware debugging features
+## Debugging features
 
 There are UART indicators under the UART header that automatically light up
 during UART RX/TX transmission.
@@ -80,7 +85,7 @@ Joysticks are also equipped with buttons, the LEDs right next to each joystick
 are hardware-level LED indicators that changed based on the joystick button
 state.
 
-## Backup ADCs
+## Backup ADCs (toggle with `0R` resistors)
 
 In the situation where the joystick ADC channels are not receiving the correct
 data for whatever reason (and have been confirmed it's not a software issue),
