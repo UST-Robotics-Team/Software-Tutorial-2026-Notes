@@ -2,6 +2,8 @@
 
 #### Original Author: Hedy
 
+![](/images/controller.jpeg)
+
 In tutorials, you have worked with almost all the features of the controllers
 that may be helpful for RDC. This document provides additional information on
 working with it during RDC, using the controller in your final RDC D-Day. The
