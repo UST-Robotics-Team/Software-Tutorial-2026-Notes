@@ -1,3 +1,11 @@
+> [!Tip]
+>
+> As we've now progressed to the RDC stage, we have uploaded some additional
+> materials for your own reading that will be useful for your software work in
+> RDC in [additional-notes](./additional-notes/).
+
+---
+
 # Overview
 
 > funny words on computer make robot go brrrr weeee
