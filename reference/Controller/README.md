@@ -2,8 +2,7 @@
 
 Complete library-based ADC/joystick implementation retained for both teaching
 groups. The original student Controller directory remains unchanged. This is a
-separate reference project; the new ungraded classroom exercise uses
-`Controller-ADC-Lab` and `Controller_ADC_Lab.elf`.
+separate reference project.
 
 Open this folder in VS Code. Trust only this folder if prompted. Set up the
 existing STM32Cube project as STM32F103C8T6 / Cortex-M3 / GCC, then use Debug
