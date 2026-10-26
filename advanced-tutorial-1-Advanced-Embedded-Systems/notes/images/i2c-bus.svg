@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img"><title>I2C: a shared clock and data bus</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/></marker></defs>
+<rect width="1200" height="760" rx="18" fill="#f7fafc"/>
+<text x="40" y="48" font-family="Arial,Helvetica,sans-serif" font-size="30" fill="#172d46" font-weight="700" text-anchor="start">I2C: a shared clock and data bus</text>
+<text x="40" y="80" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#5b6b7d" font-weight="400" text-anchor="start">This is a signal-level diagram, not a verified Mainboard connector drawing.</text>
+<rect x="40" y="230" width="265" height="170" rx="12" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="58" y="264" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#2563eb" font-weight="700" text-anchor="start">STM32F405</text>
+<text x="58" y="294" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">I2C2 controller</text>
+<text x="58" y="321" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">PB10: SCL</text>
+<text x="58" y="348" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">PB11: SDA</text>
+<rect x="720" y="180" width="420" height="135" rx="12" fill="#ffffff" stroke="#00857a" stroke-width="2"/>
+<text x="738" y="214" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#00857a" font-weight="700" text-anchor="start">Ultrasonic module</text>
+<text x="738" y="244" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">I2C mode; 7-bit address 0x57</text>
+<text x="738" y="271" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Pin 2: SCL / pin 3: SDA</text>
+<rect x="720" y="440" width="420" height="135" rx="12" fill="#ffffff" stroke="#c25b0b" stroke-width="2"/>
+<text x="738" y="474" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#c25b0b" font-weight="700" text-anchor="start">TOF400C / VL53L1X</text>
+<text x="738" y="504" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">7-bit address 0x29</text>
+<text x="738" y="531" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">SCL and SDA on back-side pads</text>
+<path d="M305,280 L650,280" fill="none" stroke="#00857a" stroke-width="4"/>
+<path d="M305,350 L615,350" fill="none" stroke="#2563eb" stroke-width="4"/>
+<text x="340" y="270" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#00857a" font-weight="700" text-anchor="start">SCL</text>
+<text x="340" y="380" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#2563eb" font-weight="700" text-anchor="start">SDA</text>
+<path d="M650,280 L720,245" fill="none" stroke="#00857a" stroke-width="3" marker-end="url(#a)"/>
+<path d="M615,350 L690,350 L690,285 L720,285" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#a)" marker-start="url(#a)"/>
+<path d="M650,280 L650,500 L720,500" fill="none" stroke="#00857a" stroke-width="3" marker-end="url(#a)"/>
+<path d="M615,350 L615,540 L720,540" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#a)" marker-start="url(#a)"/>
+<rect x="360" y="120" width="260" height="90" rx="12" fill="#ffffff" stroke="#5b6b7d" stroke-width="2"/>
+<text x="378" y="154" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#5b6b7d" font-weight="700" text-anchor="start">Pull-ups</text>
+<text x="378" y="184" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Compatible logic supply</text>
+<path d="M475,210 L475,280" fill="none" stroke="#5b6b7d" stroke-width="2" stroke-dasharray="7 5"/>
+<path d="M545,210 L545,350" fill="none" stroke="#5b6b7d" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="40" y="635" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Each device also needs power and a shared ground; these connections are omitted above.</text>
+<text x="40" y="668" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">CW3 and homework use one module at a time. Check onboard pull-ups before adding more.</text>
+<text x="40" y="702" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#5b6b7d" font-weight="400" text-anchor="start">HAL addresses: ultrasonic 0xAE; TOF 0x52. HAL supplies the read/write bit.</text>
+<text x="40" y="740" font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#5b6b7d" font-weight="400" text-anchor="start">UST Robotics Team | Advanced Tutorial 1 | Teaching diagram</text>
+</svg>

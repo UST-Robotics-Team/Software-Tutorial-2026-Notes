@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img"><title>CW2: one IR module, two output paths</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/></marker></defs>
+<rect width="1200" height="760" rx="18" fill="#f7fafc"/>
+<text x="40" y="48" font-family="Arial,Helvetica,sans-serif" font-size="30" fill="#172d46" font-weight="700" text-anchor="start">CW2: one IR module, two output paths</text>
+<text x="40" y="80" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#5b6b7d" font-weight="400" text-anchor="start">A0 is a voltage; D0 is the comparator decision.</text>
+<rect x="40" y="250" width="240" height="140" rx="12" fill="#ffffff" stroke="#00857a" stroke-width="2"/>
+<text x="58" y="284" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#00857a" font-weight="700" text-anchor="start">TCRT5000</text>
+<text x="58" y="314" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">IR emitter + receiver</text>
+<text x="58" y="341" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Reflected light changes</text>
+<text x="58" y="368" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">the analog signal</text>
+<path d="M280,320 L330,320 L330,210 L400,210" fill="none" stroke="#00857a" stroke-width="3" marker-end="url(#a)"/>
+<path d="M330,320 L330,430 L400,430" fill="none" stroke="#c25b0b" stroke-width="3" marker-end="url(#a)"/>
+<rect x="400" y="150" width="300" height="120" rx="12" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="418" y="184" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#2563eb" font-weight="700" text-anchor="start">A0 / AO</text>
+<text x="418" y="214" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Analog voltage</text>
+<text x="418" y="241" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Observe raw values</text>
+<rect x="870" y="150" width="290" height="120" rx="12" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="888" y="184" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#2563eb" font-weight="700" text-anchor="start">MCU ADC</text>
+<text x="888" y="214" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Analog input mode</text>
+<text x="888" y="241" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Software black/white rule</text>
+<path d="M700,210 L870,210" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#a)"/>
+<rect x="400" y="360" width="300" height="140" rx="12" fill="#ffffff" stroke="#c25b0b" stroke-width="2"/>
+<text x="418" y="394" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#c25b0b" font-weight="700" text-anchor="start">LM393 comparator</text>
+<text x="418" y="424" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Compare A0 with threshold</text>
+<text x="418" y="451" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Output D0 / DO</text>
+<text x="418" y="478" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">High or low</text>
+<rect x="870" y="360" width="290" height="140" rx="12" fill="#ffffff" stroke="#c25b0b" stroke-width="2"/>
+<text x="888" y="394" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#c25b0b" font-weight="700" text-anchor="start">MCU GPIO</text>
+<text x="888" y="424" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Digital input mode</text>
+<text x="888" y="451" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Read D0 as 0 or 1</text>
+<path d="M700,430 L870,430" fill="none" stroke="#c25b0b" stroke-width="3" marker-end="url(#a)"/>
+<rect x="400" y="570" width="300" height="95" rx="12" fill="#ffffff" stroke="#c25b0b" stroke-width="2"/>
+<text x="418" y="604" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#c25b0b" font-weight="700" text-anchor="start">Potentiometer</text>
+<text x="418" y="634" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Adjusts D0 threshold</text>
+<path d="M550,570 L550,500" fill="none" stroke="#c25b0b" stroke-width="3" marker-end="url(#a)"/>
+<text x="40" y="705" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#5b6b7d" font-weight="400" text-anchor="start">Measure black and white at the same height. Set software polarity and threshold from those samples.</text>
+<text x="40" y="740" font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#5b6b7d" font-weight="400" text-anchor="start">UST Robotics Team | Advanced Tutorial 1 | Teaching diagram</text>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img">
+<title>tof-principle</title>
+<rect width="1200" height="700" rx="18" fill="#f7fafc"/>
+<text x="40" y="58" font-family="Arial,Helvetica,sans-serif" font-size="30" fill="#172d46" font-weight="700" text-anchor="start">TOF: light out, time back</text>
+<text x="40" y="86" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#5b6b7d" font-weight="400" text-anchor="start">The VL53L1X times 940 nm laser pulses; CW3 times sound instead.</text>
+<rect x="70" y="130" width="300" height="150" rx="12" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="88" y="171" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#2563eb" font-weight="700" text-anchor="start">TOF400C module</text>
+<text x="88" y="200" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">emitter: 940 nm VCSEL (Class 1)</text>
+<text x="88" y="227" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">receiver: SPAD array</text>
+<text x="88" y="254" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">check VIN, pull-ups, XSHUT</text>
+<rect x="870" y="130" width="260" height="150" rx="12" fill="#ffffff" stroke="#172d46" stroke-width="2"/>
+<text x="888" y="171" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#172d46" font-weight="700" text-anchor="start">Target</text>
+<text x="888" y="200" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">flat wall or object</text>
+<text x="888" y="227" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">reflects part of the light</text>
+<text x="888" y="254" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">back to the receiver</text>
+<path d="M380.0,175.0 L855.0,175.0" fill="none" stroke="#c25b0b" stroke-width="3"/>
+<path d="M855.0,175.0 L843.0,181.0 L843.0,169.0 L855.0,175.0" fill="#c25b0b" stroke="#c25b0b" stroke-width="0"/>
+<text x="400" y="166" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#c25b0b" font-weight="400" text-anchor="start">short light pulses</text>
+<path d="M855.0,235.0 L380.0,235.0" fill="none" stroke="#00857a" stroke-width="3"/>
+<path d="M380.0,235.0 L392.0,229.0 L392.0,241.0 L380.0,235.0" fill="#00857a" stroke="#00857a" stroke-width="0"/>
+<text x="400" y="264" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#00857a" font-weight="400" text-anchor="start">reflected light</text>
+<text x="70" y="326" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">The receiver measures the round-trip time t, not the brightness:</text>
+<text x="70" y="358" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#5b6b7d" font-weight="400" text-anchor="start">distance = c x t / 2, with c = 299 792 458 m/s  (1 m of distance is about 6.7 ns of round trip)</text>
+<text x="70" y="390" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#5b6b7d" font-weight="400" text-anchor="start">A bright target is not automatically &quot;close&quot;: the driver reports a range status for every reading.</text>
+<path d="M70.0,520.0 L150.0,520.0 L150.0,470.0 L190.0,470.0 L190.0,520.0 L270.0,520.0" fill="none" stroke="#c25b0b" stroke-width="4"/>
+<text x="70" y="458" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#c25b0b" font-weight="400" text-anchor="start">emitted pulse</text>
+<path d="M430.0,520.0 L620.0,520.0 L620.0,470.0 L660.0,470.0 L660.0,520.0 L820.0,520.0" fill="none" stroke="#00857a" stroke-width="4"/>
+<text x="430" y="458" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#00857a" font-weight="400" text-anchor="start">received pulse</text>
+<path d="M190.0,550.0 L620.0,550.0" fill="none" stroke="#5b6b7d" stroke-width="3"/>
+<path d="M620.0,550.0 L608.0,556.0 L608.0,544.0 L620.0,550.0" fill="#5b6b7d" stroke="#5b6b7d" stroke-width="0"/>
+<path d="M190.0,550.0 L202.0,544.0 L202.0,556.0 L190.0,550.0" fill="#5b6b7d" stroke="#5b6b7d" stroke-width="0"/>
+<text x="405" y="578" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#5b6b7d" font-weight="400" text-anchor="middle">t</text>
+<rect x="870" y="300" width="260" height="300" rx="12" fill="#fff5f5" stroke="#b42335" stroke-width="2"/>
+<text x="888" y="341" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#b42335" font-weight="700" text-anchor="start">Compare the interfaces</text>
+<text x="888" y="370" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#172d46" font-weight="400" text-anchor="start">GPIO: time Echo with TIM2</text>
+<text x="888" y="397" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#172d46" font-weight="400" text-anchor="start">I2C: read distance + status</text>
+<text x="888" y="424" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#172d46" font-weight="400" text-anchor="start">Try the same target with</text>
+<text x="888" y="451" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#172d46" font-weight="400" text-anchor="start">both sensors. Record the</text>
+<text x="888" y="478" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#172d46" font-weight="400" text-anchor="start">distance and any errors.</text>
+<text x="888" y="505" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#172d46" font-weight="400" text-anchor="start">Change material and angle.</text>
+<text x="888" y="532" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#172d46" font-weight="400" text-anchor="start">Do not trust stale readings.</text>
+<text x="888" y="559" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#172d46" font-weight="400" text-anchor="start">Always check validity.</text>
+<text x="40" y="695" font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#5b6b7d" font-weight="400" text-anchor="start">UST Robotics Team | Advanced Tutorial 1 | Teaching diagram</text>
+</svg>

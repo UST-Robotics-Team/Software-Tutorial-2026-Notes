@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780" role="img"><title>CW3: command -&gt; wait -&gt; read -&gt; decode</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/></marker></defs>
+<rect width="1200" height="780" rx="18" fill="#f7fafc"/>
+<text x="40" y="48" font-family="Arial,Helvetica,sans-serif" font-size="30" fill="#172d46" font-weight="700" text-anchor="start">CW3: command -&gt; wait -&gt; read -&gt; decode</text>
+<text x="40" y="80" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#5b6b7d" font-weight="400" text-anchor="start">RCWL-9610 protocol profile; confirm the actual purchased revision.</text>
+<rect x="40" y="140" width="270" height="140" rx="12" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="58" y="174" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#2563eb" font-weight="700" text-anchor="start">1  Send command</text>
+<text x="58" y="204" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">7-bit address: 0x57</text>
+<text x="58" y="231" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">HAL argument: 0xAE</text>
+<text x="58" y="258" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Command byte: 0x01</text>
+<rect x="405" y="140" width="250" height="140" rx="12" fill="#ffffff" stroke="#c25b0b" stroke-width="2"/>
+<text x="423" y="174" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#c25b0b" font-weight="700" text-anchor="start">2  Wait</text>
+<text x="423" y="204" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">250 ms in this kit</text>
+<text x="423" y="231" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">This module manual asks</text>
+<text x="423" y="258" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">for more than 200 ms</text>
+<rect x="750" y="140" width="410" height="140" rx="12" fill="#ffffff" stroke="#00857a" stroke-width="2"/>
+<text x="768" y="174" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#00857a" font-weight="700" text-anchor="start">3  Receive</text>
+<text x="768" y="204" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">HAL argument: 0xAE again</text>
+<text x="768" y="231" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Read exactly 3 bytes</text>
+<text x="768" y="258" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Order: high, middle, low</text>
+<path d="M310,210 L405,210" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#a)"/>
+<path d="M655,210 L750,210" fill="none" stroke="#c25b0b" stroke-width="3" marker-end="url(#a)"/>
+<text x="40" y="345" font-family="Arial,Helvetica,sans-serif" font-size="22" fill="#172d46" font-weight="700" text-anchor="start">Example response</text>
+<rect x="40" y="370" width="170" height="110" rx="12" fill="#ffffff" stroke="#00857a" stroke-width="2"/>
+<text x="58" y="404" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#00857a" font-weight="700" text-anchor="start">High</text>
+<text x="58" y="434" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">0x01</text>
+<rect x="240" y="370" width="170" height="110" rx="12" fill="#ffffff" stroke="#00857a" stroke-width="2"/>
+<text x="258" y="404" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#00857a" font-weight="700" text-anchor="start">Middle</text>
+<text x="258" y="434" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">0xE8</text>
+<rect x="440" y="370" width="170" height="110" rx="12" fill="#ffffff" stroke="#00857a" stroke-width="2"/>
+<text x="458" y="404" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#00857a" font-weight="700" text-anchor="start">Low</text>
+<text x="458" y="434" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">0x48</text>
+<rect x="750" y="370" width="410" height="110" rx="12" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="768" y="404" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#2563eb" font-weight="700" text-anchor="start">4  Combine 24 bits</text>
+<text x="768" y="434" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">(high &lt;&lt; 16) | (middle &lt;&lt; 8) | low</text>
+<path d="M610,425 L750,425" fill="none" stroke="#00857a" stroke-width="3" marker-end="url(#a)"/>
+<rect x="40" y="565" width="550" height="115" rx="12" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="58" y="599" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#2563eb" font-weight="700" text-anchor="start">Raw distance = 125000 micrometres</text>
+<text x="58" y="629" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Divide by 1000 -&gt; 125 mm</text>
+<text x="58" y="656" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Do not divide by two again.</text>
+<path d="M955,480 L955,530 L315,530 L315,565" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#a)"/>
+<rect x="750" y="565" width="410" height="115" rx="12" fill="#ffffff" stroke="#b42335" stroke-width="2"/>
+<text x="768" y="599" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#b42335" font-weight="700" text-anchor="start">Any transfer fails?</text>
+<text x="768" y="629" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Show ERROR / clear old distance</text>
+<text x="768" y="656" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Do not decode an unsuccessful read.</text>
+<text x="40" y="730" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#5b6b7d" font-weight="400" text-anchor="start">Wire address on write: 0xAE; on read: 0xAF. HAL generates that final R/W bit.</text>
+<text x="40" y="760" font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#5b6b7d" font-weight="400" text-anchor="start">UST Robotics Team | Advanced Tutorial 1 | Teaching diagram</text>
+</svg>

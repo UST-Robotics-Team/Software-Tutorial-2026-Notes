@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="660" viewBox="0 0 1200 660" role="img">
+<title>CW3 HC-SR04 trigger and echo timing</title>
+<rect width="1200" height="660" rx="18" fill="#f7fafc"/>
+<text x="40" y="58" font-family="Arial,Helvetica,sans-serif" font-size="30" fill="#172d46" font-weight="700" text-anchor="start">CW3: HC-SR04 trigger and echo timing</text>
+<text x="40" y="86" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#5b6b7d" font-weight="400" text-anchor="start">TIM2 counts microseconds; the Echo HIGH time is the sound round trip.</text>
+<rect x="60" y="100" width="500" height="172" rx="12" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="78" y="141" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#2563eb" font-weight="700" text-anchor="start">Distance</text>
+<text x="78" y="170" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">mm = width_us x 343 / 2000</text>
+<text x="78" y="197" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">343 m/s at about 20 C = 0.343 mm/us,</text>
+<text x="78" y="224" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">divided by 2 because sound travels there and back.</text>
+<rect x="620" y="100" width="520" height="172" rx="12" fill="#fff5f5" stroke="#b42335" stroke-width="2"/>
+<text x="638" y="141" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#b42335" font-weight="700" text-anchor="start">Failure reasons on screen</text>
+<text x="638" y="170" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">no Echo rise within 250 ms  -&gt;  NO ECHO RISE</text>
+<text x="638" y="197" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Echo still high at 250 ms   -&gt;  NO ECHO FALL</text>
+<text x="638" y="224" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">width under 100 us          -&gt;  SHORT PULSE</text>
+<text x="638" y="251" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Echo high before Trig       -&gt;  ECHO BUSY HIGH</text>
+<text x="70" y="373" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#172d46" font-weight="700" text-anchor="end">Trig</text>
+<text x="70" y="543" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#172d46" font-weight="700" text-anchor="end">Echo</text>
+<path d="M130,360 L250,360 L250,300 L296,300 L296,360 L1090,360" fill="none" stroke="#2563eb" stroke-width="4"/>
+<text x="250" y="288" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#5b6b7d" font-weight="400" text-anchor="start">HIGH longer than 10 us (this starter sends 20 us)</text>
+<path d="M250,376 L296,376" fill="none" stroke="#5b6b7d" stroke-width="2"/>
+<path d="M250,370 L250,382" fill="none" stroke="#5b6b7d" stroke-width="2"/>
+<path d="M296,370 L296,382" fill="none" stroke="#5b6b7d" stroke-width="2"/>
+<text x="273.0" y="410" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#5b6b7d" font-weight="400" text-anchor="middle">20 us</text>
+<path d="M312,410 L644,410" fill="none" stroke="#c25b0b" stroke-width="3"/>
+<path d="M644,410 L632.0,416.0 L632.0,404.0 L644,410" fill="#c25b0b" stroke="#c25b0b" stroke-width="0"/>
+<text x="478.0" y="406" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#c25b0b" font-weight="400" text-anchor="middle">8 x 40 kHz burst</text>
+<path d="M130,530 L660,530 L660,470 L940,470 L940,530 L1090,530" fill="none" stroke="#00857a" stroke-width="4"/>
+<path d="M660,500 L940,500" fill="none" stroke="#00857a" stroke-width="3"/>
+<path d="M940,500 L928.0,506.0 L928.0,494.0 L940,500" fill="#00857a" stroke="#00857a" stroke-width="0"/>
+<path d="M660,500 L672.0,494.0 L672.0,506.0 L660,500" fill="#00857a" stroke="#00857a" stroke-width="0"/>
+<text x="800.0" y="494" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#00857a" font-weight="400" text-anchor="middle">width = round trip (us)</text>
+<text x="660" y="566" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#5b6b7d" font-weight="400" text-anchor="start">the module keeps Echo high until the echo returns</text>
+<path d="M130,580 L1050,580" fill="none" stroke="#172d46" stroke-width="2"/>
+<path d="M1010,580 L1080,580" fill="none" stroke="#172d46" stroke-width="3"/>
+<path d="M1080,580 L1068.0,586.0 L1068.0,574.0 L1080,580" fill="#172d46" stroke="#172d46" stroke-width="0"/>
+<text x="1090" y="614" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#5b6b7d" font-weight="400" text-anchor="end">time</text>
+<text x="130" y="614" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#5b6b7d" font-weight="400" text-anchor="start">Trigger only when Echo is low; a failed attempt must clear the old distance.</text>
+<text x="130" y="632" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#5b6b7d" font-weight="400" text-anchor="start">TIM2 is free running, so unsigned subtraction survives the 32-bit counter wrap.</text>
+<text x="40" y="655" font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#5b6b7d" font-weight="400" text-anchor="start">UST Robotics Team | Advanced Tutorial 1 | Teaching diagram</text>
+</svg>

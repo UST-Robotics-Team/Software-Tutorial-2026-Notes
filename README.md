@@ -61,7 +61,7 @@ If you encounter any problems during installation or usage of the IDE, please co
 ### Advanced Tutorials
 Advanced tutorials will be held later in the next phase. There are also advanced notes for your own reading. 
 
-* Advanced Tutorial 1: Advanced Embedded Systems
+* [Advanced Tutorial 1: ADC, GPIO Timing & I2C](advanced-tutorial-1-Advanced-Embedded-Systems/README.md)
 * Advanced Tutorial 2: CAN and PID Control
 
 ---

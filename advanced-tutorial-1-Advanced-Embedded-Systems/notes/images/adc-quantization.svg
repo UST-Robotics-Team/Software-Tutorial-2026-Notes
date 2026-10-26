@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img"><title>ADC: voltage becomes an integer</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/></marker></defs>
+<rect width="1200" height="760" rx="18" fill="#f7fafc"/>
+<text x="40" y="48" font-family="Arial,Helvetica,sans-serif" font-size="30" fill="#172d46" font-weight="700" text-anchor="start">ADC: voltage becomes an integer</text>
+<text x="40" y="80" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#5b6b7d" font-weight="400" text-anchor="start">A small 3-bit example makes the steps visible. The course projects use 12-bit ADCs.</text>
+<text x="75" y="145" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#5b6b7d" font-weight="400" text-anchor="start">Output code</text>
+<path d="M100,575.0 L820,575.0" fill="none" stroke="#dbe4ee" stroke-width="1"/>
+<text x="82" y="581.0" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#5b6b7d" font-weight="400" text-anchor="end">0</text>
+<path d="M100,523.5714285714286 L820,523.5714285714286" fill="none" stroke="#dbe4ee" stroke-width="1"/>
+<text x="82" y="529.5714285714286" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#5b6b7d" font-weight="400" text-anchor="end">1</text>
+<path d="M100,472.1428571428571 L820,472.1428571428571" fill="none" stroke="#dbe4ee" stroke-width="1"/>
+<text x="82" y="478.1428571428571" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#5b6b7d" font-weight="400" text-anchor="end">2</text>
+<path d="M100,420.7142857142857 L820,420.7142857142857" fill="none" stroke="#dbe4ee" stroke-width="1"/>
+<text x="82" y="426.7142857142857" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#5b6b7d" font-weight="400" text-anchor="end">3</text>
+<path d="M100,369.2857142857143 L820,369.2857142857143" fill="none" stroke="#dbe4ee" stroke-width="1"/>
+<text x="82" y="375.2857142857143" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#5b6b7d" font-weight="400" text-anchor="end">4</text>
+<path d="M100,317.85714285714283 L820,317.85714285714283" fill="none" stroke="#dbe4ee" stroke-width="1"/>
+<text x="82" y="323.85714285714283" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#5b6b7d" font-weight="400" text-anchor="end">5</text>
+<path d="M100,266.42857142857144 L820,266.42857142857144" fill="none" stroke="#dbe4ee" stroke-width="1"/>
+<text x="82" y="272.42857142857144" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#5b6b7d" font-weight="400" text-anchor="end">6</text>
+<path d="M100,215.0 L820,215.0" fill="none" stroke="#dbe4ee" stroke-width="1"/>
+<text x="82" y="221.0" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#5b6b7d" font-weight="400" text-anchor="end">7</text>
+<path d="M100,575 L100,195" fill="none" stroke="#172d46" stroke-width="2"/>
+<path d="M100,575 L845,575" fill="none" stroke="#172d46" stroke-width="2"/>
+<polyline points="100.0,575.0 190.0,575.0 190.0,523.5714285714286 280.0,523.5714285714286 280.0,472.1428571428571 370.0,472.1428571428571 370.0,420.7142857142857 460.0,420.7142857142857 460.0,369.2857142857143 550.0,369.2857142857143 550.0,317.85714285714283 640.0,317.85714285714283 640.0,266.42857142857144 730.0,266.42857142857144 730.0,215.0 820.0,215.0" fill="none" stroke="#2563eb" stroke-width="4"/>
+<path d="M100.0,575 L100.0,583" fill="none" stroke="#172d46" stroke-width="2"/>
+<text x="100.0" y="607" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#5b6b7d" font-weight="400" text-anchor="middle">0</text>
+<path d="M280.0,575 L280.0,583" fill="none" stroke="#172d46" stroke-width="2"/>
+<text x="280.0" y="607" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#5b6b7d" font-weight="400" text-anchor="middle">0.825</text>
+<path d="M460.0,575 L460.0,583" fill="none" stroke="#172d46" stroke-width="2"/>
+<text x="460.0" y="607" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#5b6b7d" font-weight="400" text-anchor="middle">1.65</text>
+<path d="M640.0,575 L640.0,583" fill="none" stroke="#172d46" stroke-width="2"/>
+<text x="640.0" y="607" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#5b6b7d" font-weight="400" text-anchor="middle">2.475</text>
+<path d="M820.0,575 L820.0,583" fill="none" stroke="#172d46" stroke-width="2"/>
+<text x="820.0" y="607" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#5b6b7d" font-weight="400" text-anchor="middle">3.3</text>
+<text x="370" y="645" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#172d46" font-weight="400" text-anchor="start">Analog input voltage (V)</text>
+<rect x="860" y="200" width="300" height="150" rx="12" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="878" y="234" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#2563eb" font-weight="700" text-anchor="start">Illustrated ADC</text>
+<text x="878" y="264" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">3 bits = 8 possible codes</text>
+<text x="878" y="291" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Codes: 0 to 7</text>
+<text x="878" y="318" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Reference: 3.3 V</text>
+<rect x="860" y="380" width="300" height="160" rx="12" fill="#ffffff" stroke="#00857a" stroke-width="2"/>
+<text x="878" y="414" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#00857a" font-weight="700" text-anchor="start">Actual course ADC</text>
+<text x="878" y="444" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">12 bits = 4096 codes</text>
+<text x="878" y="471" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Codes: 0 to 4095</text>
+<text x="878" y="498" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">~2048 means ~half-scale</text>
+<text x="100" y="702" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Voltage estimate: raw x Vref / 4095. Actual reference and ADC accuracy still matter.</text>
+<text x="40" y="740" font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#5b6b7d" font-weight="400" text-anchor="start">UST Robotics Team | Advanced Tutorial 1 | Teaching diagram</text>
+</svg>

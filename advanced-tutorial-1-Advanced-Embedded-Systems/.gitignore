@@ -1,0 +1,8 @@
+# Local build and editor artifacts
+.DS_Store
+__MACOSX/
+projects/*/build/
+**/CMakeFiles/
+**/CMakeCache.txt
+*.o
+*.obj

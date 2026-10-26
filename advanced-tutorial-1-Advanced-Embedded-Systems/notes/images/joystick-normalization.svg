@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720"><title>Joystick normalization and push extent</title><rect width="1200" height="720" fill="#f7fafc"/>
+<text x="40" y="56" font-family="Arial,Helvetica,sans-serif" font-size="30" fill="#17324d" font-weight="700">Joystick: raw ADC -&gt; signed position -&gt; push extent</text>
+<text x="40" y="92" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#556a80" font-weight="400">Defaults: minimum 0, centre 2048, maximum 4095, deadband +/-120</text>
+<rect x="400.7399267399267" y="145" width="38.681318681318714" height="345" fill="#d8efed"/>
+<polyline points="90,490.0 750,490.0" fill="none" stroke="#cbd7e3" stroke-width="1"/>
+<text x="43" y="497.0" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#556a80" font-weight="400">-1</text>
+<polyline points="90,317.5 750,317.5" fill="none" stroke="#cbd7e3" stroke-width="1"/>
+<text x="43" y="324.5" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#556a80" font-weight="400">+0</text>
+<polyline points="90,145.0 750,145.0" fill="none" stroke="#cbd7e3" stroke-width="1"/>
+<text x="43" y="152.0" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#556a80" font-weight="400">+1</text>
+<polyline points="90,145 90,490 750,490" fill="none" stroke="#17324d" stroke-width="2"/>
+<polyline points="90.0,490.0 400.7399267399267,317.5 439.42124542124543,317.5 750.0,145.0" fill="none" stroke="#2563eb" stroke-width="5"/>
+<polyline points="90.0,490 90.0,497" fill="none" stroke="#17324d" stroke-width="2"/>
+<text x="70.0" y="521" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#556a80" font-weight="400">0</text>
+<polyline points="420.0805860805861,490 420.0805860805861,497" fill="none" stroke="#17324d" stroke-width="2"/>
+<text x="400.0805860805861" y="521" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#556a80" font-weight="400">2048</text>
+<polyline points="750.0,490 750.0,497" fill="none" stroke="#17324d" stroke-width="2"/>
+<text x="730.0" y="521" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#556a80" font-weight="400">4095</text>
+<text x="295" y="555" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#556a80" font-weight="400">Raw ADC code</text>
+<text x="245" y="138" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#2563eb" font-weight="700">Signed axis before Y direction setting</text>
+<text x="225" y="594" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#087f78" font-weight="700">Centre deadband -&gt; 0</text>
+<text x="90" y="633" font-family="Arial,Helvetica,sans-serif" font-size="19" fill="#556a80" font-weight="400">Apply direction once: Y value *= -1 on the tested board.</text>
+<rect x="790" y="136" width="370" height="195" fill="#ffffff" stroke="#cbd7e3"/>
+<text x="812" y="177" font-family="Arial,Helvetica,sans-serif" font-size="22" fill="#2563eb" font-weight="700">Signed axis: -1 ... +1</text>
+<text x="812" y="214" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#17324d" font-weight="400">raw 964  -&gt; -0.50</text>
+<text x="812" y="252" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#17324d" font-weight="400">raw 2048 -&gt;  0.00</text>
+<text x="812" y="290" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#17324d" font-weight="400">raw 3132 -&gt; +0.50</text>
+<rect x="790" y="354" width="370" height="248" fill="#ffffff" stroke="#cbd7e3"/>
+<text x="812" y="393" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#087f78" font-weight="700">Whole-stick PUSH: 0 ... 1</text>
+<text x="812" y="436" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#17324d" font-weight="400">min(1, sqrt(x*x + y*y))</text>
+<text x="812" y="478" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#17324d" font-weight="400">x = 0.30, y = 0.40</text>
+<text x="812" y="518" font-family="Arial,Helvetica,sans-serif" font-size="23" fill="#087f78" font-weight="700">PUSH = 0.50</text>
+<text x="812" y="566" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#556a80" font-weight="400">A sign flip keeps PUSH the same.</text>
+<text x="40" y="691" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#556a80" font-weight="400">UST Robotics Team | Advanced Tutorial 1 | Position extent, not measured force | Default endpoints are not calibration</text>
+</svg>

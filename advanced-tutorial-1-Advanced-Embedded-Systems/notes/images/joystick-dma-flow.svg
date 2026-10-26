@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img"><title>CW1: from joystick axes to memory</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/></marker></defs>
+<rect width="1200" height="760" rx="18" fill="#f7fafc"/>
+<text x="40" y="48" font-family="Arial,Helvetica,sans-serif" font-size="30" fill="#172d46" font-weight="700" text-anchor="start">CW1: from joystick axes to memory</text>
+<text x="40" y="80" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#5b6b7d" font-weight="400" text-anchor="start">Channel selects an input; Rank determines the array position.</text>
+<text x="40" y="132" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#5b6b7d" font-weight="700" text-anchor="start">Onboard axis</text>
+<text x="350" y="132" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#5b6b7d" font-weight="700" text-anchor="start">ADC1 scan</text>
+<text x="640" y="132" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#5b6b7d" font-weight="700" text-anchor="start">Circular DMA buffer</text>
+<rect x="40" y="160" width="235" height="92" rx="12" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="58" y="194" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#2563eb" font-weight="700" text-anchor="start">J1 X</text>
+<text x="58" y="224" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">PA0 analog voltage</text>
+<rect x="350" y="160" width="210" height="92" rx="12" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="368" y="194" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#2563eb" font-weight="700" text-anchor="start">CH0</text>
+<text x="368" y="224" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Rank 1</text>
+<rect x="640" y="160" width="240" height="92" rx="12" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="658" y="194" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#2563eb" font-weight="700" text-anchor="start">values[0]</text>
+<text x="658" y="224" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">16-bit latest sample</text>
+<path d="M275,206 L350,206" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#a)"/>
+<path d="M560,206 L640,206" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#a)"/>
+<rect x="40" y="272" width="235" height="92" rx="12" fill="#ffffff" stroke="#00857a" stroke-width="2"/>
+<text x="58" y="306" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#00857a" font-weight="700" text-anchor="start">J1 Y</text>
+<text x="58" y="336" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">PA1 analog voltage</text>
+<rect x="350" y="272" width="210" height="92" rx="12" fill="#ffffff" stroke="#00857a" stroke-width="2"/>
+<text x="368" y="306" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#00857a" font-weight="700" text-anchor="start">CH1</text>
+<text x="368" y="336" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Rank 2</text>
+<rect x="640" y="272" width="240" height="92" rx="12" fill="#ffffff" stroke="#00857a" stroke-width="2"/>
+<text x="658" y="306" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#00857a" font-weight="700" text-anchor="start">values[1]</text>
+<text x="658" y="336" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">16-bit latest sample</text>
+<path d="M275,318 L350,318" fill="none" stroke="#00857a" stroke-width="3" marker-end="url(#a)"/>
+<path d="M560,318 L640,318" fill="none" stroke="#00857a" stroke-width="3" marker-end="url(#a)"/>
+<rect x="40" y="384" width="235" height="92" rx="12" fill="#ffffff" stroke="#c25b0b" stroke-width="2"/>
+<text x="58" y="418" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#c25b0b" font-weight="700" text-anchor="start">J2 X</text>
+<text x="58" y="448" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">PA2 analog voltage</text>
+<rect x="350" y="384" width="210" height="92" rx="12" fill="#ffffff" stroke="#c25b0b" stroke-width="2"/>
+<text x="368" y="418" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#c25b0b" font-weight="700" text-anchor="start">CH2</text>
+<text x="368" y="448" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Rank 3</text>
+<rect x="640" y="384" width="240" height="92" rx="12" fill="#ffffff" stroke="#c25b0b" stroke-width="2"/>
+<text x="658" y="418" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#c25b0b" font-weight="700" text-anchor="start">values[2]</text>
+<text x="658" y="448" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">16-bit latest sample</text>
+<path d="M275,430 L350,430" fill="none" stroke="#c25b0b" stroke-width="3" marker-end="url(#a)"/>
+<path d="M560,430 L640,430" fill="none" stroke="#c25b0b" stroke-width="3" marker-end="url(#a)"/>
+<rect x="40" y="496" width="235" height="92" rx="12" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+<text x="58" y="530" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#7c3aed" font-weight="700" text-anchor="start">J2 Y</text>
+<text x="58" y="560" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">PA3 analog voltage</text>
+<rect x="350" y="496" width="210" height="92" rx="12" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+<text x="368" y="530" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#7c3aed" font-weight="700" text-anchor="start">CH3</text>
+<text x="368" y="560" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Rank 4</text>
+<rect x="640" y="496" width="240" height="92" rx="12" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+<text x="658" y="530" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#7c3aed" font-weight="700" text-anchor="start">values[3]</text>
+<text x="658" y="560" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">16-bit latest sample</text>
+<path d="M275,542 L350,542" fill="none" stroke="#7c3aed" stroke-width="3" marker-end="url(#a)"/>
+<path d="M560,542 L640,542" fill="none" stroke="#7c3aed" stroke-width="3" marker-end="url(#a)"/>
+<rect x="960" y="290" width="200" height="150" rx="12" fill="#ffffff" stroke="#00857a" stroke-width="2"/>
+<text x="978" y="324" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#00857a" font-weight="700" text-anchor="start">Your code</text>
+<text x="978" y="354" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Read four values</text>
+<text x="978" y="381" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Centre + deadband</text>
+<text x="978" y="408" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Display on TFT</text>
+<path d="M880,318 L925,318 L925,355 L960,355" fill="none" stroke="#00857a" stroke-width="3" marker-end="url(#a)"/>
+<text x="40" y="665" font-family="Arial,Helvetica,sans-serif" font-size="19" fill="#172d46" font-weight="400" text-anchor="start">Startup: calibrate ADC -&gt; start DMA once. Hardware updates the same four-element array.</text>
+<text x="40" y="702" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#5b6b7d" font-weight="400" text-anchor="start">The axes are sampled in sequence; this diagram does not imply a simultaneous four-axis snapshot.</text>
+<text x="40" y="740" font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#5b6b7d" font-weight="400" text-anchor="start">UST Robotics Team | Advanced Tutorial 1 | Teaching diagram</text>
+</svg>

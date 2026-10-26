@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img"><title>TOF homework: separate IO success from range validity</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/></marker></defs>
+<rect width="1200" height="820" rx="18" fill="#f7fafc"/>
+<text x="40" y="48" font-family="Arial,Helvetica,sans-serif" font-size="30" fill="#172d46" font-weight="700" text-anchor="start">TOF homework: separate IO success from range validity</text>
+<text x="40" y="80" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#5b6b7d" font-weight="400" text-anchor="start">The provided driver polls readiness; INT is not needed for this lesson.</text>
+<rect x="40" y="130" width="320" height="165" rx="12" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="58" y="164" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#2563eb" font-weight="700" text-anchor="start">Startup</text>
+<text x="58" y="194" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Probe -&gt; boot -&gt; check ID</text>
+<text x="58" y="221" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Configure timing + mode</text>
+<text x="58" y="248" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Start ranging</text>
+<rect x="450" y="130" width="280" height="165" rx="12" fill="#ffffff" stroke="#c25b0b" stroke-width="2"/>
+<text x="468" y="164" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#c25b0b" font-weight="700" text-anchor="start">1  Wait for ready</text>
+<text x="468" y="194" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Bounded poll: 500 ms</text>
+<text x="468" y="221" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">I2C transactions: 25 ms</text>
+<text x="468" y="248" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Timeout is an error</text>
+<rect x="820" y="130" width="340" height="165" rx="12" fill="#ffffff" stroke="#00857a" stroke-width="2"/>
+<text x="838" y="164" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#00857a" font-weight="700" text-anchor="start">2  Read measurement</text>
+<text x="838" y="194" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Range status + distance</text>
+<text x="838" y="221" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Distance already in mm</text>
+<text x="838" y="248" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Check operation return values</text>
+<path d="M360,210 L450,210" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#a)"/>
+<path d="M730,210 L820,210" fill="none" stroke="#c25b0b" stroke-width="3" marker-end="url(#a)"/>
+<rect x="820" y="375" width="340" height="110" rx="12" fill="#ffffff" stroke="#00857a" stroke-width="2"/>
+<text x="838" y="409" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#00857a" font-weight="700" text-anchor="start">3  Clear sensor event</text>
+<text x="838" y="439" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Re-arm the next measurement</text>
+<path d="M990,295 L990,375" fill="none" stroke="#00857a" stroke-width="3" marker-end="url(#a)"/>
+<rect x="450" y="375" width="280" height="110" rx="12" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="468" y="409" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#2563eb" font-weight="700" text-anchor="start">4  Evaluate validity</text>
+<text x="468" y="439" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">IO OK AND sample.valid</text>
+<path d="M820,430 L730,430" fill="none" stroke="#00857a" stroke-width="3" marker-end="url(#a)"/>
+<rect x="40" y="570" width="380" height="110" rx="12" fill="#ffffff" stroke="#00857a" stroke-width="2"/>
+<text x="58" y="604" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#00857a" font-weight="700" text-anchor="start">Valid</text>
+<text x="58" y="634" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Show current distance + unit</text>
+<text x="58" y="661" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Use it for your alarm rule</text>
+<rect x="450" y="570" width="340" height="110" rx="12" fill="#ffffff" stroke="#c25b0b" stroke-width="2"/>
+<text x="468" y="604" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#c25b0b" font-weight="700" text-anchor="start">Invalid measurement</text>
+<text x="468" y="634" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Show UNKNOWN / dashes</text>
+<text x="468" y="661" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Keep range status visible</text>
+<path d="M490,485 L490,525 L230,525 L230,570" fill="none" stroke="#00857a" stroke-width="3" marker-end="url(#a)"/>
+<text x="280" y="515" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#00857a" font-weight="700" text-anchor="start">YES</text>
+<path d="M620,485 L620,570" fill="none" stroke="#c25b0b" stroke-width="3" marker-end="url(#a)"/>
+<text x="635" y="535" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#c25b0b" font-weight="700" text-anchor="start">NO</text>
+<rect x="850" y="570" width="310" height="110" rx="12" fill="#ffffff" stroke="#b42335" stroke-width="2"/>
+<text x="868" y="604" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#b42335" font-weight="700" text-anchor="start">IO error / timeout</text>
+<text x="868" y="634" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Clear current distance</text>
+<text x="868" y="661" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Retry initialization later</text>
+<path d="M1125,295 L1180,295 L1180,625 L1160,625" fill="none" stroke="#b42335" stroke-width="3" marker-end="url(#a)"/>
+<path d="M230,680 L230,720" fill="none" stroke="#5b6b7d" stroke-width="2"/>
+<path d="M620,680 L620,720" fill="none" stroke="#5b6b7d" stroke-width="2"/>
+<path d="M620,720 L230,720" fill="none" stroke="#2563eb" stroke-width="2"/>
+<path d="M230,720 L15,720 L15,330 L590,330 L590,295" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#a)"/>
+<text x="40" y="770" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#5b6b7d" font-weight="400" text-anchor="start">Continue the ready/read/clear loop after a usable or unusable measurement; recover separately from IO errors.</text>
+<text x="40" y="800" font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#5b6b7d" font-weight="400" text-anchor="start">UST Robotics Team | Advanced Tutorial 1 | Teaching diagram</text>
+</svg>

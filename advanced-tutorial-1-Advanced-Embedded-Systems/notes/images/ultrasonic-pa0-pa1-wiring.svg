@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="560" viewBox="0 0 1080 560" role="img">
+<title>ultrasonic-pa0-pa1-wiring</title>
+<rect width="1080" height="560" rx="18" fill="#f7fafc"/>
+<text x="40" y="56" font-family="Arial,Helvetica,sans-serif" font-size="30" fill="#172d46" font-weight="700" text-anchor="start">CW3: Fixed Trig PA0 / Echo PA1</text>
+<text x="40" y="94" font-family="Arial,Helvetica,sans-serif" font-size="19" fill="#5b6b7d" font-weight="400" text-anchor="start">New Mainboard functional check | 26 Oct 2026</text>
+<rect x="40" y="130" width="300" height="310" rx="12" fill="#ffffff" stroke="#00857a" stroke-width="2"/>
+<text x="58" y="172" font-family="Arial,Helvetica,sans-serif" font-size="22" fill="#00857a" font-weight="700" text-anchor="start">Ultrasonic module</text>
+<rect x="740" y="130" width="300" height="310" rx="12" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="758" y="172" font-family="Arial,Helvetica,sans-serif" font-size="22" fill="#2563eb" font-weight="700" text-anchor="start">V / PA0 / PA1 / G</text>
+<text x="65" y="218" font-family="Arial,Helvetica,sans-serif" font-size="22" fill="#172d46" font-weight="700" text-anchor="start">VCC</text>
+<text x="765" y="217" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#172d46" font-weight="700" text-anchor="start">V / 3.3 V</text>
+<text x="540" y="197" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#b42335" font-weight="400" text-anchor="middle">Module power</text>
+<path d="M740.0,210.0 L340.0,210.0" fill="none" stroke="#b42335" stroke-width="4"/>
+<path d="M340.0,210.0 L352.0,204.0 L352.0,216.0 L340.0,210.0" fill="#b42335" stroke="#b42335" stroke-width="0"/>
+<text x="65" y="278" font-family="Arial,Helvetica,sans-serif" font-size="22" fill="#172d46" font-weight="700" text-anchor="start">Trig</text>
+<text x="765" y="277" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#172d46" font-weight="700" text-anchor="start">PA0</text>
+<text x="540" y="257" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#c25b0b" font-weight="400" text-anchor="middle">20 us trigger from MCU</text>
+<path d="M740.0,270.0 L340.0,270.0" fill="none" stroke="#c25b0b" stroke-width="4"/>
+<path d="M340.0,270.0 L352.0,264.0 L352.0,276.0 L340.0,270.0" fill="#c25b0b" stroke="#c25b0b" stroke-width="0"/>
+<text x="65" y="338" font-family="Arial,Helvetica,sans-serif" font-size="22" fill="#172d46" font-weight="700" text-anchor="start">Echo</text>
+<text x="765" y="337" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#172d46" font-weight="700" text-anchor="start">PA1</text>
+<text x="540" y="317" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#2563eb" font-weight="400" text-anchor="middle">Echo pulse to MCU</text>
+<path d="M340.0,330.0 L740.0,330.0" fill="none" stroke="#2563eb" stroke-width="4"/>
+<path d="M740.0,330.0 L728.0,336.0 L728.0,324.0 L740.0,330.0" fill="#2563eb" stroke="#2563eb" stroke-width="0"/>
+<text x="65" y="398" font-family="Arial,Helvetica,sans-serif" font-size="22" fill="#172d46" font-weight="700" text-anchor="start">GND</text>
+<text x="765" y="397" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#172d46" font-weight="700" text-anchor="start">G</text>
+<text x="540" y="377" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#5b6b7d" font-weight="400" text-anchor="middle">Common ground</text>
+<path d="M340,390 L740,390" fill="none" stroke="#5b6b7d" stroke-width="4"/>
+<text x="40" y="483" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#5b6b7d" font-weight="400" text-anchor="start">Signal correspondence only: match silk labels, not physical orientation.</text>
+<text x="40" y="515" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#172d46" font-weight="400" text-anchor="start">Fixed roles; no auto-swapping. TIM2: 1 count = 1 us. Module stays in GPIO mode.</text>
+<text x="40" y="555" font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#5b6b7d" font-weight="400" text-anchor="start">UST Robotics Team | Supply voltage is operator-reported; verify each classroom board.</text>
+</svg>
