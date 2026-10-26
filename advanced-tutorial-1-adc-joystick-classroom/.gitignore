@@ -1,0 +1,7 @@
+**/build/
+**/.vscode/
+**/.settings/
+**/MXTmpFiles/
+**/*_save
+__pycache__/
+.DS_Store
