@@ -63,6 +63,10 @@ Confirm supply and labels on your classroom board; USART2 is disabled.
 
 Select **Analog → ADC1**, enable IN3 on PA3, then use:
 
+ADC1 must be enabled and IN3 must stay selected after saving and reopening the
+IOC. Continuous conversion stays disabled because `IR_Read()` starts each
+conversion in software; disabled continuous mode does not mean disabled ADC1.
+
 | Setting | Value | Purpose |
 | --- | --- | --- |
 | ADC prescaler | PCLK2 / 4 | Peripheral clock 84 MHz / 4 = 21 MHz |
