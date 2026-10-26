@@ -126,9 +126,16 @@ An open-drain setting does not create external pull-up resistors.
 
 ## 5. Save/generate without losing the starter
 
-Inspection is enough for these classworks. For regeneration practice, use a
-**copy of the complete project**: the shared sensor additions have not had a
-full CubeMX regeneration round trip checked.
+Inspection is enough for these classworks. Both projects were regenerated with
+STM32CubeMX 6.18.1 and their generated Debug builds passed, using FW_F1 V1.8.7
+for Controller and FW_F4 V1.28.3 for Mainboard. Use a **copy of the complete
+project** for regeneration practice; generation and build checks do not replace
+sensor tests on your board.
+
+Mainboard disables automatic initialization calls for ADC1, I2C2 and TIM2 in
+the IOC. The `main.c` user section already initializes ADC1/I2C2, while
+`Ultrasonic_GPIO_Init()` owns TIM2. Keep these call settings to avoid duplicate
+initialization when regenerating. Controller uses its normal generated calls.
 
 1. **Project Manager → Project:** retain the CMake target/toolchain.
 2. **Code Generator:** retain user code and separate peripheral `.c/.h` files.
