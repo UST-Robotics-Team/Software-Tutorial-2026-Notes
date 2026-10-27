@@ -1,24 +1,24 @@
 #include "student_tasks.h"
 #include "joystick.h"
+#include "joystick_config.h"
+/* Add adc.h after generating ADC1; use its ADC_CHANNEL_* constants in CW1A. */
+
 bool CW1_ReadJoystick(uint16_t values[4])
 {
-    /* TODO CW1A: call Joystick_Read(values), then return true. */
+    /* TODO CW1A: use your Joystick_ReadChannel() for JOYSTICK_AXIS_COUNT axes.
+       Return true only when every requested reading succeeds.
+       A one-axis attempt writes values[0] only; four-axis order is J1X/J1Y/J2X/J2Y. */
     (void)values;
     return false;
 }
 float CW1_NormalizeAxis(uint16_t raw, uint16_t minimum, uint16_t centre,
                        uint16_t maximum, uint16_t deadband)
 {
-    /* TODO CW1B: implement the calculation here; no axis-normalization helper
-       is supplied in the student project.
-       1. Use signed arithmetic for centre-minimum, maximum-centre and raw-centre.
-       2. Return zero if either centre-to-endpoint span is <= deadband.
-       3. Return zero inside the inclusive centre +/- deadband region.
-       4. Outside it, remove the deadband and scale each side separately.
-          Use floating-point division.
-       5. Clamp the result to [-1,1].
-       The UI applies Y polarity afterwards and calculates whole-stick PUSH.
-       CW1C: record four-axis calibration and compare deadbands in joystick_config.h. */
+    /* TODO CW1B: map the measured range to a continuous signed position.
+       Return zero in the inclusive centre deadband and for invalid spans.
+       Use the five parameters and keep the result within [-1,1].
+       The app applies Y direction once and supplies PUSH.
+       CW1C: measure calibration and choose a deadband in joystick_config.h. */
     (void)raw; (void)minimum; (void)centre; (void)maximum; (void)deadband;
     return 0.0f;
 }

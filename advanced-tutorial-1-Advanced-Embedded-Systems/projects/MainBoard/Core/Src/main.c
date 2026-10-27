@@ -25,8 +25,6 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "adc.h"
-#include "i2c.h"
 #include "tutorial_app.h"
 #include "tutorial_config.h"
 #include "lcd/lcd.h"
@@ -96,15 +94,9 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_DMA_Init();
-  MX_USART1_UART_Init();
-  /* UART2 T/R are reserved for IR input pins PA2/PA3 throughout the combined app. */
   MX_SPI1_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-#if IR_WIRING_CONFIRMED
-  MX_ADC1_Init();
-#endif
-  /* Restore the independent I2C2 bus; sensor transactions require the TOF flag. */
-  MX_I2C2_Init();
   tft_init(PIN_ON_TOP, BLACK, WHITE, CYAN, DARK_GREY);
   TutorialApp_Init();
 

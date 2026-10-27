@@ -1,25 +1,37 @@
-# MainBoard — IR and Ultrasonic Together
+# MainBoard — IR, Ultrasonic and Optional TOF
 
-Use **CMake: Build → Debug → Run and Debug / STLINK GDB Server**, as before.
-Flash `build/Debug/MainBoard.elf` and Continue if paused at startup.
-CW2 and CW3 share this one project, one ELF and one screen.
+One project, one Debug ELF and one screen covers CW2, CW3 and optional TOF.
+Build Debug, Run and Debug / STLINK GDB Server, then Continue after the entry
+breakpoint. Select `build/Debug/MainBoard.elf` on the F405 Mainboard.
 
-- IR: UART2 **V/T/R/G = VCC/D0/A0/GND**. D0 PA2 input; A0 PA3 ADC1 CH3.
-- Ultrasonic: **V/PA0/PA1/G = VCC/Trig/Echo/GND**. Fixed Trig PA0 / Echo PA1.
-- Both V pins were reported as 3.3 V; confirm your board supply. USART2 stays
-  disabled. I2C2 PB10/PB11 stays independent; TOF is initially disabled.
+The starter prepares display SPI/DMA, clocks, buttons, LEDs, USART1 and SWD.
+**ADC1, TIM2 and I2C2 start disabled.** Sensor pins remain passive until their
+IOC configuration is completed; USART2 is always disabled. No sensor reference
+implementation runs automatically. The initial screen shows IR/US NOT READY
+and increasing RUN time.
 
-The starter shows IR A0/D0 for sampling and DO CW3 TODO for ultrasonic.
-Ultrasonic does not trigger or display a distance until its task is implemented.
-In `Core/Src/student_tasks.c`:
+| Part | Configure in IOC | Write in existing application files |
+| --- | --- | --- |
+| CW2A | PA2 GPIO input, no pull | `ir_sensor.c`: `IR_ReadDigital()` |
+| CW2B | PA3 ADC1 IN3, one software-triggered conversion | `ir_sensor.c`: `IR_Read()` |
+| CW2C | Retain acquisition | `student_tasks.c`: classify measured A0 |
+| CW3A | PA0 output LOW, PA1 input, TIM2 1 MHz | `ultrasonic_gpio_port.c`: start/counter/GPIO; `ultrasonic.c`: microsecond delay |
+| CW3B/C | Keep generated setup | `ultrasonic.c`: bounded edge waits; `student_tasks.c`: transaction and distance |
+| TOF A/B/C | I2C2 PB10/PB11, 100 kHz | `tof_sensor.c`: probe/read; `vl53l1_platform.c`: bus transfers and word decoding |
 
-1. CW2: classify `sample->raw` with a threshold chosen from black/white samples.
-2. CW3: fill trigger timing, pulse width and distance calculation in the prepared
-   function. Remove its top early return after completing the TODOs.
+Generate Code produces every peripheral initialization and its call once.
+Do not write `HAL_GPIO_Init()`, timer register setup or extra MX init calls in
+application files. Runtime HAL start/read/write operations belong to the tasks.
+Add generated `adc.h`, `tim.h` or `i2c.h` includes only after enabling/generating
+that peripheral. Keep all task files, root CMake user sources and USER CODE calls.
 
-After implementing CW3, the app displays your result or error. Keep CW2.
-The supplied helpers own initialization, bounded waits and diagnostic state.
+IR uses UART2 V/T/R/G = VCC/D0/A0/GND (PA2 D0, PA3 A0). Ultrasonic uses
+V/PA0/PA1/G = VCC/Trig/Echo/GND. Both V supplies were reported as 3.3 V; confirm
+your board. TOF supply/pull-ups/SHUT remain pending; its wiring flag stays zero.
 
 [CW2](../../notes/03-ir.md) | [CW3](../../notes/04-ultrasonic.md) |
-[CW3 task guide](cw3-task-guide.md) | [Setup](../../hardware/classwork-setup.md) |
-[IOC guide](../../hardware/ioc-guide.md)
+[CW3 task map](cw3-task-guide.md) | [I2C](../../notes/05-i2c.md) |
+[TOF](../../notes/06-optional-tof.md) | [IOC guide](../../hardware/ioc-guide.md)
+
+The complete earlier IR/ultrasonic/TOF software is preserved separately in the
+repository's `reference/MainBoard`, with its physical-validation limits stated.

@@ -1,15 +1,22 @@
 #include "sensors.h"
-#include "i2c.h"
+/* Add i2c.h after I2C2 code generation for TOF_Probe(). */
 #include "tutorial_config.h"
 #include "vl53l1x_subset.h"
 #include "vl53l1_platform.h"
 static bool initialized;
+HAL_StatusTypeDef TOF_Probe(void)
+{
+    /* TODO TOF A: probe the shifted device address on generated I2C2.
+       A successful address response does not establish a valid distance. */
+    return HAL_ERROR;
+}
+
 HAL_StatusTypeDef TOF_Init(void)
 {
     initialized=false;
     VL53L1_PlatformBegin();
-    if (HAL_I2C_IsDeviceReady(&hi2c2,TOF_ADDRESS_HAL,2,SENSOR_IO_TIMEOUT_MS)!=HAL_OK)
-        return HAL_ERROR;
+    HAL_StatusTypeDef probe = TOF_Probe();
+    if (probe != HAL_OK) return probe;
     uint32_t start=HAL_GetTick();
     uint8_t booted=0;
     while (!booted) {
@@ -36,23 +43,10 @@ HAL_StatusTypeDef TOF_Read(TOF_Sample *sample)
     sample->distance_mm=0; sample->range_status=255; sample->valid=false;
     if (!initialized) return HAL_ERROR;
     VL53L1_PlatformBegin();
-    uint32_t start=HAL_GetTick();
-    uint8_t ready=0;
-    while (!ready) {
-        if (VL53L1X_CheckForDataReady(TOF_ADDRESS_HAL,&ready)) {
-            initialized=false; return HAL_ERROR;
-        }
-        if ((uint32_t)(HAL_GetTick()-start)>=500U) {
-            initialized=false; return HAL_TIMEOUT;
-        }
-        HAL_Delay(2);
-    }
-    if (VL53L1X_GetRangeStatus(TOF_ADDRESS_HAL,&sample->range_status) ||
-        VL53L1X_GetDistance(TOF_ADDRESS_HAL,&sample->distance_mm) ||
-        VL53L1X_ClearInterrupt(TOF_ADDRESS_HAL)) {
-        sample->distance_mm=0; sample->range_status=255;
-        initialized=false; return HAL_ERROR;
-    }
-    sample->valid=sample->range_status==0 && sample->distance_mm!=0;
-    return HAL_OK;
+    /* TODO TOF C: wait for readiness with a 500 ms maximum, read range status
+       and distance, then clear the sensor event. Preserve the first I/O error.
+       Set valid only for normalized status 0 and a nonzero distance.
+       On any I/O failure, clear the distance and mark initialization invalid. */
+    initialized=false;
+    return HAL_ERROR;
 }

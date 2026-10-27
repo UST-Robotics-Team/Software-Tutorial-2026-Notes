@@ -65,6 +65,14 @@ void Error_Handler(void);
 #define LED_D7_GPIO_Port GPIOC
 #define LED_D8_Pin GPIO_PIN_1
 #define LED_D8_GPIO_Port GPIOC
+#define US_TRIG_Pin GPIO_PIN_0
+#define US_TRIG_GPIO_Port GPIOA
+#define US_ECHO_Pin GPIO_PIN_1
+#define US_ECHO_GPIO_Port GPIOA
+#define IR_D0_UART2_T_Pin GPIO_PIN_2
+#define IR_D0_UART2_T_GPIO_Port GPIOA
+#define IR_A0_UART2_R_Pin GPIO_PIN_3
+#define IR_A0_UART2_R_GPIO_Port GPIOA
 #define BTN2_Pin GPIO_PIN_4
 #define BTN2_GPIO_Port GPIOA
 #define TFT_SCK_Pin GPIO_PIN_5

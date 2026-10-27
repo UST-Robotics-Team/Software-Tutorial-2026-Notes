@@ -17,7 +17,7 @@
 <text x="70" y="373" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#172d46" font-weight="700" text-anchor="end">Trig</text>
 <text x="70" y="543" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#172d46" font-weight="700" text-anchor="end">Echo</text>
 <path d="M130,360 L250,360 L250,300 L296,300 L296,360 L1090,360" fill="none" stroke="#2563eb" stroke-width="4"/>
-<text x="250" y="288" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#5b6b7d" font-weight="400" text-anchor="start">HIGH longer than 10 us (this starter sends 20 us)</text>
+<text x="250" y="288" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#5b6b7d" font-weight="400" text-anchor="start">HIGH longer than 10 us (your request uses 20 us)</text>
 <path d="M250,376 L296,376" fill="none" stroke="#5b6b7d" stroke-width="2"/>
 <path d="M250,370 L250,382" fill="none" stroke="#5b6b7d" stroke-width="2"/>
 <path d="M296,370 L296,382" fill="none" stroke="#5b6b7d" stroke-width="2"/>

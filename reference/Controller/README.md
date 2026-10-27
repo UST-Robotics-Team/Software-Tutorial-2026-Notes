@@ -1,7 +1,7 @@
 # Released Controller Reference v1
 
 Complete library-based ADC/joystick implementation retained for both teaching
-groups. The original student Controller directory remains unchanged. This is a
+groups. The classroom Controller remains in its existing tutorial directory. This is a
 separate reference project.
 
 Open this folder in VS Code. Trust only this folder if prompted. Set up the

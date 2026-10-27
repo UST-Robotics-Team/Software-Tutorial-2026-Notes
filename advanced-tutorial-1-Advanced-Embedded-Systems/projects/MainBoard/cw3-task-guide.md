@@ -1,31 +1,35 @@
-# CW3: What You Fill In
+# CW3: Configuration and Code Ownership
 
-[CW3 lesson](../../notes/04-ultrasonic.md) | [Setup](../../hardware/classwork-setup.md)
+[Lesson](../../notes/04-ultrasonic.md) | [Setup](../../hardware/classwork-setup.md)
 
-Edit `Core/Src/student_tasks.c`, inside `CW3_MeasureUltrasonic()`.
-
-| Part | Supplied or student? |
+| Part | Your work |
 | --- | --- |
-| GPIO PA0/PA1 and TIM2 1 MHz setup | Supplied |
-| Idle check, output clearing and 2 us settling | Supplied: `Ultrasonic_Begin()` |
-| 20 us trigger pulse | **Student TODO A** |
-| Shared-deadline rising/falling edge capture | Supplied: `Ultrasonic_WaitEdges()` |
-| Unsigned falling minus rising timestamp | **Student TODO B** |
-| Sound-speed, round-trip conversion and rounding | **Student TODO C** |
-| Minimum-width/result checks, diagnostics and final status | Supplied: `Ultrasonic_Complete()` |
-| Error display and a single full-frame TFT commit | Supplied app |
+| IOC | PA0 output LOW, PA1 input, TIM2 internal clock / PSC 83 / ARR 0xFFFFFFFF |
+| `ultrasonic_gpio_port.c` | Start TIM2 once, read its counter, write Trig and read Echo |
+| `ultrasonic.c` | Implement microsecond delay and shared-deadline edge capture |
+| `student_tasks.c` | Assemble Begin/trigger/wait/subtract/convert/Complete |
 
-Keep the includes, signature and prepared status guards. When helpers fail, the
-provided early returns finish that attempt; do not compute a distance from
-missing timestamps. `true` means the task supplied an outcome, including error.
-It is separate from `HAL_OK`, which equals zero. You do not write those guards.
+The supplied Begin/Complete functions clear outputs and maintain diagnostics and
+plausibility checks. They do not capture edges or supply the distance formula.
+The app supplies the TFT/error display and NEAR label from a valid distance.
 
-Leave the top `return false` while filling A/B/C, then remove it and rebuild/flash.
-`DO CW3 TODO` means the task is unfinished. It does not trigger a measurement
-or run a reference implementation. After completing the TODOs and removing
-the early return, the same screen displays your distance or a measurement error.
-The complete lecturer solution is excluded from the student archive.
+Initialize peripherals only by IOC generation. `Ultrasonic_Start()` operates the
+already initialized timer with HAL; it must not configure GPIO/clocks/registers.
+Keep configuration in IOC; application files operate the generated hardware.
 
-Required: show your trigger sequence, derive one pulse-to-mm calculation, compare
-three ruler positions, show timeout/recovery, and keep IR updating on the same
-board. Extensions: display cm, add hysteresis, or implement the bounded edge waits.
+Both edge waits share the deadline measured from the end of Trig. Check timeout
+before accepting the edge, including the final iteration. Also use a finite
+millisecond watchdog if the microsecond counter stops. Set the matching reason
+for no rise/no fall. Trig must return LOW on every exit path.
+
+`CW3_MeasureUltrasonic()` returns false while unfinished. Once complete, true
+means it produced an outcome, including error; `*status` separately reports
+HAL_OK/HAL_ERROR/HAL_TIMEOUT. Publish no stale distance on failure.
+
+The starter first shows US NOT READY / CHECK CW3 TIMER. After the timer start
+succeeds, an unfinished transaction shows DO CW3 TODO. An unfinished edge
+function reports EDGE TASK TODO if called by a completed transaction skeleton.
+A non-OK delay reports TIMER NOT RUNNING. None runs a reference measurement.
+
+Show the IOC clock calculation, your pulse and waits, a distance derivation,
+three ruler comparisons and timeout/recovery. Keep IR working in the same program.

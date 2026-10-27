@@ -1,14 +1,14 @@
-/* Supplied bounded helpers for CW3.
-   Students write the trigger, pulse width and distance calculation.
-   TIM2 supplies microseconds; unsigned subtraction handles counter wrap. */
+/* CW3 timing tasks and supplied diagnostic/output helpers. */
 #include "ultrasonic_gpio.h"
 #include "tutorial_config.h"
 volatile Ultrasonic_Diagnostics g_ultrasonic;
 
-void Ultrasonic_DelayUs(uint32_t duration)
+HAL_StatusTypeDef Ultrasonic_DelayUs(uint32_t duration)
 {
-    uint32_t start = Ultrasonic_Micros();
-    while ((uint32_t)(Ultrasonic_Micros() - start) < duration) {}
+    /* TODO CW3A: delay using unsigned timer differences, in microseconds.
+       Also use a finite HAL_GetTick deadline if the timer stops advancing. */
+    (void)duration;
+    return HAL_ERROR;
 }
 
 HAL_StatusTypeDef Ultrasonic_Begin(void)
@@ -23,39 +23,23 @@ HAL_StatusTypeDef Ultrasonic_Begin(void)
         g_ultrasonic.reason = US_ECHO_BUSY;
         return HAL_BUSY;
     }
-    Ultrasonic_DelayUs(ULTRASONIC_SETTLE_US);
-    return HAL_OK;
-}
-
-static bool WaitEcho(bool high, uint32_t transaction_start, uint32_t *edge)
-{
-    for (;;) {
-        bool level = Ultrasonic_Echo();
-        uint32_t now = Ultrasonic_Micros();
-        if ((uint32_t)(now - transaction_start) >= ULTRASONIC_TIMEOUT_US) return false;
-        if (level == high) { *edge = now; return true; }
-    }
+    HAL_StatusTypeDef status = Ultrasonic_DelayUs(ULTRASONIC_SETTLE_US);
+    if (status != HAL_OK) g_ultrasonic.reason = US_TIMER_ERROR;
+    return status;
 }
 
 HAL_StatusTypeDef Ultrasonic_WaitEdges(uint32_t transaction_start,
                                       uint32_t *rise, uint32_t *fall)
 {
-    /* Trig must be LOW throughout the response. Both edges share a deadline. */
-    Ultrasonic_Trigger(false);
-    if (!rise || !fall) {
-        g_ultrasonic.reason = US_BAD_RESULT;
-        return HAL_ERROR;
-    }
-    *rise = *fall = 0U;
-    if (!WaitEcho(true, transaction_start, rise)) {
-        g_ultrasonic.reason = US_NO_RISE;
-        return HAL_TIMEOUT;
-    }
-    if (!WaitEcho(false, transaction_start, fall)) {
-        g_ultrasonic.reason = US_NO_FALL;
-        return HAL_TIMEOUT;
-    }
-    return HAL_OK;
+    /* TODO CW3B: capture rising/falling edges with one shared 250 ms deadline.
+       Check the deadline before accepting either edge, including at the limit.
+       Use a bounded millisecond watchdog too if the microsecond clock stalls.
+       Set US_NO_RISE or US_NO_FALL on the matching timeout. */
+    (void)transaction_start;
+    (void)rise;
+    (void)fall;
+    g_ultrasonic.reason = US_EDGE_TASK;
+    return HAL_ERROR;
 }
 
 HAL_StatusTypeDef Ultrasonic_Complete(uint32_t width_us, uint32_t measured_mm,

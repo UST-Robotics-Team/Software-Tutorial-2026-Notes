@@ -15,10 +15,10 @@ after-class TOF experiment.
 ## Contents
 
 0. [Quick map and terms](notes/00-getting-started.md) — acronym meanings and how sensor data reaches your code.
-1. [ADC](notes/01-adc.md) — sampling, voltage codes, polling/DMA and calibration.
+1. [ADC](notes/01-adc.md) — sampling, voltage codes, ADC setup, polling and calibration.
 2. [Joysticks](notes/02-joystick.md) — **Classwork 1:** read four axes, implement normalization, calibrate and compare deadbands.
-3. [IR sensor](notes/03-ir.md) — **Classwork 2:** sample A0, read D0 and choose a black/white threshold.
-4. [Ultrasonic sensor](notes/04-ultrasonic.md) — **Classwork 3:** guided trigger timing, Echo width and distance conversion.
+3. [IR sensor](notes/03-ir.md) — **Classwork 2:** configure/read A0 and D0, then choose a measured threshold.
+4. [Ultrasonic sensor](notes/04-ultrasonic.md) — **Classwork 3:** configure GPIO/TIM2, capture Echo with timeouts and calculate distance.
 
 **I2C lecture and optional application**
 
@@ -55,7 +55,9 @@ It contains **two separate STM32 projects**:
 | [MainBoard](projects/MainBoard/README.md) | STM32F405RGT6 | CW2: IR; CW3: ultrasonic; optional TOF |
 
 Open one project folder at a time. Use the prepared Debug build and complete
-`Core/Src/student_tasks.c`. Use the [setup guide](hardware/classwork-setup.md)
+the Controller acquisition functions and `Core/Src/student_tasks.c`. CW1A also
+requires configuring and generating ADC1. MainBoard sensors also require
+configuration and acquisition tasks in the same existing project. Use the [setup guide](hardware/classwork-setup.md)
 for build/flash commands and the [IOC walkthrough](hardware/ioc-guide.md) for
 CubeMX settings and what they do.
 
@@ -70,9 +72,9 @@ a senior during the tutorial.
 
 | Classwork | What to demonstrate |
 | --- | --- |
-| CW1 | Four ADC axes, your own normalization code, calibration record and deadband comparison |
-| CW2 | A0 and D0 readings, measured black/white samples and a working software threshold |
-| CW3 | Distance at three target positions, pulse timing, and failure/recovery without a stale reading |
+| CW1 | Your ADC configuration/polling code, four axes, normalization, calibration and deadband comparison |
+| CW2 | Your GPIO/ADC configuration and acquisition, measured samples and software threshold |
+| CW3 | Your timer/GPIO setup, edge/timeout code, three ruler positions and failure/recovery |
 
 I2C core concepts are introduced in class. The TOF400C application and deeper
 I2C examples are optional self-study; they are not submitted or marked.
@@ -88,9 +90,11 @@ Use the power connections checked by the lecturers.
 
 [Begin: Quick map and terms](notes/00-getting-started.md)
 
-CW2 and CW3 share one prepared Mainboard Debug program and one screen. The
-starter reads IR A0/D0 for sampling; ultrasonic waits for the completed CW3 task. CW2 uses A0 for a measured
-software threshold; D0 is a separate comparison. CW3 supplies a marked template
-for trigger/width/distance logic, with bounded waits and error handling provided.
+CW2 and CW3 share one MainBoard Debug program and screen. Students configure
+GPIO/ADC/TIM2 through IOC and write their acquisition functions. Screen/error
+formatting is provided; no automatic IR/ultrasonic measurement runs in the starter.
+TOF extends the same program after physical wiring checks and student I2C tasks.
 
-IR uses UART2 V/T/R/G; ultrasonic uses V/PA0/PA1/G. Confirm supply and signal labels on your board before connecting the sensors. USART2 remains disabled; TOF wiring is still TBD.
+IR uses UART2 V/T/R/G and ultrasonic uses V/PA0/PA1/G. USART2 remains disabled.
+TOF supply/pull-ups/SHUT are pending. The earlier complete implementations are
+preserved in the repository's reference directory, outside the student ZIP.

@@ -4,118 +4,126 @@
 
 ## Two boards, two projects
 
-| Classwork | Open this folder in VS Code | Board |
+| Classwork | Open in VS Code | Board |
 | --- | --- | --- |
-| CW1: joystick | `projects/Controller` | Blue Pill Controller / STM32F103xB |
-| CW2 + CW3: IR and ultrasonic together | `projects/MainBoard` | New RDC Mainboard / STM32F405RG profile |
+| CW1 ADC/joystick | `projects/Controller` | Blue Pill / STM32F103xB |
+| CW2 IR + CW3 ultrasonic + optional TOF | `projects/MainBoard` | New RDC Mainboard / STM32F405RG profile |
 
-CW2 and CW3 use **one program and one screen**. Connect both sensors, open
-MainBoard once, and keep using it for both classworks. The starter already
-reads IR A0/D0 for threshold sampling. CW2 adds ADC classification;
-CW3 starts as an unfinished measurement task, without an automatic distance.
+Keep one MainBoard program and screen throughout the sensor exercises. Preserve
+your completed IR code when adding ultrasonic, then optional TOF. Controller and
+MainBoard are different targets; never flash one board's ELF onto the other.
 
-Both projects include a configured IOC, startup code, HAL, CMake and the familiar
-TFT functions. The lecturer supplies ADC and ultrasonic `.c`/`.h` drivers.
-You do not need to regenerate CubeMX code or change a build setting for CW2/CW3.
-Never flash the Controller program onto the Mainboard or vice versa.
+Display, clocks, buttons, HAL and CMake are supplied. Controller ADC1 and MainBoard
+ADC1/TIM2/I2C2 are initially disabled for you to configure and generate. MainBoard
+SPI1 DMA is already configured for the TFT; do not remove it when keeping ADC or
+timer DMA disabled. Install CubeMX 6.18.1 and the required FW_F1 V1.8.7 / FW_F4
+V1.28.3 packages before class. Bundled sources alone do not replace generation's
+firmware-package dependency.
 
-## Build and flash: the same Debug workflow as before
+## Build and flash: the usual Debug workflow
 
-1. Open the **project folder** in VS Code, not the whole repository. If prompted
-   to configure the discovered CMake project as an STM32Cube project, choose Yes.
-2. Run **CMake: Build** from the command palette and select **Debug**. Resolve
-   build errors before flashing.
-3. Open **Run and Debug**. If this folder has no launch configuration, choose
-   **create a launch.json file**, then **STLINK GDB Server**, as in
-   [Tutorial 1's setup guide](https://github.com/UST-Robotics-Team/Software-Tutorial-2026-Notes/blob/main/tutorial-1-basic-io/00-introduction.md#5-generate-a-launchjson-to-flash-code).
-   Let the installed STM32 extension generate its machine-specific configuration.
-4. Check the board and ELF: `build/Debug/Controller.elf` for CW1;
-   `build/Debug/MainBoard.elf` for CW2 **and** CW3. Use Run and Debug to flash.
-5. Continue execution if the debugger stops at startup. Check the screen below.
+1. Open the individual project folder. Accept STM32 project setup if prompted,
+   keeping the correct MCU and complete Arm toolchain.
+2. Run **CMake: Build**, select **Debug**, and resolve errors before flashing.
+3. Use **Run and Debug** / STLINK GDB Server. If absent, create its launch
+   configuration using the installed STM32 extension, as in
+   [Tutorial 1](https://github.com/UST-Robotics-Team/Software-Tutorial-2026-Notes/blob/main/tutorial-1-basic-io/00-introduction.md#5-generate-a-launchjson-to-flash-code).
+4. Select `build/Debug/Controller.elf` or `build/Debug/MainBoard.elf` for the board
+   actually connected, then start debugging to flash it.
+5. Continue past the entry breakpoint and check the expected screen.
 
-After each code edit: **save → CMake: Build (Debug) → Run and Debug → Continue**.
-There is no sensor selection to change, and no terminal command is required for
-these classworks. Keep the prepared student build settings. If setup fails, ask a
-lecturer to check the toolchain rather than changing compiler or target settings.
+If the STM32 extension asks to set up the project, use its project setup action
+in the STM32 sidebar, select the current project and **Debug**, and keep the
+correct MCU and complete Arm toolchain. Command Palette wording can vary;
+finding one exact setup-command name is not a prerequisite. A missing STLINK
+GDB Server launch configuration is handled by step 3 above.
 
-When moving from CW1 to CW2, power off, move ST-Link to the Mainboard, and open
-its project. When moving from CW2 to CW3, keep the same Mainboard project,
-Debug configuration, sensor wiring and ELF. Preserve your CW2 code while adding CW3.
+Use the **same working folder** in CubeMX and VS Code. The generated `adc.c`
+must belong to the Controller folder you are building, rather than a second
+extracted copy or the lecturer's temporary screenshot project. Check the opened
+IOC's project location and the ELF path if generation or edits appear to have
+no effect.
 
-## Connect both Mainboard sensors
+After application edits: **save → build Debug → Run and Debug → Continue**.
+After IOC changes: **save IOC → Generate Code → inspect → build/flash/Continue**.
+Initialization comes from IOC. Do not add a second MX init call or replace a
+generated configuration body by hand. Put application calls within USER CODE
+regions and the actual task bodies in the supplied independent files.
 
-Power off before wiring. Match signal labels, not cable colours or connector
-position. These mappings passed individual sensor tests on the new board.
-The two V pins were reported as 3.3 V; confirm the supply on each classroom board.
+## Wire the MainBoard sensors
 
-| Sensor pin | Mainboard header | MCU pin |
-| --- | --- | --- |
-| IR VCC / D0 / A0 / GND | UART2 V / T / R / G | Power / PA2 / PA3 ADC1 CH3 / ground |
-| Ultrasonic VCC / Trig / Echo / GND | V / PA0 / PA1 / G | Power / PA0 output / PA1 input / ground |
+Power off before wiring and match actual labels. The earlier individual and
+combined IR/ultrasonic tests used this map on the new board. V supplies were
+reported as 3.3 V; confirm on your classroom board.
 
-The UART2 connector carries IR signals here; **USART2 serial communication is
-disabled**. I2C2 remains available independently on PB10/PB11. TOF is optional and
-is disabled until its supply, pull-ups and SHUT wiring are checked; see the
-[connector map](pin-mapping.md).
+| Sensor | Header |
+| --- | --- |
+| IR VCC / D0 / A0 / GND | UART2 V / T(PA2) / R(PA3) / G |
+| Ultrasonic VCC / Trig / Echo / GND | V / PA0 / PA1 / G |
 
-## First-flash check
+USART2 remains disabled: the UART2-labelled connector carries GPIO/analog signals.
+PA0/PA1 start as passive inputs until CW3 configuration; PA3 starts analog GPIO
+until ADC1 is enabled. Optional TOF uses PB10/PB11 after I2C2 configuration, but
+its supply, pull-ups and SHUT still require a lecturer's physical check. Keep
+TOF_WIRING_CONFIRMED=0 meanwhile. See the [connection map](pin-mapping.md).
 
-With both sensors connected, the untouched Mainboard starter should show:
+## First flash and progress messages
+
+The untouched MainBoard starter shows:
 
 ```text
 IR + ULTRASONIC
-A0:2810 D0:1
-SURFACE: ?
+IR NOT READY
+CHECK CW2 GPIO
 UART2 A0:R D0:T
 ULTRASONIC CW3
-DO CW3 TODO
-DIST: -----
+US NOT READY
+CHECK CW3 TIMER
 NEAR: ---
 PA0:T PA1:E
 RUN 3 s
 ```
 
-The A0/D0 numbers are illustrative. Move the IR over black and white paper to
-collect samples. `SURFACE: ?` marks the unfinished classification.
-`DO CW3 TODO` means the ultrasonic task has not been implemented: the starter
-does not send a trigger or provide a reference distance. Test the ultrasonic
-sensor after completing and flashing its measurement code.
-
-The supplied app updates the combined screen about every 300 ms. Once CW3 is
-implemented, a missing Echo can add up to the driver's 250 ms wait to an update.
-A failed measurement shows its error and dashes. IR continues to be read while
-CW3 is unfinished or has a measurement error.
-
-The Controller initially shows `CW1 NORMALIZED` / `DO CW1 TODO`;
-[CW1](../notes/02-joystick.md) explains acquisition, your normalization calculation,
-and the calibration/deadband experiment.
-
-## Where to write code
-
-| File | Your work |
+| Your progress | Expected observation |
 | --- | --- |
-| Controller `Core/Src/student_tasks.c` | CW1 joystick read and normalization |
-| MainBoard `Core/Src/student_tasks.c` | CW2 A0 threshold classifier; CW3 trigger pulse, Echo width and mm conversion |
-| MainBoard `Core/Inc/tutorial_config.h` | Measured ADC threshold/polarity; supplied timing constants |
+| CW2A digital function works | D0 changes; A0 is dashes with ADC TODO/ERROR |
+| CW2B ADC function works | A0/D0 respond; SURFACE remains ? until classification |
+| CW2C classifier works | BLACK/WHITE follow your measured threshold |
+| CW3 timer start works | DO CW3 TODO until you implement the transaction |
+| CW3 transaction works | Your distance/pulse width, or an error and no stale distance |
+| Optional TOF enabled after checks | TOF status/result on rows 8/9; no automatic valid sample |
 
-The app always reads IR and calls `CW2_ProcessIR()` only after a successful
-conversion. Use the familiar `tft_prints(0, 2, ...)` for the software label.
+Controller initially shows CW1 NORMALIZED / ADC NOT READY / CHECK CW1A SETUP.
+Follow the [detailed CW1 walkthrough](../notes/02-joystick.md#2-cw1a--configure-and-acquire)
+for generation, startup calibration, one-axis polling and then four-axis polling.
+Successful startup with acquisition still a TODO shows READ NOT READY. One-axis
+mode deliberately shows dashes for unmeasured axes/PUSH; four-axis RAW VALID
+does not imply normalization or measured calibration is complete.
 
-For CW3, complete the marked lines in `CW3_MeasureUltrasonic()`, then remove its
-early `return false`. The prepared guards and helper functions manage errors.
-`DO CW3 TODO` is replaced by your distance or a measurement error; no build
-setting changes. The app always uses the student measurement path.
-Keep the completed CW2 function while doing CW3.
+## Where you write code
 
-Keep labels within 16 characters. Use `%u` with `(unsigned)` values;
-the TFT formatter does not implement `%lu` or floating-point formatting.
-The app commits one full frame. Do not add a second `tft_update()` or `main()`.
+| File | Task |
+| --- | --- |
+| Controller IOC / `joystick.c` / `student_tasks.c` | CW1 configuration, acquisition, normalization |
+| MainBoard IOC | CW2 ADC/GPIO, CW3 GPIO/TIM2, optional I2C2 |
+| MainBoard `ir_sensor.c` | Digital input and ADC polling |
+| MainBoard `student_tasks.c` | IR classification and complete ultrasonic transaction |
+| MainBoard `ultrasonic_gpio_port.c` | Timer start/counter access and GPIO operations |
+| MainBoard `ultrasonic.c` | Delay and shared-deadline edge capture |
+| MainBoard `vl53l1_platform.c` / `tof_sensor.c` | I2C transfers, decoding, probe and valid result sequence |
+| MainBoard `tutorial_config.h` | Measured threshold/polarity and checked TOF wiring flag |
 
-## IOC recap with the lecturer
+Add generated peripheral headers to your independent C files after enabling
+and generating that peripheral. Never declare another hadc1/htim2/hi2c2 or add
+another main. Generation should preserve task files and root CMake user sources.
 
-Open the supplied IOC to identify PA2 GPIO input, PA3 ADC1 Channel 3, PA0 Trig,
-PA1 Echo, and the TFT pins. Explain why the UART2-labelled connector can carry
-analog and GPIO inputs when USART2 is disabled. The pins are already configured;
-code regeneration is not part of these classworks. A lecturer who regenerates a
-copy must preserve the custom drivers, app calls, CMake sources and USART2 disable.
-Use a copy for regeneration practice; the classroom starter is already configured.
+The app draws a complete frame and commits once. Do not add another tft_update
+inside tasks. Keep labels within 16 characters. The TFT mini formatter supports
+`%u` with `(unsigned)` values, but not `%lu` or floating-point formatting.
+
+Both IR and ultrasonic are serviced even when the other reports an error, though
+polling waits can delay the next screen update. Keep every sensor wait bounded.
+The optional TOF app also checks validity; HAL_OK alone is not a valid range.
+
+[IOC walkthrough](ioc-guide.md) | [CW2](../notes/03-ir.md) |
+[CW3](../notes/04-ultrasonic.md) | [TOF](../notes/06-optional-tof.md)

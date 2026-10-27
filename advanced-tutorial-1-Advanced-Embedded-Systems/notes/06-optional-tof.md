@@ -1,193 +1,130 @@
 [Contents](README.md) | [Previous: I2C](05-i2c.md) | [Next: troubleshooting](07-troubleshooting.md)
 
-# Optional after-class module: TOF400C laser distance sensor
+# Optional after-class module: TOF400C / VL53L1X
 
-**Optional / self-study** · **Board:** RDC Mainboard
-· **Interface:** I2C
+**A: configure I2C and probe → B: implement register transfers/byte decoding →
+C: read a valid ranging result.** Keep the same MainBoard project and completed
+IR/ultrasonic tasks. This exercise is optional and is not marked or submitted.
 
-Nothing in this chapter is marked or submitted. It is here for students who are
-curious, and it is the place where the [I2C lesson](05-i2c.md) is applied now that
-CW3 uses the ultrasonic sensor in its GPIO mode. Work through it at your own pace;
-the lecturer can answer questions at the next session.
+## 1. What is measured, and who measures it?
 
-## What this sensor actually measures
+The VL53L1X measures reflected infrared light timing internally and reports
+processed results through I2C. A 1 m round trip takes light about 6.7 ns, whereas
+sound takes about 5.83 ms near 20 C. Your 1 us timer is suitable for Echo timing;
+it does not directly measure the optical flight time.
 
-The TOF400C carries a **VL53L1X**: a 940 nm infrared VCSEL (Class 1, eye-safe,
-invisible), a SPAD receiver array and the timing logic on one die. It emits very
-short light pulses and measures how long the reflected light takes to come back:
+![Optical timing and interfaces](images/tof-principle.svg)
 
-```text
-distance = c x t / 2      c = 299 792 458 m/s
-```
+IR reflectance in CW2 is different: the same brightness can result from different
+materials and distances. TOF's advertised maximum of up to 4 m is conditional,
+not a guaranteed classroom result. Start with a broad target tens of cm away.
 
-The factor 2 is the round trip, exactly as in CW3 - but light travels about
-10^6 times faster than sound, so "1 metre away" is only about 6.7 ns of flight
-time. That is why the sensor, not the MCU, does the timing.
+## 2. Confirm the actual breakout before enabling it
 
-| Property | CW3 ultrasonic | TOF400C / VL53L1X |
-| --- | --- | --- |
-| Signal to target | Sound, about 343 m/s near 20 C | Infrared light, about 299,792,458 m/s in vacuum; similar order in air |
-| Round trip at 1 m | About 5.83 ms | About 6.7 ns |
-| STM32 obtains result | GPIO (General-Purpose Input/Output) edges + TIM2 timestamps | I2C (Inter-Integrated Circuit) result/status bytes |
-| Measurement timing | Module reports Echo width; your task times it | Sensor performs optical timing internally |
-| Unusable result | Busy Echo, missing edge, short pulse | Communication failure or invalid range status |
-| Display on failure | Clear distance; show reason | Clear distance; show invalid/error |
+![Module pad labels](images/tof-pinout.png)
 
-A 1 us timer can time the ultrasonic pulse but cannot resolve a 6.7 ns optical
-round trip. The optical sensor measures it and reports a processed result.
-I2C/GPIO are these modules' interfaces, not what makes sensing optical/acoustic;
-another ultrasonic module could report over I2C.
+The supplied module has VIN/GND/SDA/SCL/INT/SHUT pads. On the new Mainboard:
 
-![Optical timing and interface comparison](images/tof-principle.svg)
-
-## 2. Why results differ
-
-| Condition | What to consider |
+| Signal | Connection/status |
 | --- | --- |
-| Soft or angled target | Sound may be absorbed or reflected away |
-| Another object within the beam | Ultrasonic may detect that reflector |
-| Air temperature changes | Sound speed differs from the fixed 343 m/s assumption |
-| Weak optical return / strong ambient infrared | TOF usable range can decrease |
-| Glass or mirror | Light may transmit or redirect, changing the surface measured |
+| SCL | I2C2 C / PB10 |
+| SDA | I2C2 D / PB11 |
+| GND | I2C2 G |
+| VIN | Actual supply compatibility and header voltage still to confirm |
+| Pull-ups | Presence and voltage still to confirm |
+| SHUT | Actual breakout pull-up/enable wiring still to confirm |
+| INT | Not required for this polling exercise |
 
-Optical TOF measures travel time; CW2 IR reflectance does not provide a unique
-distance from brightness. Neither ranging sensor always succeeds where the
-other fails. The VL53L1X's specified maximum is up to 4 m under suitable conditions,
-not a guaranteed classroom range. Start with a broad flat target a few tens of
-centimetres away.
+Keep `TOF_WIRING_CONFIRMED=0` until a lecturer confirms supply, pull-ups and SHUT.
+These checks remain pending on the new board. Software generation/build success
+is not a successful physical sensor test. Power off before wiring.
 
+## 3. TOF A — configure I2C2 and probe an address
 
-## Wiring — I2C2 connector, module checks pending
+Enable I2C2 in `MainBoard.ioc`, using PB10 SCL and PB11 SDA. Set standard mode
+100 kHz, 7-bit addressing and own address 0, with dual address/general call off.
+Check AF4 open-drain GPIOs and compatible external pull-ups; internal no-pull does
+not provide a pull-up. Preserve IR, ultrasonic, display and SWD.
 
-![Module pad labels; this is the supplied module, not the new mainboard](images/tof-pinout.png)
+Save and Generate Code. Check generated `i2c.c`/`i2c.h` and one `MX_I2C2_Init()`
+call before the app. Add `#include "i2c.h"` in `tof_sensor.c` and
+`vl53l1_platform.c` after generation.
 
-With the pictured back facing you and pads at the bottom, the module pads are
-VIN, GND, SDA, SCL, INT, SHUT. Identify the actual module labels before wiring.
+Complete `TOF_Probe()` in `Core/Src/tof_sensor.c` with
+`HAL_I2C_IsDeviceReady()` and finite trials/timeout. The sensor's 7-bit address
+is 0x29; this F4 HAL takes **0x52** for reads and writes. Do not shift it twice
+or set Own Address to the sensor address. An ACK proves address response only.
+After physical checks, enable the wiring flag to run the optional app.
 
-| Module pad | Candidate firmware setting | New-board physical connection |
-| --- | --- | --- |
-| VIN | Supply compatible with the actual breakout | Header/voltage TBD |
-| GND | Common ground | I2C2 G |
-| SDA | PB11 / I2C2 SDA | I2C2 D |
-| SCL | PB10 / I2C2 SCL | I2C2 C |
-| INT | Unused; the example polls | Leave unconnected after checking the module |
-| SHUT | Must be at the breakout's documented high level | Pull-up/high supply point TBD |
+## 4. TOF B — write the bus layer and interpret bytes
 
-Do not use the old hw2 PB10_1 numbers, +5 V pin, or TFT J1 pin 2 as new-board
-facts. The old TOF wiring illustration is historical and is not a current
-connection plan. Complete the [wiring-status table](../hardware/pin-mapping.md).
-Check the actual breakout regulator, VIN range, I2C pull-ups/voltage and XSHUT
-handling; successful old-board operation does not verify this PCB or module batch.
+In `Core/Src/vl53l1_platform.c`, complete the placeholders in:
 
-After these checks and any pin/peripheral changes, set `TOF_WIRING_CONFIRMED=1`,
-build Debug and flash the same Mainboard program. Enabling the flag adds TOF
-to rows 8 and 9 beneath IR and ultrasonic. Its default zero does not initialize
-or access the TOF sensor, and leaves the normal two-sensor screen in place. I2C2 itself is already
-restored at 100 kHz. Use separate labelled wires after checking the module and
-power. IR, ultrasonic and TOF use distinct signal pairs on this revision.
-
-## What you are given
-
-The starter includes a bounded C driver adapted from an ST ULD-based source and
-an STM32F4 HAL platform layer. The driver source, licence and origin are included
-in the kit. It is a course-specific subset, not an unmodified full ST ULD release.
-You do not need to find another library, port Arduino code or invent the
-initialization register table.
-
-The supplied API is:
-
-```c
-HAL_StatusTypeDef TOF_Init(void);
-HAL_StatusTypeDef TOF_Read(TOF_Sample *sample);
-```
-
-`TOF_Sample` contains `distance_mm`, `range_status` and `valid`. The prepared
-application calls `TOF_Init()` at startup and retries failed initialization at
-two-second intervals. When the wiring flag is enabled, it also reads and displays TOF results below
-the two classroom sensors. Explain the validity checks before modifying it.
-
-## The I2C conversation behind the driver
-
-You do not have to write this, but reading it is the point of this optional
-module: it is a real I2C sensor, from the bus up.
-
-| Item | Value in this kit |
+| Function | Your task |
 | --- | --- |
-| 7-bit address | `0x29`, passed to the driver as `0x52` |
-| Register addresses | 16-bit, big-endian multi-byte values |
-| Register transfers | `HAL_I2C_Mem_Read/Write(..., I2C_MEMADD_SIZE_16BIT, ...)` |
-| Startup order | address probe, boot state, chip ID `0xEACC`, configuration, start ranging |
-| Each measurement | wait for data ready, read range status, read distance, clear the sensor event |
+| `write_bytes()` | Supply the HAL register write and its status |
+| `read_bytes()` | Supply the HAL register read and its status |
+| `VL53L1_RdWord()` | Decode two bytes in the documented byte order; return success only after decoding |
+
+Use `HAL_I2C_Mem_Write/Read()`, generated `hi2c2`, the passed device/register,
+`I2C_MEMADD_SIZE_16BIT`, the passed buffer/length and `SENSOR_IO_TIMEOUT_MS`.
+Register-address width and returned data length are separate choices. Keep the
+provided first-error latch: a later success must not hide an earlier failure.
+
+Predict the value of bytes `01 2C`, then reverse their order and predict again.
+Write the byte combination yourself. A 16-bit register address does not mean
+that every register contains a 16-bit value. Use the sensor documentation.
+
+The supplied startup performs bounded boot checking, verifies ID 0xEACC, loads
+the configuration table and starts ranging. The library is a documented C subset
+of the VL53L1X ULD class, not a newly authored ranging algorithm or the full ULD.
+You do not rewrite its internal table. After your bus layer works, the supplied
+initialization profile uses long mode, a 50 ms budget and 100 ms measurement period.
+
+## 5. TOF C — complete one measurement sequence
+
+Complete `TOF_Read()` in `Core/Src/tof_sensor.c`. Its argument/initialization guards
+are supplied; the measurement sequence is left to you:
 
 ```text
-Address probe → wait for boot → verify chip ID → initialize/configure
-             → start ranging
-
-Wait for ready → read range status → read distance → clear sensor event
-              → repeat
+Wait for data ready → read range status → read distance → clear sensor event
+                   → evaluate measurement validity → publish or report failure
 ```
 
-![TOF startup and measurement loop: wait, read, clear event, evaluate validity and recover from IO errors](images/tof-measurement-flow.png)
+Use the library APIs `VL53L1X_CheckForDataReady()`, `VL53L1X_GetRangeStatus()`,
+`VL53L1X_GetDistance()` and `VL53L1X_ClearInterrupt()`. Check every return code,
+limit readiness waiting to 500 ms, and preserve the first communication error.
+Even with polling, clear the sensor event after consuming a ready result so the
+next data-ready event can occur. This is different from an MCU interrupt handler.
 
-The profile uses long distance mode, a 50 ms timing budget and a 100 ms
-intermeasurement setting. Boot/ready polls have 500 ms limits and I2C transactions
-have 25 ms limits. Clearing the sensor's measurement event is still required
-when using polling; it is not the same as handling a Cortex-M interrupt.
+For this profile, normalized range status 0 with nonzero distance is valid.
+A successful I2C operation alone is insufficient. On an I/O failure, clear the
+distance, mark it invalid and clear initialization state so the supplied app can
+retry initialization later. Keep invalid range status for diagnosis, with
+`valid=false`; do not treat it as a safe/far distance. A ready result with invalid
+range status still needs its event cleared.
 
-The files to read are `Core/Src/vl53l1_platform.c` (the thin I2C layer),
-`Core/Src/tof_sensor.c` (the bounded startup/read sequence) and
-`Drivers/VL53L1X/vl53l1x_subset.c` (the register table). Watch how every wait is
-bounded and how the first I/O error is kept instead of being overwritten.
+![Startup and measurement loop](images/tof-measurement-flow.svg)
 
-## Try it yourself
+The app supplies display/retry handling. Startup or communication errors show
+no valid distance; an invalid range shows dashes and its range status. The student
+starter contains no completed I2C transfer or measurement implementation hidden
+behind these display functions.
 
-1. Finish the wiring checks above with a lecturer, enable the TOF wiring flag,
-   then build Debug and flash the same Mainboard program. IR and ultrasonic
-   remain on the screen; TOF uses rows 8 and 9.
-2. Read `DrawOptionalTOF()` in `tutorial_app.c`. It shows a distance only when
-   communication succeeds **and** `sample.valid` is true. `HAL_OK` alone is not
-   enough. An unusable result shows dashes and `R:` followed by the range status.
-3. Compare ultrasonic and laser readings on the same target, in the same program,
-   at several distances. Note where they disagree and why.
-4. Test difficult targets: black cloth, a hand, a glass pane, a mirror, a wall at
-   an angle. Watch `range_status` and `valid`, not just the millimetres.
-5. Optional extension: add a distance alarm of your choice. An invalid result must
-   show UNKNOWN/ERROR rather than being treated as "safe" or "far away".
-6. Optional deeper dive: read one register by hand with `HAL_I2C_Mem_Read()` and
-   compare it with what the driver reports. Try a different timing budget with
-   `VL53L1X_SetTimingBudgetInMs()` and measure how the update rate changes.
+## 6. Compare and explain
 
-Fill this in for your own notes if you like - there is nothing to hand in:
+With wiring confirmed and your code complete, rebuild/flash and compare against
+a ruler and ultrasonic readings on the same broad target:
 
-| Ruler distance (mm) | Five readings (mm) | Range status / validity | Conditions |
-| --- | --- | --- | --- |
-| | | | |
-| | | | |
-| | | | |
+| Ruler (mm) | TOF (mm) | Range status/validity | Ultrasonic (mm) | Conditions |
+| --- | --- | --- | --- | --- |
+| | | | | |
+| | | | | |
+| | | | | |
 
-Questions worth answering for yourself:
-
-- Why does the same wall give a slightly different number from the ultrasonic
-  sensor, and which one would you trust for a robot bumper?
-- Why can a mirror or a glass window confuse a laser rangefinder but not an
-  ultrasonic one?
-- Why is `HAL_OK` not enough to trust a distance?
-
-## Additional screen rows
-
-```text
-TOF (OPTIONAL)
-TOF:  300 mm
-```
-
-For this starter, normalized range status `0` with a nonzero distance is valid.
-Other statuses are retained for diagnosis. On an IO error, the distance is cleared
-and the application attempts reinitialization later. Avoid modifying the core
-register table to fix a wiring problem.
-
-"4 metres" is the advertised maximum under suitable conditions, not a guaranteed
-classroom result. Start with a flat target a few tens of centimetres away.
+Change distance, target angle or material. Explain device vs register address,
+byte order, communication vs range validity, and why ultrasonic and optical
+readings can disagree. An unplugged sensor is not a meaningful range of zero.
 
 References: [ST VL53L1X datasheet](https://www.st.com/resource/en/datasheet/vl53l1x.pdf),
-[ULD user manual](https://www.st.com/resource/en/user_manual/um2510-a-guide-to-using-the-vl53l1x-ultra-lite-driver-stmicroelectronics.pdf),
-and [ST ULD package description](https://www.st.com/en/embedded-software/stsw-img009.html).
+[ST ULD manual UM2510](https://www.st.com/resource/en/user_manual/um2510-a-guide-to-using-the-vl53l1x-ultra-lite-driver-stmicroelectronics.pdf).

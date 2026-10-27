@@ -20,7 +20,6 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "gpio.h"
-#include "tutorial_config.h"
 
 /* USER CODE BEGIN 0 */
 
@@ -53,10 +52,12 @@ void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOC, LED_D5_Pin|LED_D6_Pin|LED_D7_Pin|LED_D8_Pin, GPIO_PIN_SET);
-  HAL_GPIO_WritePin(GPIOC, TFT_DC_Pin|TFT_CS_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(TFT_RES_GPIO_Port, TFT_RES_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOC, TFT_DC_Pin|TFT_CS_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(TFT_BL_GPIO_Port, TFT_BL_Pin, GPIO_PIN_RESET);
@@ -69,6 +70,18 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : US_TRIG_Pin US_ECHO_Pin IR_D0_UART2_T_Pin */
+  GPIO_InitStruct.Pin = US_TRIG_Pin|US_ECHO_Pin|IR_D0_UART2_T_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : IR_A0_UART2_R_Pin */
+  GPIO_InitStruct.Pin = IR_A0_UART2_R_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(IR_A0_UART2_R_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : BTN2_Pin */
   GPIO_InitStruct.Pin = BTN2_Pin;
@@ -95,16 +108,12 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(BTN1_GPIO_Port, &GPIO_InitStruct);
-  /* Keep the IR header safe in all modes: PA2 input and PA3 analog.
-     ADC conversions run when IR_WIRING_CONFIRMED is enabled. */
-  GPIO_InitStruct.Pin = IR_D0_Pin;
+
+  /*Configure GPIO pins : PB10 PB11 */
+  GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_11;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(IR_D0_GPIO_Port, &GPIO_InitStruct);
-  GPIO_InitStruct.Pin = IR_A0_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
-  HAL_GPIO_Init(IR_A0_GPIO_Port, &GPIO_InitStruct);
-
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 }
 

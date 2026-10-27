@@ -1,18 +1,21 @@
 #include "sensors.h"
-#include "adc.h"
 #include "tutorial_config.h"
+/* Add adc.h after enabling ADC1 IN3 and generating code in CW2B. */
+
+HAL_StatusTypeDef IR_ReadDigital(uint8_t *d0)
+{
+    /* TODO CW2A: read PA2 with HAL GPIO, write 0 or 1, and report success.
+       Keep the output unchanged on failure. */
+    (void)d0;
+    return HAL_ERROR;
+}
+
 HAL_StatusTypeDef IR_Read(IR_Sample *sample)
 {
-    if (!sample) return HAL_ERROR;
-    sample->raw = 0;
-    sample->d0 = 0;
-    HAL_StatusTypeDef status = HAL_ADC_Start(&hadc1);
-    if (status != HAL_OK) return status;
-    status = HAL_ADC_PollForConversion(&hadc1, SENSOR_IO_TIMEOUT_MS);
-    if (status == HAL_OK) {
-        sample->raw = (uint16_t)HAL_ADC_GetValue(&hadc1);
-        sample->d0 = HAL_GPIO_ReadPin(IR_D0_GPIO_Port, IR_D0_Pin) == GPIO_PIN_SET;
-    }
-    HAL_StatusTypeDef stopped = HAL_ADC_Stop(&hadc1);
-    return status == HAL_OK ? stopped : status;
+    /* TODO CW2B: obtain A0 by single-conversion polling and D0 using your
+       digital function. Check statuses, use a finite timeout and stop the ADC.
+       Publish the sample only when the complete operation succeeds.
+       F405 does not use the F103 ADC self-calibration call. */
+    (void)sample;
+    return HAL_ERROR;
 }

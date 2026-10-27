@@ -1,8 +1,9 @@
 #ifndef TUTORIAL_JOYSTICK_H
 #define TUTORIAL_JOYSTICK_H
-#include "main.h"
-extern volatile uint16_t g_joystick_samples[4];
-extern volatile uint16_t g_joystick_observed_min[4], g_joystick_observed_max[4];
-HAL_StatusTypeDef Joystick_Start(void);
-void Joystick_Read(uint16_t values[4]);
+#include <stdbool.h>
+#include <stdint.h>
+/* Called once, after the generated peripheral initialization. */
+bool Joystick_Start(void);
+/* On failure, return false and leave *raw unchanged. */
+bool Joystick_ReadChannel(uint32_t channel, uint16_t *raw);
 #endif

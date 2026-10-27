@@ -5,148 +5,150 @@
 
 The **`.ioc` file** stores STM32CubeMX pin/peripheral configuration. Generation
 creates initialization code; application code still starts operations.
-For example, `MX_ADC1_Init()` configures ADC, while `Joystick_Start()` calibrates
-and starts acquisition.
+For example, generated `MX_ADC1_Init()` configures ADC. Your `Joystick_Start()`
+performs one startup calibration; your polling function requests each conversion.
 
-This guide matches the supplied IOC and source files. Open the IOC inside the
+Controller ADC1 and Mainboard ADC1/TIM2/I2C2 start disabled for the corresponding
+student exercises. The display, buttons, clocks and debug setup are prepared. Open the IOC inside the
 extracted project. Keep the skeleton's display, UART, debug and clock setup;
 menu labels may vary by CubeMX version. Pin settings do not confirm physical
 sensor connections.
 
-## 1. Controller: ADC and DMA for CW1
+## 1. Controller: configure ADC1 yourself for CW1A
 
-ADC = **Analog-to-Digital Converter**; DMA = **Direct Memory Access**.
+Open `projects/Controller/Controller.ioc` (STM32F103C8T6). The starter deliberately
+has **no ADC1 or ADC DMA configured**. PA0-PA3 start as passive analog GPIOs;
+this alone does not connect them to an ADC. The unedited project can build and
+show the unfinished setup message without generated `adc.c` or `adc.h` files.
 
-Open `projects/Controller/Controller.ioc` (STM32F103C8T6).
-In **Pinout & Configuration → Analog → ADC1**, enable IN0–IN3 on PA0–PA3.
-Under **Parameter Settings**:
-
-| Setting | Value | Purpose |
-| --- | --- | --- |
-| Scan | Enabled | Sequence of inputs |
-| Continuous | Enabled | Repeat after starting |
-| Discontinuous | Disabled | Do not split across triggers |
-| Trigger | Software start | Started by `Joystick_Start()` |
-| Alignment | Right | Ordinary integer code |
-| Regular conversions | 4 | Four axes |
-| Ranks 1/2/3/4 | Channels 0/1/2/3 | J1X/J1Y/J2X/J2Y order |
-| Sampling, all ranks | 71.5 cycles | Prepared sampling duration |
-
-The F103 ADC is 12-bit; its controls differ from the F405.
-In **Clock Configuration**, keep HCLK/APB2 = 72 MHz and ADC prescaler `/6`
-→ **12 MHz ADC clock**. HCLK is the core/bus clock; APB means **Advanced
-Peripheral Bus**. ADC clock is not sample rate: each scan needs four sampling
-and conversion operations.
-
-In **ADC1 → DMA Settings**, add/check ADC1:
+Follow the [seven-step CubeMX screenshot walkthrough](../notes/01-adc.md#cubemx-screenshot-walkthrough)
+for the exact panels and dropdowns. In **Pinout & Configuration → Analog → ADC1**,
+first assign **PA0 → ADC1_IN0** using the chip pin menu. IN0 can be pink/unavailable
+while the starter's `GPIO_Analog` assignment is active; selecting ADC1_IN0 from
+PA0's menu replaces it and checks IN0. Use the following settings, then explain
+their meanings:
 
 | Setting | Value | Purpose |
 | --- | --- | --- |
-| DMA route | DMA1 Channel1 | ADC1's assigned route |
-| Direction | Peripheral to memory | ADC result → RAM |
-| Peripheral increment | Disabled | Same ADC data register |
-| Memory increment | Enabled | Successive array elements |
-| Peripheral/memory width | Half-word / half-word | 16-bit storage for 12-bit code |
-| Mode | Circular | Refill the buffer repeatedly |
-| Priority | High | Match starter |
-
-The app starts a four-element buffer once. It reads the latest data rather than
-using callbacks; the supplied start routine disables transfer interrupts while
-DMA continues. Without memory increment, results overwrite one slot; Normal
-mode stops at the end of its configured transfer.
-
-## 2. Mainboard: single ADC conversion for CW2
-
-Open `projects/MainBoard/MainBoard.ioc` (STM32F405RGT6).
-The tested connector map is in [connections](pin-mapping.md).
-Confirm supply and labels on your classroom board; USART2 is disabled.
-
-Select **Analog → ADC1**, enable IN3 on PA3, then use:
-
-ADC1 must be enabled and IN3 must stay selected after saving and reopening the
-IOC. Continuous conversion stays disabled because `IR_Read()` starts each
-conversion in software; disabled continuous mode does not mean disabled ADC1.
-
-| Setting | Value | Purpose |
-| --- | --- | --- |
-| ADC prescaler | PCLK2 / 4 | Peripheral clock 84 MHz / 4 = 21 MHz |
-| Resolution | 12 bits | Codes 0–4095 |
-| Scan / Continuous / Discontinuous | Disabled | One requested conversion |
-| Trigger edge / source | None / software start | Driver requests conversion |
+| Scan | Disabled | Select one channel per call |
+| Continuous | Disabled | Software requests every conversion |
+| Discontinuous | Disabled | Not used |
+| Trigger | Software start | Your polling function starts it |
 | Alignment | Right | Integer raw code |
-| Number / Rank 1 | 1 / Channel 3 | A0 |
-| Sampling time | 144 cycles | Prepared input sampling |
-| DMA continuous requests | Disabled | Use polling |
-| End of conversion | Single conversion | Wait for this result |
+| Enable Regular Conversions | Enable | Use the regular conversion group |
+| Regular conversions | 1 | One result per request |
+| Rank 1 | Channel 0 initially | Select the first joystick input |
+| Sampling | 71.5 cycles | Allow time for input settling |
+| ADC DMA / interrupt | Not enabled | Use polling |
 
-Set PA2 to **GPIO_Input, No pull** for D0 on UART2 T. A0 is on UART2 R/PA3.
-GPIO = **General-Purpose Input/Output**: D0 is digital; A0 is Analog.
-`IR_Read()` starts, polls, reads and stops ADC. Selecting a pin does not
-automatically fill your task's variable.
+The F103 ADC is fixed at 12-bit. Keep HCLK/APB2 at 72 MHz and the prepared ADC
+prescaler `/6`, giving 12 MHz. Check the ADC clock when enabling ADC1; it is not
+the TFT update rate. Keep the remaining clock, display, UART and SWD settings.
 
-## 3. Mainboard: runtime GPIO/TIM2 for CW3
+Save and **Generate Code**. Check that `adc.c`/`adc.h` exist, that the initialization
+matches the table, and that generated `main.c` calls `MX_ADC1_Init()` once before
+`TutorialApp_Init()`. Add `#include "adc.h"` to `joystick.c` and `student_tasks.c`
+when implementing acquisition. Use the generated handle, not another `hadc1`.
+The app already calls your `Joystick_Start()` once; do not add a duplicate call.
 
-The IOC lists PA0 as Trig output, PA1 as Echo input, and TIM2 with prescaler 83
-and period `0xFFFFFFFF`. The supplied `Ultrasonic_GPIO_Init()` owns actual
-runtime GPIO/TIM2 setup; do not add another timer initialization.
+After one axis works, enable **IN1/IN2/IN3 on PA1/PA2/PA3** and generate again.
+Keep scan/continuous off and the number of regular conversions at **1**.
+For each read, your `Joystick_ReadChannel()` configures the requested channel
+as Rank 1 with 71.5-cycle sampling, then completes one conversion and stops.
+The four inputs are read sequentially, not as a four-rank scan or DMA buffer.
+Set `JOYSTICK_AXIS_COUNT=4U` only after implementing all four reads.
+
+Inspect the generated GPIO analog modes for PA0-PA3. Keep the app/TFT calls and
+custom sources after generation. Use the same `Controller.elf` and Debug workflow
+through A/B/C; there is no second Controller project or build mode.
+
+For the exact order of function edits and screen checkpoints, follow
+[CW1A step by step](../notes/02-joystick.md#2-cw1a--configure-and-acquire):
+
+1. Generate ADC1 initialization and build; the startup TODO still gives
+   `ADC NOT READY`.
+2. Complete `Joystick_Start()` calibration. Compare its HAL status with `HAL_OK`
+   rather than returning the status as a Boolean: `HAL_OK` is zero.
+3. Successful startup with acquisition still unfinished gives `READ NOT READY`.
+4. Implement both `Joystick_ReadChannel()` and its J1X caller to reach
+   `1 AXIS RAW VALID` with `JOYSTICK_AXIS_COUNT=1U`.
+5. Enable IN1–IN3, regenerate, extend the caller and select `4U` to reach
+   `4 AXES RAW VALID`. Every conversion still uses Rank 1.
+
+Neither raw-valid message confirms B or C. The normalization stub returns zero
+until you replace it; endpoint and centre defaults still need measurement.
+After an application-only edit, rebuild/flash; regenerate only when you change
+IOC configuration. In particular, changing deadband or measured endpoints does
+not require another ADC setup function.
+
+## 2. Mainboard CW2: GPIO and one ADC conversion
+
+The starter keeps ADC1 disabled, PA2 passive input and PA3 analog GPIO. Preserve
+SPI1/display DMA, buttons, LEDs, clock tree, USART1 and SWD. USART2 stays disabled.
+For CW2A, check/set PA2 GPIO_Input / no pull; generate and implement D0 reading.
+For CW2B enable ADC1 IN3 on PA3 and use:
 
 | Setting | Value |
 | --- | --- |
-| Trig / Echo | PA0 push-pull idle LOW / PA1 input, no pull |
-| APB1 timer clock | 84 MHz |
-| TIM2 prescaler | 83: 84 MHz / (83+1) = 1 MHz |
-| Counter period | `0xFFFFFFFF`, free-running 32-bit |
-| Time reading | `Ultrasonic_Micros()` reads CNT |
+| ADC prescaler | PCLK2 / 4 = 21 MHz |
+| Resolution / alignment | 12-bit / right |
+| Scan / continuous / discontinuous | Disabled |
+| Trigger edge/source | None / software start |
+| Number / Rank 1 | 1 / Channel 3 |
+| Sampling | 144 cycles |
+| ADC DMA/interrupt | Not enabled |
 
-CW3 fills the trigger sequence and pulse/distance calculation. The helpers supply
-edge waits with a shared deadline. PB10/PB11 remain I2C2; they are not repurposed
-for ultrasonic. The task's early return shows DO CW3 TODO without measuring;
-it does not alter peripheral or build settings.
+Generate `adc.c`/`adc.h` and one `MX_ADC1_Init()` call. Add the generated header
+when writing `IR_Read()`. Do not add another init call in USER CODE and do not
+copy the F103 self-calibration API. See [CW2](../notes/03-ir.md).
 
-## 4. Mainboard: optional I2C2
+## 3. Mainboard CW3: GPIO and generated TIM2
 
-I2C = **Inter-Integrated Circuit**. In **Connectivity → I2C2**, select I2C mode;
-PB10 = SCL (**Serial Clock**), PB11 = SDA (**Serial Data**).
+Set PA0 to push-pull output, no pull, initial LOW; PA1 input / no pull. Enable
+TIM2 Internal Clock, up-counting, prescaler 83, period 4294967295, division DIV1,
+with no timer interrupt/DMA. APB1 timer clock is 84 MHz, so the counter is 1 MHz.
 
-| Setting | Value | Purpose |
-| --- | --- | --- |
-| Speed | Standard mode, 100 kHz | Starter bus rate |
-| Address mode | 7-bit | Device addressing |
-| Own Address 1 | 0 | STM32 target address, not sensor address |
-| Dual Address / General Call | Disabled | Unused here |
-| GPIO | Alternate function open-drain, AF4 | Peripheral drives/releases lines |
-| Internal pull | No pull | Check compatible external pull-ups |
+Generate `tim.c`/`tim.h` and one `MX_TIM2_Init()` before the app. Add the header
+when implementing `Ultrasonic_Start()` and the counter read. Start the generated
+timer once with HAL; do not reset/program TIM2 registers or initialize GPIO in
+an application file. Student code supplies trigger, edge waits, timeouts and
+conversion. SPI display DMA stays enabled; it is separate from timer/ADC DMA.
 
-Software passes sensor address `TOF_ADDRESS_HAL=0x52`, derived from 7-bit
-`0x29`. Do not put the sensor address in **Own Address**.
-Bus initialization does not initialize the sensor's ranging engine.
+## 4. Mainboard optional TOF: generated I2C2
 
-Check supply, SHUT handling and pull-ups against the actual breakout.
-An open-drain setting does not create external pull-up resistors.
+Enable I2C2 on PB10 SCL / PB11 SDA, standard mode 100 kHz, 7-bit addressing,
+own address 0, dual address/general call off. Check AF4 open-drain and compatible
+external pull-ups. The module supply, pull-ups and SHUT handling remain pending.
+Keep TOF_WIRING_CONFIRMED=0 until checked.
+
+Generate `i2c.c`/`i2c.h` and one `MX_I2C2_Init()` before the app. Implement the
+probe and transfers in independent TOF/platform files. Use device argument 0x52
+(7-bit address 0x29 shifted once), not Own Address. The sensor uses 16-bit register
+addresses. Bus initialization does not initialize the optical ranging engine.
 
 ## 5. Save/generate without losing the starter
 
-Inspection is enough for these classworks. Both projects were regenerated with
-STM32CubeMX 6.18.1 and their generated Debug builds passed, using FW_F1 V1.8.7
-for Controller and FW_F4 V1.28.3 for Mainboard. Use a **copy of the complete
-project** for regeneration practice; generation and build checks do not replace
-sensor tests on your board.
+CW1A requires configuring and regenerating Controller. Mainboard CW2/CW3 and
+optional TOF also require their own IOC configuration/generation. Use STM32CubeMX 6.18.1 with FW_F1 V1.8.7 for Controller;
+Mainboard uses FW_F4 V1.28.3. Install the required firmware package before class.
+Keep a copy of your work before generation. Generation/build checks do not replace
+measurements on your Controller or sensor tests on Mainboard.
 
-Mainboard disables automatic initialization calls for ADC1, I2C2 and TIM2 in
-the IOC. The `main.c` user section already initializes ADC1/I2C2, while
-`Ultrasonic_GPIO_Init()` owns TIM2. Keep these call settings to avoid duplicate
-initialization when regenerating. Controller uses its normal generated calls.
+Both classroom projects use normal CubeMX-generated initialization calls.
+Mainboard ADC1/TIM2/I2C2 are enabled progressively; no application file initializes
+them a second time. GPIO initial states, including all four inactive-high LEDs,
+are recorded in IOC rather than patched into generated C.
 
 1. **Project Manager → Project:** retain the CMake target/toolchain.
 2. **Code Generator:** retain user code and separate peripheral `.c/.h` files.
 3. Save IOC → **Generate Code** → review the diff.
 4. Preserve `TutorialApp_Init()/Update()`, custom sources/includes and Controller
    normalization source in the build.
-5. Preserve the IR conversion guard, USART2 disable, PA2/PA3 passive inputs,
-   fixed PA0/PA1 timing port and independent I2C2 setup.
+5. Keep USART2 disabled and the fixed signal map. Preserve the student tasks,
+   bounded-wait contracts and measurement-validity checks.
 6. Reconfigure/build and check the expected starter screen before sensors.
 
-Read `adc.c`, `dma.c`, `i2c.c`, `main.c` and `ultrasonic_gpio_port.c`
+Read the generated `adc.c`, `i2c.c`, `main.c` and `ultrasonic_gpio_port.c`
 to connect settings with runtime behavior. A valid IOC/build does not confirm wiring.
 
 UART = **Universal Asynchronous Receiver/Transmitter**; TFT =

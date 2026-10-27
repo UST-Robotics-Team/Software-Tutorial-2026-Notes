@@ -29,8 +29,9 @@ decision. CW2 uses the ADC code for its software threshold.
 
 The supplied module uses its tested GPIO mode. Roles are fixed; no probe or
 automatic swap is performed. IR remains attached to UART2 for both CWs.
-The supplied port uses TIM2 at 1 MHz, with a prescaler of 83 for the 84 MHz
-timer clock. The student task changes the measurement logic, not this setup.
+Students configure TIM2 at 1 MHz in IOC, using prescaler 83 for the 84 MHz
+timer clock, and write the runtime start and measurement code. The starter keeps
+TIM2 disabled and PA0/PA1 passive until that configuration is completed.
 
 ## Optional TOF — I2C2 remains independent
 
@@ -48,8 +49,9 @@ Bus configuration alone does not verify a sensor transaction.
 ## Prepared defaults
 
 IR_WIRING_CONFIRMED=1; ULTRASONIC_WIRING_CONFIRMED=1; TOF_WIRING_CONFIRMED=0.
-These flags acknowledge the prepared wiring; they do not measure voltage or
-detect a misplaced wire. No flag or build selector is changed between CW2/CW3.
+These flags acknowledge the earlier wiring checks; they do not enable unfinished
+peripherals, measure voltage or detect misplaced wires. CW2/CW3 stay in one
+project without changing a build selector. TOF is enabled only after its checks.
 
 The hardware baseline is Quang's STM32F405RGT6 profile, 168 MHz HCLK.
 LED D5/D6/D7/D8: PC14/PC15/PC0/PC1. Buttons: PB1/PA4.

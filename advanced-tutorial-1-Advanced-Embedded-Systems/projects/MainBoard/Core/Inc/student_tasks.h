@@ -5,6 +5,6 @@
 void CW2_ProcessIR(const IR_Sample *sample);
 /* false: task unfinished; show DO CW3 TODO and do not measure.
    true: use this task's status/result, including an error.
-   The template supplies the status guards. */
+   Students implement sequencing and propagate failures. */
 bool CW3_MeasureUltrasonic(uint32_t *distance_mm, HAL_StatusTypeDef *status);
 #endif

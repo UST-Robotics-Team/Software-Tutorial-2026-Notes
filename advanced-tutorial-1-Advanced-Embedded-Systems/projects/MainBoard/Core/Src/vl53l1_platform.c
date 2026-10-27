@@ -1,5 +1,6 @@
 #include "vl53l1_platform.h"
-#include "i2c.h"
+#include "main.h"
+/* Add i2c.h after enabling I2C2 and generating code in the TOF exercise. */
 #include "tutorial_config.h"
 /* One foreground sensor operation at a time; no ISR/RTOS callers. */
 static int8_t first_error;
@@ -10,16 +11,21 @@ void VL53L1_PlatformDelay(uint32_t ms) { HAL_Delay(ms); }
 static int8_t write_bytes(uint16_t dev, uint16_t reg, uint8_t *data, uint16_t n)
 {
     if (first_error) return first_error;
-    if (HAL_I2C_Mem_Write(&hi2c2, dev, reg, I2C_MEMADD_SIZE_16BIT,
-                         data,n,SENSOR_IO_TIMEOUT_MS)!=HAL_OK) first_error=-1;
+    /* TODO TOF B: write n bytes with a 16-bit register address and timeout.
+       Replace the placeholder status; keep the first-error guard. */
+    (void)dev; (void)reg; (void)data; (void)n;
+    HAL_StatusTypeDef status = HAL_ERROR;
+    if (status != HAL_OK) first_error=-1;
     return first_error;
 }
 static int8_t read_bytes(uint16_t dev, uint16_t reg, uint8_t *data, uint16_t n)
 {
     for (uint16_t i=0;i<n;++i) data[i]=0;
     if (first_error) return first_error;
-    if (HAL_I2C_Mem_Read(&hi2c2, dev, reg, I2C_MEMADD_SIZE_16BIT,
-                        data,n,SENSOR_IO_TIMEOUT_MS)!=HAL_OK) first_error=-1;
+    /* TODO TOF B: read n bytes with a 16-bit register address and timeout. */
+    (void)dev; (void)reg;
+    HAL_StatusTypeDef status = HAL_ERROR;
+    if (status != HAL_OK) first_error=-1;
     return first_error;
 }
 int8_t VL53L1_WrByte(uint16_t dev,uint16_t reg,uint8_t v)
@@ -32,4 +38,13 @@ int8_t VL53L1_WrDWord(uint16_t dev,uint16_t reg,uint32_t v)
 int8_t VL53L1_RdByte(uint16_t dev,uint16_t reg,uint8_t *v)
 { return read_bytes(dev,reg,v,1); }
 int8_t VL53L1_RdWord(uint16_t dev,uint16_t reg,uint16_t *v)
-{ uint8_t b[2]; int8_t s=read_bytes(dev,reg,b,2); *v=((uint16_t)b[0]<<8)|b[1]; return s; }
+{
+    if (!v) { first_error=-1; return first_error; }
+    uint8_t b[2] = {0};
+    int8_t status = read_bytes(dev,reg,b,2);
+    if (status) return status;
+    /* TODO TOF B: combine b[0]/b[1] in the documented byte order into *v.
+       Return zero only after implementing the conversion. */
+    first_error=-1;
+    return first_error;
+}
