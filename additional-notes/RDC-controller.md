@@ -101,6 +101,25 @@ ADC.
 The space on the controller supports either an **ST7735 1.8″ 128x160** TFT, or a
 **LongQiu ST7789 2.0″ 240x320** TFT. The first one was taught and used in
 tutorials, while the second one provides you more space for more debugging
-information or supplementary UI for your controller. To use the LongQiu TFT,
-simply update the `#define`s in the `lcd.h` in the LCD library (`Core/Inc`) and
-recompile.
+information or supplementary UI for your controller.
+
+To select the TFT screen mode:
+
+1. Open `Core/Inc/lcd/lcd.h` in the controller firmware project.
+2. Change the existing `TFT_SCREEN_MODE` definition to match your display. Use
+   **only one** of the following options:
+
+   **ST7735 1.8″ 128x160:**
+
+   ```c
+   #define TFT_SCREEN_MODE TFT_SCREEN_ST7735_1_8_INCH_128X160
+   ```
+
+   **LongQiu ST7789 2.0″ 240x320:**
+
+   ```c
+   #define TFT_SCREEN_MODE TFT_SCREEN_ST7789_2_0_INCH_240X320
+   ```
+
+3. Save the file, and recompile.
+
