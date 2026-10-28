@@ -105,7 +105,7 @@ information or supplementary UI for your controller.
 
 To select the TFT screen mode:
 
-1. Open `Core/Inc/lcd/lcd.h` in the controller firmware project.
+1. Open `Core/Inc/lcd/lcd.h`.
 2. Change the existing `TFT_SCREEN_MODE` definition to match your display. Use
    **only one** of the following options:
 
