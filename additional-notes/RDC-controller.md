@@ -52,7 +52,7 @@ the back side). Use the custom USB-C port at the bottom left instead
 
 The controller can be powered in two ways:
 - With a single rechargeable battery (18650), or
-- Using a ***Type-C to USB**** cable. Do ***NOT*** use Type-C to Type-C cable.
+- Using a ***Type-C to USB*** cable. Do ***NOT*** use Type-C to Type-C cable.
 
 > [!Tip]
 >
