@@ -1,6 +1,6 @@
 # RDC Controller
 
-#### Original Author: Hedy
+**Original Authors: Hedy, Kingslie, Kenyu**
 
 ![](/images/controller.jpeg)
 
@@ -15,6 +15,22 @@ another one...
 The hardware schematic, some further resources, and the design principles are
 published in a separate [project repository
 here](https://github.com/HKUST-Intelligent-Racing/2026-RDC-Controller).
+
+**Table of contents**
+
+<!-- mtoc-start -->
+
+* [(!!!) Basic reminders](#-basic-reminders)
+* [Powering, and managing the battery](#powering-and-managing-the-battery)
+  * [Controller not powering up?](#controller-not-powering-up)
+* [Flashing code](#flashing-code)
+* [Buttons](#buttons)
+* [Bluetooth / HC-05](#bluetooth--hc-05)
+* [Debugging features](#debugging-features)
+* [Backup ADCs (toggle with `0R` resistors)](#backup-adcs-toggle-with-0r-resistors)
+* [Display screen](#display-screen)
+
+<!-- mtoc-end -->
 
 > [!Note]
 >
@@ -36,7 +52,7 @@ the back side). Use the custom USB-C port at the bottom left instead
 
 The controller can be powered in two ways:
 - With a single rechargeable battery (18650), or
-- Using a Type-C USB cable
+- Using a ***Type-C to USB**** cable. Do ***NOT*** use Type-C to Type-C cable.
 
 > [!Tip]
 >
@@ -47,14 +63,40 @@ The controller comes with two battery slots -- intended for backup storage,
 weight distribution, and also ergonomics benefits. Please read the silkscreen
 labels and ensure you plug in the battery you want to use at the correct slot.
 
+### Controller not powering up?
+
+When the battery is plugged and yet the controller cannot be powered on despite
+how many times you toggle the switch (and even with the USB to Type-C cable),
+please try to test it sequentially following these steps:
+
+1. Remove the battery
+2. Plug a USB to TypeC cable on the controller PCB. Do ***NOT*** plug Type-C
+   cable on the Blue Pill.
+3. If the controller PCB works again with the USB to Type-C cable and without
+   the battery &rarr; either change to a charged battery or charge the original
+   battery on board for a longer time.
+4. If the controller PCB does not work, unfortunately and very likely your
+   controller is dead &rarr; please consult seniors, we will decide the
+   arrangements case-by-case.
+
 ## Flashing code
 
 Connect ST-Link wires to the four pins on the bluepill at the back. **Don't try
 to use the USB-to-TTL module to flash code!!**
 
-> [!Note]
+> [!Caution]
 >
-> It is highly recommended to turn off the switch when flashing code.
+> The controller and the components are not designed to be powered via the ST-Link.
+
+When you are testing the function of the controller, especially the HC05, and
+yet is lazy to unplug and plug the ST-Link every time you are flashing code,
+please only connect **THREE** ST-Link wires to the controller PCB —— ***do NOT
+connect the 3.3V wire*** and connect ***ONLY SWDIO, SWDCLK, and GND*** wires,
+then you could test functions of the controller smoothly while flashing code
+from time to time.
+
+Note: In this case, remember to turn off the switch when you are flashing code
+into the blue pill.
 
 ## Buttons
 
@@ -65,11 +107,6 @@ The 8 D-Pad buttons are labelled at the center of the D-Pads, where the number
 indicates the label of the GPIO Input pins in the IOC configuration.
 
 ## Bluetooth / HC-05
-
-The HC-05 bluetooth module is powered by **5V**, however, ST-Link only provides
-**3V3**. To enable the HC-05 module, you must either power the controller with
-USB-C, or turn on the battery. **Remember to unplug the ST-Link when powering
-the controller with battery**.
 
 The UART and the HC-05 headers on the controller share the **same UART** in
 STM32 configuration -- both are **USART1**. Connecting the HC-05 using rainbow
@@ -122,4 +159,3 @@ To select the TFT screen mode:
    ```
 
 3. Save the file, and recompile.
-
