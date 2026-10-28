@@ -95,8 +95,8 @@ connect the 3.3V wire*** and connect ***ONLY SWDIO, SWDCLK, and GND*** wires,
 then you could test functions of the controller smoothly while flashing code
 from time to time.
 
-Note: In this case, remember to turn off the switch when you are flashing code
-into the blue pill.
+**NOTE: In this case, remember to turn on the switch when you are flashing
+code into the blue pill.**
 
 ## Buttons
 
