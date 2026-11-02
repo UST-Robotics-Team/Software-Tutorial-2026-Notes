@@ -91,7 +91,7 @@ After this, remember to **generate code**. Then, you should see the files `Core/
 
 ```c
     // ...
-    MX_CAN_Init(&hcan1);
+    MX_CAN1_Init();
     // ...
 ```
 
