@@ -109,7 +109,7 @@ $$
 We can then rewrite the PID controller in discrete-time as:
 
 $$
-u[k] = k_p P[k] + k_i I[k] + k_d D[k]
+u[k] = P[k] + I[k] + D[k]
 $$
 
 where $P[k]$, $I[k]$, and $D[k]$ are the discrete-time versions of the proportional, integral, and derivative terms, respectively.
