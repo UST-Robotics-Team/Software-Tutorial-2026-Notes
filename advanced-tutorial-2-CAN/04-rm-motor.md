@@ -159,6 +159,7 @@ while (1)
     tft_prints(0, 0, "cur: %.1f", rm_get_actual_current(&hcan1, motor));
     tft_prints(0, 1, "enc: %d", rm_get_encoder(&hcan1, motor));
     tft_prints(0, 2, "vel: %d", rm_get_actual_vel(&hcan1, motor));
+    tft_update(50);
 
     if (btn_read(BTN1)) {
         rm_set_current_setpoint(&hcan1, motor, 1.5f);
